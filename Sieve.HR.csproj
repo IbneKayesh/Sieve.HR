@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Admin\Views\Company\Delete.cshtml" />
+    <Content Remove="Areas\Admin\Views\Company\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
