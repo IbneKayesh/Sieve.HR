@@ -1,5 +1,7 @@
 HR Management
 
+Add Migration =>  add-migration 'migrationName'
+Update Database =>  update-database
 
 1. Company Profile
 ------------------------------

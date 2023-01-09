@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Sieve.HR.Migrations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 
@@ -36,5 +37,11 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "Total Salary")]
         [Required(ErrorMessage = "{0} is required")]
         public int MAX_SALARY { get; set; } = 500000;
+
+
+        //Foreign Key
+
+        [ForeignKey("COMP_ID")]
+        public virtual HR_COMPANY HR_COMPANY { get; set; }
     }
 }

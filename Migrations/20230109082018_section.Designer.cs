@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sieve.HR.Services.Db;
 
@@ -10,9 +11,10 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    partial class HRDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230109082018_section")]
+    partial class section
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,8 +84,6 @@ namespace Sieve.HR.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("COMP_ID");
-
                     b.ToTable("HR_DEPARTMENT");
                 });
 
@@ -120,31 +120,7 @@ namespace Sieve.HR.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("DEPT_ID");
-
                     b.ToTable("HR_SECTIONS");
-                });
-
-            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", b =>
-                {
-                    b.HasOne("Sieve.HR.Areas.Admin.Models.HR_COMPANY", "HR_COMPANY")
-                        .WithMany()
-                        .HasForeignKey("COMP_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("HR_COMPANY");
-                });
-
-            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_SECTIONS", b =>
-                {
-                    b.HasOne("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", "HR_DEPARTMENT")
-                        .WithMany()
-                        .HasForeignKey("DEPT_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("HR_DEPARTMENT");
                 });
 #pragma warning restore 612, 618
         }

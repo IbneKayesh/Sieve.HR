@@ -7,41 +7,41 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class DepartmentController : Controller
+    public class SectionController : Controller
     {
         private readonly HRDbContext _context;
-        public DepartmentController(HRDbContext context)
+        public SectionController(HRDbContext context)
         {
             _context = context;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<HR_DEPARTMENT> objList = _context.HR_DEPARTMENT;
+            IEnumerable<HR_SECTIONS> objList = _context.HR_SECTIONS;
             return View(objList);
         }
         public IActionResult Create(int? id)
         {
             DropDownListFor_Create();
-            HR_DEPARTMENT objDb = new HR_DEPARTMENT();
+            HR_SECTIONS objDb = new HR_SECTIONS();
             if (id == null || id == 0)
             {
                 return View(objDb);
             }
-            objDb = _context.HR_DEPARTMENT.Find(id);
+            objDb = _context.HR_SECTIONS.Find(id);
             return View(objDb);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(HR_DEPARTMENT obj)
+        public IActionResult Create(HR_SECTIONS obj)
         {
             DropDownListFor_Create();
             if (ModelState.IsValid)
             {
                 if (obj.ID <= 0)
                 {
-                    _context.HR_DEPARTMENT.Add(obj);
+                    _context.HR_SECTIONS.Add(obj);
                 }
                 else
                 {
@@ -56,7 +56,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
 
         private void DropDownListFor_Create()
         {
-            ViewBag.COMP_ID = _context.HR_COMPANY.Select(s => new SelectListItem() { Text = s.COMP_NAME, Value = s.ID.ToString() }).ToList();
+            ViewBag.DEPT_ID = _context.HR_DEPARTMENT.Select(s => new SelectListItem() { Text = s.DEPT_NAME + "-" + s.HR_COMPANY.COMP_NAME, Value = s.ID.ToString() }).ToList();
         }
     }
 }

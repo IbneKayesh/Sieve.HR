@@ -1,6 +1,6 @@
-﻿@model Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT
+﻿@model Sieve.HR.Areas.Admin.Models.HR_SECTIONS
 @{
-    ViewBag.Title = "Department";
+    ViewBag.Title = "Section";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -19,19 +19,19 @@
         @Html.HiddenFor(model=>model.ID)
         <div class="row">
             <div class="col">
-                @Html.LabelFor(model => model.COMP_ID, htmlAttributes: new { @class = "control-label" })
-                @Html.DropDownListFor(model => model.COMP_ID, ViewBag.PAT_GENDER as List<SelectListItem>, new { @class = "form-control form-control-sm" })
-                @Html.ValidationMessageFor(model => model.COMP_ID, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.DEPT_ID, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.DEPT_ID, ViewBag.PAT_GENDER as List<SelectListItem>, new { @class = "form-control form-control-sm" })
+                @Html.ValidationMessageFor(model => model.DEPT_ID, "", new { @class = "text-danger" })
             </div>
             <div class="col">
-                @Html.LabelFor(model => model.DEPT_NAME, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.DEPT_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.DEPT_NAME) } })
-                @Html.ValidationMessageFor(model => model.DEPT_NAME, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.SECT_NAME, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.SECT_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.SECT_NAME) } })
+                @Html.ValidationMessageFor(model => model.SECT_NAME, "", new { @class = "text-danger" })
             </div>
             <div class="col">
-                @Html.LabelFor(model => model.DEPT_ADDR, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.DEPT_ADDR, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.DEPT_ADDR) } })
-                @Html.ValidationMessageFor(model => model.DEPT_ADDR, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.SECT_ADDR, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.SECT_ADDR, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.SECT_ADDR) } })
+                @Html.ValidationMessageFor(model => model.SECT_ADDR, "", new { @class = "text-danger" })
             </div>
             <div class="col">
                 @Html.LabelFor(model => model.HEAD_EMP_ID, htmlAttributes: new { @class = "control-label" })
