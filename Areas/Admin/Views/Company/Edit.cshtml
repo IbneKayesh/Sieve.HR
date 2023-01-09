@@ -1,5 +1,10 @@
 ﻿@model Sieve.HR.Areas.Admin.Models.HR_COMPANY
 
+@{
+    ViewBag.Title = "Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <div class="container shadow p-5">
     <div class="row pb-2">
         <h2>Edit Employee</h2>
@@ -10,9 +15,9 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label asp-for="Name">Employee Name</label>
-                <input type="text" class="form-control mb-3" asp-for="Name">
-                <span asp-validation-for="Name" class=" alert-danger"></span>
+                <label asp-for="COMP_NAME">Company Name</label>
+                <input type="text" class="form-control mb-3" asp-for="COMP_NAME">
+                <span asp-validation-for="COMP_NAME" class=" alert-danger"></span>
             </div>
             <div class="form-group col-md-6">
                 <label asp-for="Designation">Designation</label>
