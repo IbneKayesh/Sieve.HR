@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_COMPANY>
+
+@{
+    ViewBag.Title = "Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (TempData["ResultOk"] != null)
+{
+    <h1 class="alert-success">@TempData["ResultOk"]</h1>
+}
+
+<div class="container shadow p-5">
+
+    <h1 class="text-center mb-3">Company</h1>
+
+    <div class="col mb-3">
+        <a asp-area="Admin" asp-controller="Company" asp-action="Create" class="btn btn-lg btn-primary"><i class="bi bi-file-plus-fill"></i>Add Employee</a>
+    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Max No of Employee</th>
+                <th>Max Total Salary</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.COMP_NAME</td>
+                    <td>@item.COMP_ADDR</td>
+                    <td>@item.MAX_EMP_NO</td>
+                    <td>@item.MAX_SALARY</td>
+                    <td>
+                        <div role="group" class="w-60 btn-group">
+                            <a asp-area="Admin" asp-controller="Company" asp-action="Edit" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                            <a asp-area="Admin" asp-controller="Company" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
