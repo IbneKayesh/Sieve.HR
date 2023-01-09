@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Sieve.HR.Areas.Admin.Models;
 using Sieve.HR.Services.Db;
 
@@ -17,9 +18,17 @@ namespace Sieve.HR.Areas.Admin.Controllers
             IEnumerable<HR_COMPANY> objList = _context.HR_COMPANY;
             return View(objList);
         }
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            return View();
+            //return View();
+
+            HR_COMPANY objDb = new HR_COMPANY();
+            if (id == null || id == 0)
+            {
+                return View(objDb);
+            }
+            objDb = _context.HR_COMPANY.Find(id);
+            return View(objDb);
         }
 
         [HttpPost]
@@ -28,72 +37,53 @@ namespace Sieve.HR.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.HR_COMPANY.Add(obj);
+                if (obj.ID <= 0)
+                {
+                    _context.HR_COMPANY.Add(obj);
+                }
+                else
+                {
+                    _context.Entry(obj).State = EntityState.Modified;
+                }
                 _context.SaveChanges();
-                TempData["ResultOk"] = "Record Added Successfully !";
+                TempData["ResultOk"] = "Record Added/Updated Successfully !";
                 return RedirectToAction("Index");
             }
             return View(obj);
         }
 
-        public IActionResult Edit(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            var objDb = _context.HR_COMPANY.Find(id);
-
-            if (objDb == null)
-            {
-                return NotFound();
-            }
-            return View(objDb);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(HR_COMPANY obj)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.HR_COMPANY.Update(obj);
-                _context.SaveChanges();
-                TempData["ResultOk"] = "Data Updated Successfully !";
-                return RedirectToAction("Index");
-            }
-
-            return View(obj);
-        }
 
         public IActionResult Delete(int? id)
         {
+            var Deleterecord = _context.HR_COMPANY.Find(id);
+
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var objDb = _context.HR_COMPANY.Find(id);
-
-            if (objDb == null)
+            else
             {
-                return NotFound();
+                _context.HR_COMPANY.Remove(Deleterecord);
+                _context.SaveChanges();
+                TempData["ResultOk"] = "Data Deleted Successfully !";
+                return RedirectToAction("Index");
             }
-            return View(objDb);
+            
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteRecord(int? id)
-        {
-            var deleterecord = _context.HR_COMPANY.Find(id);
-            if (deleterecord == null)
-            {
-                return NotFound();
-            }
-            _context.HR_COMPANY.Remove(deleterecord);
-            _context.SaveChanges();
-            TempData["ResultOk"] = "Data Deleted Successfully !";
-            return RedirectToAction("Index");
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult DeleteRecord(int? id)
+        //{
+        //    var deleterecord = _context.HR_COMPANY.Find(id);
+        //    if (deleterecord == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    _context.HR_COMPANY.Remove(deleterecord);
+        //    _context.SaveChanges();
+        //    TempData["ResultOk"] = "Data Deleted Successfully !";
+        //    return RedirectToAction("Index");
+        //}
     }
 }
