@@ -88,13 +88,41 @@ namespace Sieve.HR.Migrations
                     b.ToTable("HR_DEPARTMENT");
                 });
 
-            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", b =>
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DUTY_ROSTER", b =>
                 {
-                    b.Property<int>("EMP_ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EMP_ID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("DUTY_ROSTER_NAME")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("END_TIME")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("START_TIME")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HR_DUTY_ROSTER");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<DateTime>("BIRTH_DATE")
                         .HasColumnType("datetime2");
@@ -168,9 +196,37 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("EMP_ID");
+                    b.HasKey("ID");
 
                     b.ToTable("HR_EMP_DETAIL");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_ROSTER", b =>
+                {
+                    b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HEAD_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ROSTER_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SUPERVISOR_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WEEKEND_DAYNO")
+                        .HasColumnType("int");
+
+                    b.HasKey("EMP_ID");
+
+                    b.HasIndex("HEAD_ID");
+
+                    b.HasIndex("ROSTER_ID");
+
+                    b.HasIndex("SUPERVISOR_ID");
+
+                    b.ToTable("HR_EMP_ROSTER");
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_SECTIONS", b =>
@@ -214,7 +270,7 @@ namespace Sieve.HR.Migrations
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", b =>
                 {
                     b.HasOne("Sieve.HR.Areas.Admin.Models.HR_COMPANY", "HR_COMPANY")
-                        .WithMany()
+                        .WithMany("HR_DEPARTMENT_NAV")
                         .HasForeignKey("COMP_ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -222,15 +278,78 @@ namespace Sieve.HR.Migrations
                     b.Navigation("HR_COMPANY");
                 });
 
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_ROSTER", b =>
+                {
+                    b.HasOne("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", "EMP")
+                        .WithOne("HR_EMP_ROSTER_EMP")
+                        .HasForeignKey("Sieve.HR.Areas.Admin.Models.HR_EMP_ROSTER", "EMP_ID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("FK_HR_EMP_ROSTER_HR_EMP_DETAIL");
+
+                    b.HasOne("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", "HEAD")
+                        .WithMany("HR_EMP_ROSTER_HEAD")
+                        .HasForeignKey("HEAD_ID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("FK_HR_EMP_ROSTER_HR_EMP_HEAD");
+
+                    b.HasOne("Sieve.HR.Areas.Admin.Models.HR_DUTY_ROSTER", "ROSTER")
+                        .WithMany("HR_EMP_ROSTERS")
+                        .HasForeignKey("ROSTER_ID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("FK_HR_EMP_ROSTER_HR_DUTY_ROSTER");
+
+                    b.HasOne("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", "SUPERVISOR")
+                        .WithMany("HR_EMP_ROSTER_SUPERVISOR")
+                        .HasForeignKey("SUPERVISOR_ID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("FK_HR_EMP_ROSTER_HR_EMP_SUPERVISOR");
+
+                    b.Navigation("EMP");
+
+                    b.Navigation("HEAD");
+
+                    b.Navigation("ROSTER");
+
+                    b.Navigation("SUPERVISOR");
+                });
+
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_SECTIONS", b =>
                 {
                     b.HasOne("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", "HR_DEPARTMENT")
-                        .WithMany()
+                        .WithMany("HR_SECTIONS_NAV")
                         .HasForeignKey("DEPT_ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("HR_DEPARTMENT");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_COMPANY", b =>
+                {
+                    b.Navigation("HR_DEPARTMENT_NAV");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", b =>
+                {
+                    b.Navigation("HR_SECTIONS_NAV");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DUTY_ROSTER", b =>
+                {
+                    b.Navigation("HR_EMP_ROSTERS");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", b =>
+                {
+                    b.Navigation("HR_EMP_ROSTER_EMP");
+
+                    b.Navigation("HR_EMP_ROSTER_HEAD");
+
+                    b.Navigation("HR_EMP_ROSTER_SUPERVISOR");
                 });
 #pragma warning restore 612, 618
         }

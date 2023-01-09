@@ -1,4 +1,4 @@
-﻿using Sieve.HR.Migrations;
+﻿using Sieve.HR.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
@@ -7,6 +7,12 @@ namespace Sieve.HR.Areas.Admin.Models
 {
     public class HR_DEPARTMENT
     {
+        public HR_DEPARTMENT()
+        {
+            HR_SECTIONS_NAV = new HashSet<HR_SECTIONS>();
+        }
+
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "ID")]
@@ -15,6 +21,7 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "Company Id")]
         [Required(ErrorMessage = "{0} is required")]
         public int COMP_ID { get; set; }
+
 
         [Display(Name = "Department Name")]
         [Required(ErrorMessage = "{0} is required")]
@@ -39,9 +46,12 @@ namespace Sieve.HR.Areas.Admin.Models
         public int MAX_SALARY { get; set; } = 500000;
 
 
-        //Foreign Key
 
+        //Foreign Key
         [ForeignKey("COMP_ID")]
-        public virtual HR_COMPANY HR_COMPANY { get; set; }
+        public virtual HR_COMPANY HR_COMPANY { get; set; } = null!;
+
+        //For Navigation
+        public virtual ICollection<HR_SECTIONS> HR_SECTIONS_NAV { get; set; } = null!;
     }
 }

@@ -5,6 +5,8 @@ Development End Date: 29-01-2023
 Add Migration =>  add-migration 'migrationName'
 Update Database =>  update-database
 
+Scaffold-DbContext "Server=172.17.107.209; Database=SieveHR; User Id=sa; Password=123; Trusted_Connection=False; MultipleActiveResultSets=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
 1. Company Profile
 ------------------------------
 1.1 Company<br/>
@@ -15,3 +17,8 @@ Update Database =>  update-database
 ------------------------------
 2.1 Employee Information<br/>
 2.2 Duty Roster and Weekend Setup<br/>
+
+
+3. Duty Profile
+------------------------------
+3.1 Duty Roster

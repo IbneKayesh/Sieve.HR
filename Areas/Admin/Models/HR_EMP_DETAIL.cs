@@ -1,13 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
+﻿ using NuGet.ContentModel;
+using Sieve.HR.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
     public class HR_EMP_DETAIL
     {
+        public HR_EMP_DETAIL()
+        {
+            HR_EMP_ROSTER_SUPERVISOR = new HashSet<HR_EMP_ROSTER>();
+            HR_EMP_ROSTER_HEAD = new HashSet<HR_EMP_ROSTER>();
+        }
+
+
+
         [Key]
         [Display(Name = "ID")]
-        public int EMP_ID { get; set; }
+        public int ID { get; set; }
 
         [Display(Name = "Full Name")]
         [Required(ErrorMessage = "{0} is required")]
@@ -82,5 +91,10 @@ namespace Sieve.HR.Areas.Admin.Models
         [Required(ErrorMessage = "{0} is required")]
         [StringLength(200, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 3)]
         public string? PARMANENT_ADDRESS { get; set; }
+
+
+        public virtual HR_EMP_ROSTER? HR_EMP_ROSTER_EMP { get; set; }
+        public virtual ICollection<HR_EMP_ROSTER> HR_EMP_ROSTER_SUPERVISOR { get; set; }
+        public virtual ICollection<HR_EMP_ROSTER> HR_EMP_ROSTER_HEAD { get; set; }
     }
 }

@@ -1,9 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Sieve.HR.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
     public class HR_COMPANY
-    {  
+    {
+        public HR_COMPANY()
+        {
+            HR_DEPARTMENT_NAV = new HashSet<HR_DEPARTMENT>();
+        }
+
         [Key]
         [Display(Name = "ID")]
         public int ID { get; set; }
@@ -25,5 +31,8 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "Total Salary")]
         [Required(ErrorMessage = "{0} is required")]
         public int MAX_SALARY { get; set; } = 1000000;
+
+        //For Navigation
+        public virtual ICollection<HR_DEPARTMENT> HR_DEPARTMENT_NAV { get; set; }
     }
 }
