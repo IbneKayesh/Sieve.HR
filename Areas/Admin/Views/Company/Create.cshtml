@@ -1,4 +1,4 @@
-﻿@model Sieve.HR.Areas.Admin.Models.HR_COMPANY
+﻿@*@model Sieve.HR.Areas.Admin.Models.HR_COMPANY
 
 @{
     ViewBag.Title = "Company";
@@ -48,9 +48,73 @@
 
 
 @*//for front end validations*@
+@*
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}*@
+
+
+
+@model Sieve.HR.Areas.Admin.Models.HR_COMPANY
+@{
+    ViewBag.Title = "Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="card-header">
+        <div class="card-title">
+            <a href="@Url.Action("Index")" class="btn btn-outline-info btn-flat btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
+            <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> New</a>
+            <button type="submit" class="btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-save"></i> Save</button>
+        </div>
+    </div>
+    <div class="card-body">
+        @Html.HiddenFor(model=>model.ID)
+        <div class="row">
+            <div class="col">
+                @Html.LabelFor(model => model.COMP_NAME, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.COMP_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.COMP_NAME) } })
+                @Html.ValidationMessageFor(model => model.COMP_NAME, "", new { @class = "text-danger" })
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.COMP_ADDR, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.COMP_ADDR, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.COMP_ADDR) } })
+                @Html.ValidationMessageFor(model => model.COMP_ADDR, "", new { @class = "text-danger" })
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.MAX_EMP_NO, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.MAX_EMP_NO, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MAX_EMP_NO) } })
+                @Html.ValidationMessageFor(model => model.MAX_EMP_NO, "", new { @class = "text-danger" })
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.MAX_SALARY, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.MAX_SALARY, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MAX_SALARY) } })
+                @Html.ValidationMessageFor(model => model.MAX_SALARY, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*<div class="row">
+            <div class="col">
+                @Html.LabelFor(model => model.MAX_EMP_NO, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.MAX_EMP_NO, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MAX_EMP_NO) } })
+                @Html.ValidationMessageFor(model => model.MAX_EMP_NO, "", new { @class = "text-danger" })
+            </div>
+            <div class="col">
+                @Html.LabelFor(model => model.MAX_SALARY, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.MAX_SALARY, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MAX_SALARY) } })
+                @Html.ValidationMessageFor(model => model.MAX_SALARY, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+    </div>
+}
 
 @section Scripts{
     @{
         <partial name="_ValidationScriptsPartial" />
     }
-}
+    }

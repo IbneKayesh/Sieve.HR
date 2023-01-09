@@ -3,7 +3,7 @@
 namespace Sieve.HR.Areas.Admin.Models
 {
     public class HR_COMPANY
-    {
+    {  
         [Key]
         [Display(Name = "ID")]
         public int ID { get; set; }
@@ -18,7 +18,7 @@ namespace Sieve.HR.Areas.Admin.Models
         [StringLength(250, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 3)]
         public string? COMP_ADDR { get; set; }
 
-        [Display(Name = "Total Employees")]
+        [Display(Name = "Maximum Employees")]
         [Required(ErrorMessage = "{0} is required")]
         public int MAX_EMP_NO { get; set; } = 10;
 
