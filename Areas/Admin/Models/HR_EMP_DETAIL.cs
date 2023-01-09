@@ -1,6 +1,4 @@
-﻿ using NuGet.ContentModel;
-using Sieve.HR.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Sieve.HR.Areas.Admin.Models
 {

@@ -12,8 +12,8 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    [Migration("20230109122630_all")]
-    partial class all
+    [Migration("20230109161055_SeedOnly")]
+    partial class SeedOnly
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,42 @@ namespace Sieve.HR.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_ATTENDANCE_SHEET", b =>
+                {
+                    b.Property<int>("ATTEND_STATUS")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DAY_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IN_TIME")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<int>("MONTH_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OT_HOURS")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OUT_TIME")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<int>("ROSTER_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YEAR_ID")
+                        .HasColumnType("int");
+
+                    b.ToTable("HR_ATTENDANCE_SHEET");
+                });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_COMPANY", b =>
                 {
@@ -51,6 +87,16 @@ namespace Sieve.HR.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("HR_COMPANY");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            COMP_ADDR = "Dhaka, Bangladesh",
+                            COMP_NAME = "Sieve Org",
+                            MAX_EMP_NO = 1000,
+                            MAX_SALARY = 100000000
+                        });
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", b =>
@@ -88,6 +134,170 @@ namespace Sieve.HR.Migrations
                     b.HasIndex("COMP_ID");
 
                     b.ToTable("HR_DEPARTMENT");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            COMP_ID = 1,
+                            DEPT_ADDR = "First Floor, Mail Branch",
+                            DEPT_NAME = "Admin",
+                            HEAD_EMP_ID = 1,
+                            MAX_EMP_NO = 10,
+                            MAX_SALARY = 1000000
+                        },
+                        new
+                        {
+                            ID = 2,
+                            COMP_ID = 1,
+                            DEPT_ADDR = "Second Floor, Mail Branch",
+                            DEPT_NAME = "Sales",
+                            HEAD_EMP_ID = 2,
+                            MAX_EMP_NO = 10,
+                            MAX_SALARY = 1000000
+                        });
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DESIGNATIONS", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("FULL_FORM")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("MAX_SALARY")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MIN_SALARY")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PARENT_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SHORT_FORM")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HR_DESIGNATIONS");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            FULL_FORM = "Cheif Executive Officer",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 0,
+                            SHORT_FORM = "CEO"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            FULL_FORM = "Executive Director",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 1,
+                            SHORT_FORM = "ED"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            FULL_FORM = "Cheif Operating Director",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 2,
+                            SHORT_FORM = "COO"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            FULL_FORM = "General Manager",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 3,
+                            SHORT_FORM = "GM"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            FULL_FORM = "Deputy General Manager",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 4,
+                            SHORT_FORM = "DGM"
+                        },
+                        new
+                        {
+                            ID = 6,
+                            FULL_FORM = "Assistant General Manager",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 5,
+                            SHORT_FORM = "AGM"
+                        },
+                        new
+                        {
+                            ID = 7,
+                            FULL_FORM = "Senior Manager",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 6,
+                            SHORT_FORM = "SM"
+                        },
+                        new
+                        {
+                            ID = 8,
+                            FULL_FORM = "Manager",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 7,
+                            SHORT_FORM = "M"
+                        },
+                        new
+                        {
+                            ID = 9,
+                            FULL_FORM = "Deputy Manager",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 8,
+                            SHORT_FORM = "Dym"
+                        },
+                        new
+                        {
+                            ID = 10,
+                            FULL_FORM = "Assistant Manager",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 9,
+                            SHORT_FORM = "AM"
+                        },
+                        new
+                        {
+                            ID = 11,
+                            FULL_FORM = "Sub Assistant Manager",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 10,
+                            SHORT_FORM = "SAM"
+                        },
+                        new
+                        {
+                            ID = 12,
+                            FULL_FORM = "Trainee Executive",
+                            MAX_SALARY = 9999999,
+                            MIN_SALARY = 100000,
+                            PARENT_ID = 11,
+                            SHORT_FORM = "TE"
+                        });
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DUTY_ROSTER", b =>
@@ -103,12 +313,15 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("END_TIME")
+                    b.Property<string>("IN_TIME")
                         .IsRequired()
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
 
-                    b.Property<string>("START_TIME")
+                    b.Property<int>("MAX_OT_HOUR")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OUT_TIME")
                         .IsRequired()
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
@@ -116,6 +329,62 @@ namespace Sieve.HR.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("HR_DUTY_ROSTER");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            DUTY_ROSTER_NAME = "General Shift",
+                            IN_TIME = "0900",
+                            MAX_OT_HOUR = 0,
+                            OUT_TIME = "1700"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            DUTY_ROSTER_NAME = "Morning Shift",
+                            IN_TIME = "0600",
+                            MAX_OT_HOUR = 2,
+                            OUT_TIME = "1800"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            DUTY_ROSTER_NAME = "Evening Shift",
+                            IN_TIME = "1800",
+                            MAX_OT_HOUR = 2,
+                            OUT_TIME = "0600"
+                        });
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EDU_TYPE", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("TYPE_NAME")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HR_EDU_TYPE");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            TYPE_NAME = "Institution"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            TYPE_NAME = "Training"
+                        });
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", b =>
@@ -242,9 +511,8 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("DEPT_ID")
                         .HasColumnType("int");
 
-                    b.Property<string>("HEAD_EMP_ID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("HEAD_EMP_ID")
+                        .HasColumnType("int");
 
                     b.Property<int>("MAX_EMP_NO")
                         .HasColumnType("int");
@@ -267,6 +535,28 @@ namespace Sieve.HR.Migrations
                     b.HasIndex("DEPT_ID");
 
                     b.ToTable("HR_SECTIONS");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            DEPT_ID = 1,
+                            HEAD_EMP_ID = 1,
+                            MAX_EMP_NO = 10,
+                            MAX_SALARY = 1000000,
+                            SECT_ADDR = "First Floor, Mail Branch",
+                            SECT_NAME = "Admin"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            DEPT_ID = 2,
+                            HEAD_EMP_ID = 2,
+                            MAX_EMP_NO = 10,
+                            MAX_SALARY = 1000000,
+                            SECT_ADDR = "Second Floor, Mail Branch",
+                            SECT_NAME = "IT Product"
+                        });
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", b =>

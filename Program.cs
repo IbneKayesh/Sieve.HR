@@ -22,7 +22,7 @@ builder.Services.AddMvc().AddJsonOptions(options =>
 //end ----option 2
 builder.Services.AddDbContext<HRDbContext>(
     options => options.UseSqlServer(
-        builder.Configuration.GetConnectionString("HrDbCon")
+        builder.Configuration.GetConnectionString("HrDbCon2")
         ));
 
 //session --new added

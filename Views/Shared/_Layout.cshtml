@@ -1,58 +1,293 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Sieve Asad</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Sieve.HR.styles.css" asp-append-version="true" />
+    <meta charset="UTF-8">
+    <title>Add User | SimplePOS</title>
+    <link rel="shortcut icon" href="https://spos.tecdiary.net/themes/default/assets/images/icon.png" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="~/themes/default/assets/dist/css/styles.css" rel="stylesheet" type="text/css" />
+    <script src="~/themes/default/assets/plugins/jQuery/jQuery-2.1.4.min.js" type="31308152eb2ce608cdbd93e2-text/javascript"></script>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Sieve</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Company" asp-action="Index">Company</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Department" asp-action="Index">Department</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Section" asp-action="Index">Section</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+<body class="skin-green fixed sidebar-mini">
+    <div class="wrapper rtl rtl-inv">
+        <header class="main-header">
+            <a href="/" class="logo">
+                <span class="logo-mini">POS</span>
+                <span class="logo-lg">Simple<b>POS</b></span>
+            </a>
+            <nav class="navbar navbar-static-top" role="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <ul class="nav navbar-nav pull-left">
+                    <li class="dropdown hidden-xs">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="https://spos.tecdiary.net/themes/default/assets/images/english.png" alt="english"></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://spos.tecdiary.net/pos/language/english"><img src="https://spos.tecdiary.net/themes/default/assets/images/english.png" class="language-img"> &nbsp;&nbsp;English</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <li class="hidden-xs hidden-sm"><a href="#" class="clock"></a></li>
+                        <li class="hidden-xs"><a href="https://spos.tecdiary.net/" data-toggle="tooltip" data-placement="bottom" title="Dashboard"><i class="fa fa-dashboard"></i></a></li>
+                        <li class="hidden-xs"><a href="https://spos.tecdiary.net/settings" data-toggle="tooltip" data-placement="bottom" title="Settings"><i class="fa fa-cogs"></i></a></li>
+                        <li><a href="https://spos.tecdiary.net/pos/view_bill" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Customer Display"><i class="fa fa-desktop"></i></a></li>
+                        <li><a href="https://spos.tecdiary.net/pos" data-toggle="tooltip" data-placement="bottom" title="POS"><i class="fa fa-th"></i></a></li>
+                        <li class="dropdown user user-menu" style="padding-right:5px;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="https://spos.tecdiary.net/uploads/avatars/thumbs/male.png" class="user-image" alt="Avatar" />
+                                <span class="hidden-xs">Admin Admin</span>
+                            </a>
+                            <ul class="dropdown-menu" style="padding-right:3px;">
+                                <li class="user-header">
+                                    <img src="https://spos.tecdiary.net/uploads/avatars/male.png" class="img-circle" alt="Avatar" />
+                                    <p>
+                                        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2140454c484f6155444245484053580f424e4c">[email&#160;protected]</a> <small>Member since Thu 25 Jun 2015 11:59 AM</small>
+                                    </p>
+                                </li>
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="https://spos.tecdiary.net/users/profile/1" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="https://spos.tecdiary.net/logout" class="btn btn-default btn-flat">Sign Out</a>
+                                    </div>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+            </nav>
+        </header>
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Sieve.HR - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    <li class="mm_welcome"><a href="https://spos.tecdiary.net/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                    <li class="mm_stores"><a href="https://spos.tecdiary.net/stores"><i class="fa fa-building-o"></i> <span>Stores</span></a></li>
+                    <li class="mm_pos"><a href="https://spos.tecdiary.net/pos"><i class="fa fa-th"></i> <span>POS</span></a></li>
+                    <li class="treeview mm_products">
+                        <a href="#">
+                            <i class="fa fa-barcode"></i>
+                            <span>Products</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="products_index"><a href="https://spos.tecdiary.net/products"><i class="fa fa-circle-o"></i> List Products</a></li>
+                            <li id="products_add"><a href="https://spos.tecdiary.net/products/add"><i class="fa fa-circle-o"></i> Add Products</a></li>
+                            <li id="products_import"><a href="https://spos.tecdiary.net/products/import"><i class="fa fa-circle-o"></i> Import Products</a></li>
+                            <li class="divider"></li>
+                            <li id="products_print_barcodes"><a href="https://spos.tecdiary.net/products/print_barcodes" data-toggle="ajax"><i class="fa fa-circle-o"></i> Print Barcodes</a></li>
+                            <li id="products_print_labels"><a href="https://spos.tecdiary.net/products/print_labels" data-toggle="ajax"><i class="fa fa-circle-o"></i> Print Labels</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview mm_categories">
+                        <a href="#">
+                            <i class="fa fa-folder"></i>
+                            <span>Categories</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="categories_index"><a href="https://spos.tecdiary.net/categories"><i class="fa fa-circle-o"></i> List Categories</a></li>
+                            <li id="categories_add"><a href="https://spos.tecdiary.net/categories/add"><i class="fa fa-circle-o"></i> Add Category</a></li>
+                            <li id="categories_import"><a href="https://spos.tecdiary.net/categories/import"><i class="fa fa-circle-o"></i> Import Categories</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview mm_gift_cards">
+                        <a href="#">
+                            <i class="fa fa-credit-card"></i>
+                            <span>Gift Card</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="gift_cards_index"><a href="https://spos.tecdiary.net/gift_cards"><i class="fa fa-circle-o"></i> List Gift Cards</a></li>
+                            <li id="gift_cards_add"><a href="https://spos.tecdiary.net/gift_cards/add"><i class="fa fa-circle-o"></i> Add Gift Card</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview mm_auth mm_customers mm_suppliers">
+                        <a href="#">
+                            <i class="fa fa-users"></i>
+                            <span>People</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="auth_users"><a href="https://spos.tecdiary.net/users"><i class="fa fa-circle-o"></i> List Users</a></li>
+                            <li id="auth_add"><a href="https://spos.tecdiary.net/users/add"><i class="fa fa-circle-o"></i> Add User</a></li>
+                            <li class="divider"></li>
+                            <li id="customers_index"><a href="https://spos.tecdiary.net/customers"><i class="fa fa-circle-o"></i> List Customers</a></li>
+                            <li id="customers_add"><a href="https://spos.tecdiary.net/customers/add"><i class="fa fa-circle-o"></i> Add Customer</a></li>
+                            <li class="divider"></li>
+                            <li id="suppliers_index"><a href="https://spos.tecdiary.net/suppliers"><i class="fa fa-circle-o"></i> List Suppliers</a></li>
+                            <li id="suppliers_add"><a href="https://spos.tecdiary.net/suppliers/add"><i class="fa fa-circle-o"></i> Add Supplier</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview mm_settings">
+                        <a href="#">
+                            <i class="fa fa-cogs"></i>
+                            <span>Settings</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="settings_index"><a href="https://spos.tecdiary.net/settings"><i class="fa fa-circle-o"></i> Settings</a></li>
+                            <li class="divider"></li>
+                            <li id="settings_stores"><a href="https://spos.tecdiary.net/settings/stores"><i class="fa fa-circle-o"></i> Stores</a></li>
+                            <li id="settings_add_store"><a href="https://spos.tecdiary.net/settings/add_store"><i class="fa fa-circle-o"></i> Add Store</a></li>
+                            <li class="divider"></li>
+                            <li id="settings_printers"><a href="https://spos.tecdiary.net/settings/printers"><i class="fa fa-circle-o"></i> Printers</a></li>
+                            <li id="settings_add_printer"><a href="https://spos.tecdiary.net/settings/add_printer"><i class="fa fa-circle-o"></i> Add Printer</a></li>
+                            <li class="divider"></li>
+                            <li id="settings_backups"><a href="https://spos.tecdiary.net/settings/backups"><i class="fa fa-circle-o"></i> Backups</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="treeview mm_reports">
+                        <a href="#">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <span>Reports</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li id="reports_daily_sales"><a href="https://spos.tecdiary.net/reports/daily_sales"><i class="fa fa-circle-o"></i> Daily Sales</a></li>
+                            <li id="reports_monthly_sales"><a href="https://spos.tecdiary.net/reports/monthly_sales"><i class="fa fa-circle-o"></i> Monthly Sales</a></li>
+                            <li id="reports_index"><a href="https://spos.tecdiary.net/reports"><i class="fa fa-circle-o"></i> Sales Report</a></li>
+                            <li class="divider"></li>
+                            <li id="reports_payments"><a href="https://spos.tecdiary.net/reports/payments"><i class="fa fa-circle-o"></i> Payments Report</a></li>
+                            <li class="divider"></li>
+                            <li id="reports_registers"><a href="https://spos.tecdiary.net/reports/registers"><i class="fa fa-circle-o"></i> Registers Report</a></li>
+                            <li class="divider"></li>
+                            <li id="reports_top_products"><a href="https://spos.tecdiary.net/reports/top_products"><i class="fa fa-circle-o"></i> Top Products</a></li>
+                            <li id="reports_products"><a href="https://spos.tecdiary.net/reports/products"><i class="fa fa-circle-o"></i> Products Report</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </aside>
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>Add User</h1>
+                <ol class="breadcrumb">
+                    <li><a href="https://spos.tecdiary.net/"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li><a href="https://spos.tecdiary.net/users">Users</a></li>
+                    <li class="active">Add User</li>
+                </ol>
+            </section>
+            <div class="col-lg-12 alerts">
+                <div id="custom-alerts" style="display:none;">
+                    <div class="alert alert-dismissable">
+                        <div class="custom-msg"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box box-primary">
+                            @RenderBody()
+                            @*<div class="box-header">
+                            <h3 class="box-title">Please fill in the information below</h3>
+                            </div>
+                            <div class="box-body">
+                            <div class="col-lg-6">
+                            <form action="https://spos.tecdiary.net/auth/create_user" method="post" accept-charset="utf-8">
+                            <input type="hidden" name="spos_token" value="6dd4a5278b5d40afdb8fadb805007b02" />
+                            <div class="form-group">
+                            <label for="group">Group</label>  <select name="group" id="group" data-placeholder="Select Group" class="form-control input-tip select2" style="width:100%;">
+                            <option value="" selected="selected"></option>
+                            <option value="1">admin</option>
+                            <option value="2">staff</option>
+                            </select>
+                            </div>
+                            <div class="form-group">
+                            <label for="first_name">First Name</label> <input type="text" name="first_name" value="" class="form-control tip" id="first_name" required="required" />
+                            </div>
+                            <div class="form-group">
+                            <label for="last_name">Last Name</label> <input type="text" name="last_name" value="" class="form-control tip" id="last_name" required="required" />
+                            </div>
+                            <div class="form-group">
+                            <label for="phone">Phone</label> <input type="text" name="phone" value="" class="form-control tip" id="phone" required="required" />
+                            </div>
+                            <div class="form-group">
+                            <label for="gender">Gender</label> <select name="gender" class="form-control tip select2" style="width:100%;" id="gender" required="required">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            </select>
+                            </div>
+                            <div class="form-group">
+                            <label for="email">Email</label> <input type="text" name="email" value="" class="form-control tip" id="email" required="required" />
+                            </div>
+                            <div class="form-group">
+                            <label for="username">Username</label> <input type="text" name="username" value="" class="form-control tip" id="username" required="required" />
+                            </div>
+                            <div class="form-group">
+                            <label for="password">Password</label> <input type="password" name="password" value="" class="form-control tip" id="password" required="required" />
+                            </div>
+                            <div class="form-group">
+                            <label for="confirm_password">Confirm Password</label> <input type="password" name="confirm_password" value="" class="form-control tip" id="confirm_password" required="required" />
+                            </div>
+                            <div class="form-group">
+                            <label for="status">Status</label> <select name="status" id="status" data-placeholder="Select Status" class="form-control input-tip select2" style="width:100%;">
+                            <option value="" selected="selected"></option>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                            </select>
+                            </div>
+                            <div class="form-group store-con">
+                            <label for="store_id">Store</label> <select name="store_id" id="store_id" data-placeholder="Select Store" class="form-control input-tip select2" style="width:100%;">
+                            <option value="" selected="selected"></option>
+                            <option value="1">SimplePOS</option>
+                            </select>
+                            </div>
+                            <div class="form-group">
+                            <label class="checkbox" for="notify"><input type="checkbox" name="notify" value="1" id="notify" checked="checked" /> Notify User by Email</label>
+                            </div>
+                            <div class="form-group">
+                            <input type="submit" name="add_user" value="Add User" class="btn btn-primary" />
+                            </div>
+                            </form>
+                            </div>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                Version <strong>4.1.0</strong>
+            </div>
+            Copyright &copy; 2023 SimplePOS. All rights reserved.
+        </footer>
+    </div>
+    <div class="modal" data-easein="flipYIn" id="posModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+    <div class="modal" data-easein="flipYIn" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
+    <div id="ajaxCall"><i class="fa fa-spinner fa-pulse"></i></div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script type="31308152eb2ce608cdbd93e2-text/javascript">
+        var base_url = 'https://spos.tecdiary.net/';
+        var site_url = 'https://spos.tecdiary.net/';
+        var dateformat = 'D j M Y', timeformat = 'h:i A';
+             var Settings = {"logo":"logo1.png","site_name":"SimplePOS","tel":"0105292122","dateformat":"D j M Y","timeformat":"h:i A","language":"english","theme":"default","mmode":"0","captcha":"0","currency_prefix":"USD","default_customer":"3","default_tax_rate":"5%","rows_per_page":"10","total_rows":"30","header":"<h2><strong>Simple POS<\/strong><\/h2>\r\n       My Shop Lot, Shopping Mall,<br>\r\n                                                                                              Post Code, City<br>","footer":"Thank you for your business!\r\n<br>","bsty":"3","display_kb":"0","default_category":"1","default_discount":"0","item_addition":"1","barcode_symbology":"","pro_limit":"10","decimals":"2","thousands_sep":",","decimals_sep":".","focus_add_item":"ALT+F1","add_customer":"ALT+F2","toggle_category_slider":"ALT+F10","cancel_sale":"ALT+F5","suspend_sale":"ALT+F6","print_order":"ALT+F11","print_bill":"ALT+F12","finalize_sale":"ALT+F8","today_sale":"Ctrl+F1","open_hold_bills":"Ctrl+F2","close_register":"ALT+F7","java_applet":"0","receipt_printer":"","pos_printers":"","cash_drawer_codes":"","char_per_line":"42","rounding":"1","pin_code":"abdbeb4d8dbe30df8430a8394b7218ef","purchase_code":null,"envato_username":null,"theme_style":"green","after_sale_page":null,"overselling":"1","multi_store":"1","qty_decimals":"2","symbol":null,"sac":"0","display_symbol":null,"remote_printing":"1","printer":null,"order_printers":null,"auto_print":"0","local_printers":null,"rtl":null,"print_img":null,"ws_barcode_type":"weight","ws_barcode_chars":"13","flag_chars":"1","item_code_start":"2","item_code_chars":"6","price_start":"0","price_chars":"0","price_divide_by":"0","weight_start":"8","weight_chars":"5","weight_divide_by":"100","selected_language":"english"};
+         $(window).load(function () {
+             $('.mm_stores').addClass('active');
+             $('#stores_index').addClass('active');
+         });
+        var lang = new Array();
+        lang['code_error'] = 'Code Error';
+        lang['r_u_sure'] = '<strong>Are you sure?</strong>';
+        lang['register_open_alert'] = 'Register is open, are you sure to sign out?';
+        lang['code_error'] = 'Code Error';
+        lang['r_u_sure'] = '<strong>Are you sure?</strong>';
+        lang['no_match_found'] = 'No match found';
+    </script>
+    <script src="~/themes/default/assets/dist/js/libraries.min.js" type="31308152eb2ce608cdbd93e2-text/javascript"></script>
+    <script src="~/themes/default/assets/dist/js/scripts.min.js" type="31308152eb2ce608cdbd93e2-text/javascript"></script>
+    <script src="~/themes/default/assets/dist/js/rocket-loader.min.js" data-cf-settings="31308152eb2ce608cdbd93e2-|49" defer=""></script>
+    <script defer src="~/themes/default/assets/dist/js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"786ee03cafca856c","token":"0f7b181f49334814af6e18fa530ac0db","version":"2022.11.3","si":100}' crossorigin="anonymous"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

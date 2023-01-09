@@ -2,8 +2,10 @@ HR Management
 Development Start Date: 09-01-2023
 Development End Date: 29-01-2023
 
+
 Add Migration =>  add-migration 'migrationName'
 Update Database =>  update-database
+Add Migration Seed Only => add-migration SeedOnly
 
 Scaffold-DbContext "Server=172.17.107.209; Database=SieveHR; User Id=sa; Password=123; Trusted_Connection=False; MultipleActiveResultSets=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
 

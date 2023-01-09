@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sieve.HR.Services.Db;
 
@@ -11,9 +12,10 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    partial class HRDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230109163514_init2")]
+    partial class init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -498,59 +500,6 @@ namespace Sieve.HR.Migrations
                     b.ToTable("HR_EMP_ROSTER");
                 });
 
-            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_SALARY", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<int>("EMP_ID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SALARY_AMNT")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SALARY_TYPE_ID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("YYYYMM")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("EMP_ID");
-
-                    b.HasIndex("SALARY_TYPE_ID");
-
-                    b.ToTable("HR_EMP_SALARY");
-                });
-
-            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_HOLIDAY_CALENDER", b =>
-                {
-                    b.Property<int>("YEAR_ID")
-                        .HasColumnType("int")
-                        .HasColumnOrder(0);
-
-                    b.Property<int>("MONTH_ID")
-                        .HasColumnType("int")
-                        .HasColumnOrder(1);
-
-                    b.Property<int>("DAY_ID")
-                        .HasColumnType("int")
-                        .HasColumnOrder(2);
-
-                    b.Property<string>("HOLIDAY_NAME")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("YEAR_ID", "MONTH_ID", "DAY_ID");
-
-                    b.ToTable("HR_HOLIDAY_CALENDER");
-                });
-
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_LEAVE_TYPE", b =>
                 {
                     b.Property<int>("ID")
@@ -764,25 +713,6 @@ namespace Sieve.HR.Migrations
                     b.Navigation("ROSTER");
 
                     b.Navigation("SUPERVISOR");
-                });
-
-            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_SALARY", b =>
-                {
-                    b.HasOne("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", "HR_EMP_DETAIL")
-                        .WithMany()
-                        .HasForeignKey("EMP_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Sieve.HR.Areas.Admin.Models.HR_SALARY_TYPE", "HR_SALARY_TYPE")
-                        .WithMany()
-                        .HasForeignKey("SALARY_TYPE_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("HR_EMP_DETAIL");
-
-                    b.Navigation("HR_SALARY_TYPE");
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_SECTIONS", b =>

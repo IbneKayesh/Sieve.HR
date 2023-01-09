@@ -15,6 +15,10 @@ namespace Sieve.HR.Services.Db
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<HR_ATTENDANCE_SHEET>(entity =>
+            {
+                entity.HasNoKey();
+            });
 
             modelBuilder.Entity<HR_DEPARTMENT>(entity =>
             {
@@ -57,14 +61,28 @@ namespace Sieve.HR.Services.Db
                     .HasConstraintName("FK_HR_EMP_ROSTER_HR_EMP_SUPERVISOR");
             });
 
+            modelBuilder.Entity<HR_HOLIDAY_CALENDER>()
+                .HasKey(p => new { p.YEAR_ID, p.MONTH_ID, p.DAY_ID });
+
+            new DbInitializer(modelBuilder).Seed();
         }
-        
+
+
+        public virtual DbSet<HR_ATTENDANCE_SHEET> HR_ATTENDANCE_SHEET { get; set; }
+
+        //public virtual DbSet<HR_ATTENDANCE_STATUS> HR_ATTENDANCE_STATUS { get; set; }
         public virtual DbSet<HR_COMPANY> HR_COMPANY { get; set; }
         public virtual DbSet<HR_DEPARTMENT> HR_DEPARTMENT { get; set; }
-        public virtual DbSet<HR_SECTIONS> HR_SECTIONS { get; set; }
-        public virtual DbSet<HR_EMP_DETAIL> HR_EMP_DETAIL { get; set; }
-
-        public virtual DbSet<HR_EMP_ROSTER> HR_EMP_ROSTER { get; set; }
+        public virtual DbSet<HR_DESIGNATIONS> HR_DESIGNATIONS { get; set; }
         public virtual DbSet<HR_DUTY_ROSTER> HR_DUTY_ROSTER { get; set; }
+        public virtual DbSet<HR_EDU_TYPE> HR_EDU_TYPE { get; set; }
+        public virtual DbSet<HR_EMP_DETAIL> HR_EMP_DETAIL { get; set; }
+        public virtual DbSet<HR_EMP_ROSTER> HR_EMP_ROSTER { get; set; }
+        public virtual DbSet<HR_EMP_SALARY> HR_EMP_SALARY { get; set; }
+        public virtual DbSet<HR_HOLIDAY_CALENDER> HR_HOLIDAY_CALENDER { get; set; }
+        public virtual DbSet<HR_LEAVE_TYPE> HR_LEAVE_TYPE { get; set; }
+        public virtual DbSet<HR_SALARY_TYPE> HR_SALARY_TYPE { get; set; }
+        public virtual DbSet<HR_SECTIONS> HR_SECTIONS { get; set; }
+
     }
 }

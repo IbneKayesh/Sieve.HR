@@ -5,10 +5,28 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sieve.HR.Migrations
 {
-    public partial class all : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "HR_ATTENDANCE_SHEET",
+                columns: table => new
+                {
+                    EMP_ID = table.Column<int>(type: "int", nullable: false),
+                    YEAR_ID = table.Column<int>(type: "int", nullable: false),
+                    MONTH_ID = table.Column<int>(type: "int", nullable: false),
+                    DAY_ID = table.Column<int>(type: "int", nullable: false),
+                    IN_TIME = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    OUT_TIME = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    OT_HOURS = table.Column<int>(type: "int", nullable: false),
+                    ATTEND_STATUS = table.Column<int>(type: "int", nullable: false),
+                    ROSTER_ID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                });
+
             migrationBuilder.CreateTable(
                 name: "HR_COMPANY",
                 columns: table => new
@@ -26,18 +44,49 @@ namespace Sieve.HR.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HR_DESIGNATIONS",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SHORT_FORM = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    FULL_FORM = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PARENT_ID = table.Column<int>(type: "int", nullable: false),
+                    MIN_SALARY = table.Column<int>(type: "int", nullable: false),
+                    MAX_SALARY = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HR_DESIGNATIONS", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HR_DUTY_ROSTER",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DUTY_ROSTER_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    START_TIME = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
-                    END_TIME = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false)
+                    IN_TIME = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    OUT_TIME = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    MAX_OT_HOUR = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HR_DUTY_ROSTER", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HR_EDU_TYPE",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TYPE_NAME = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HR_EDU_TYPE", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -150,6 +199,16 @@ namespace Sieve.HR.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "HR_EDU_TYPE",
+                columns: new[] { "ID", "TYPE_NAME" },
+                values: new object[] { 1, "Institution" });
+
+            migrationBuilder.InsertData(
+                table: "HR_EDU_TYPE",
+                columns: new[] { "ID", "TYPE_NAME" },
+                values: new object[] { 2, "Training" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_HR_DEPARTMENT_COMP_ID",
                 table: "HR_DEPARTMENT",
@@ -178,6 +237,15 @@ namespace Sieve.HR.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "HR_ATTENDANCE_SHEET");
+
+            migrationBuilder.DropTable(
+                name: "HR_DESIGNATIONS");
+
+            migrationBuilder.DropTable(
+                name: "HR_EDU_TYPE");
+
             migrationBuilder.DropTable(
                 name: "HR_EMP_ROSTER");
 

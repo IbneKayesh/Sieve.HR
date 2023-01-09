@@ -26,7 +26,7 @@ namespace Sieve.HR.Areas.Admin.Models
 
         [Display(Name = "Section Head")]
         [Required(ErrorMessage = "{0} is required")]
-        public string? HEAD_EMP_ID { get; set; }
+        public int HEAD_EMP_ID { get; set; }
 
         [Display(Name = "Total Employees")]
         [Required(ErrorMessage = "{0} is required")]
