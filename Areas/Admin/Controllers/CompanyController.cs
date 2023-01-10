@@ -68,22 +68,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
                 TempData["ResultOk"] = "Data Deleted Successfully !";
                 return RedirectToAction("Index");
             }
-            
-        }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult DeleteRecord(int? id)
-        //{
-        //    var deleterecord = _context.HR_COMPANY.Find(id);
-        //    if (deleterecord == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    _context.HR_COMPANY.Remove(deleterecord);
-        //    _context.SaveChanges();
-        //    TempData["ResultOk"] = "Data Deleted Successfully !";
-        //    return RedirectToAction("Index");
-        //}
+        }
     }
 }
