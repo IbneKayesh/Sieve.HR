@@ -27,7 +27,7 @@ namespace Sieve.HR.Areas.Admin.Models
         public int PARENT_ID { get; set; } = 0;
 
 
-        [Display(Name = "Roster Name")]
+        [Display(Name = "Minimum Salary")]
         [Required(ErrorMessage = "{0} is required")]
         public int MIN_SALARY { get; set; } = 1000;
 

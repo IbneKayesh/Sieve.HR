@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_DUTY_ROSTER>
+
+@{
+    ViewBag.Title = "Duty Roster";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<a href="@Url.Action("Create","DutyRoster", new { area = "Admin"})" class="btn btn-primary">Add Duty Roster</a>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Roster Name</th>
+            <th>In Time</th>
+            <th>Out Time</th>
+            <th>Max OT Hours</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.DUTY_ROSTER_NAME</td>
+                <td>@item.IN_TIME</td>
+                <td>@item.OUT_TIME</td>
+                <td>@item.MAX_OT_HOUR</td>
+                <td>
+                    <div role="group" class="w-60 btn-group">
+                        <a asp-area="Admin" asp-controller="DutyRoster" asp-action="Create" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                        @*<a asp-area="Admin" asp-controller="DutyRoster" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>*@
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

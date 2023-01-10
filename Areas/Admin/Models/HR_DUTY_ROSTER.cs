@@ -22,12 +22,14 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "In Time")]
         [Required(ErrorMessage = "{0} is required")]
         [StringLength(5, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 5)]
+        [DataType(DataType.Time)]
         public string? IN_TIME { get; set; }
 
 
         [Display(Name = "Out Time")]
         [Required(ErrorMessage = "{0} is required")]
         [StringLength(5, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 5)]
+        [DataType(DataType.Time)]
         public string? OUT_TIME { get; set; }
 
 
