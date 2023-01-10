@@ -5,10 +5,10 @@
 2. HR_COMPANY - crud - Done
 3. HR_DEPARTMENT - crud - Done
 4. HR_DESIGNATIONS - crud - Done
-5. HR_DUTY_ROSTER - crud - Done
-6. HR_EDU_TYPE - crud - 
+5. HR_DUTY_ROSTER - cru - Done
+6. HR_EDU_TYPE - crud - Done
 7. HR_EMP_DETAIL - crud - Done
-8. HR_EMP_EDU
+8. HR_EMP_EDU - cru - Done
 9. HR_EMP_JOB
 10. HR_EMP_LEAVE_APPS
 11. HR_EMP_LEAVE_BALANCE
@@ -25,7 +25,6 @@
 Working:
 
 
-HR_EDU_TYPE - crud
 HR_EMP_EDU - crud
 HR_EMP_JOB - crud
 HR_EMP_LEAVE_APPS - crud

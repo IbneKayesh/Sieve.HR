@@ -470,6 +470,43 @@ namespace Sieve.HR.Migrations
                     b.ToTable("HR_EMP_DETAIL");
                 });
 
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_EDU", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("EDU_GRADE")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("EDU_TITLE")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("EDU_TYPE_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EDU_YEAR")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("INSTITUE_NAME")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HR_EMP_EDU");
+                });
+
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_REF", b =>
                 {
                     b.Property<int>("ID")

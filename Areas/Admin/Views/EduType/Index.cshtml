@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_EDU_TYPE>
+
+@{
+    ViewBag.Title = "Institution/Training";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<a href="@Url.Action("Create","EduType", new { area = "Admin"})" class="btn btn-primary">Add Institution/Training</a>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Education Type</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.TYPE_NAME</td>
+                <td>
+                    <div role="group" class="w-60 btn-group">
+                        <a asp-area="Admin" asp-controller="EduType" asp-action="Create" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

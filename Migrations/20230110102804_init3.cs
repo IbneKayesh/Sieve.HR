@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sieve.HR.Migrations
 {
-    public partial class init : Migration
+    public partial class init3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -117,6 +117,24 @@ namespace Sieve.HR.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HR_EMP_EDU",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EMP_ID = table.Column<int>(type: "int", nullable: false),
+                    EDU_TYPE_ID = table.Column<int>(type: "int", nullable: false),
+                    EDU_TITLE = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    EDU_YEAR = table.Column<int>(type: "int", nullable: false),
+                    EDU_GRADE = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    INSTITUE_NAME = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HR_EMP_EDU", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HR_HOLIDAY_CALENDER",
                 columns: table => new
                 {
@@ -178,6 +196,30 @@ namespace Sieve.HR.Migrations
                         name: "FK_HR_DEPARTMENT_HR_COMPANY_COMP_ID",
                         column: x => x.COMP_ID,
                         principalTable: "HR_COMPANY",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HR_EMP_REF",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EMP_ID = table.Column<int>(type: "int", nullable: false),
+                    REF_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    DESIGNATION = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    REF_CONTACT = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    REF_EMAIL = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    REF_ADDR = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HR_EMP_REF", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_HR_EMP_REF_HR_EMP_DETAIL_EMP_ID",
+                        column: x => x.EMP_ID,
+                        principalTable: "HR_EMP_DETAIL",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -362,6 +404,11 @@ namespace Sieve.HR.Migrations
                 column: "COMP_ID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_HR_EMP_REF_EMP_ID",
+                table: "HR_EMP_REF",
+                column: "EMP_ID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_HR_EMP_ROSTER_HEAD_ID",
                 table: "HR_EMP_ROSTER",
                 column: "HEAD_ID");
@@ -402,6 +449,12 @@ namespace Sieve.HR.Migrations
 
             migrationBuilder.DropTable(
                 name: "HR_EDU_TYPE");
+
+            migrationBuilder.DropTable(
+                name: "HR_EMP_EDU");
+
+            migrationBuilder.DropTable(
+                name: "HR_EMP_REF");
 
             migrationBuilder.DropTable(
                 name: "HR_EMP_ROSTER");

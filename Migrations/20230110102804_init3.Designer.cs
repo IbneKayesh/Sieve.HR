@@ -12,8 +12,8 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    [Migration("20230110034457_init")]
-    partial class init
+    [Migration("20230110102804_init3")]
+    partial class init3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -472,6 +472,84 @@ namespace Sieve.HR.Migrations
                     b.ToTable("HR_EMP_DETAIL");
                 });
 
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_EDU", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("EDU_GRADE")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("EDU_TITLE")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("EDU_TYPE_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EDU_YEAR")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("INSTITUE_NAME")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HR_EMP_EDU");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_REF", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("DESIGNATION")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("REF_ADDR")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("REF_CONTACT")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("REF_EMAIL")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("REF_NAME")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("EMP_ID");
+
+                    b.ToTable("HR_EMP_REF");
+                });
+
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_ROSTER", b =>
                 {
                     b.Property<int>("EMP_ID")
@@ -727,6 +805,17 @@ namespace Sieve.HR.Migrations
                         .IsRequired();
 
                     b.Navigation("HR_COMPANY");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_REF", b =>
+                {
+                    b.HasOne("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", "EMP")
+                        .WithMany()
+                        .HasForeignKey("EMP_ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EMP");
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_ROSTER", b =>
