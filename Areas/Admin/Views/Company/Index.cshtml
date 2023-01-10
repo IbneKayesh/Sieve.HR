@@ -4,37 +4,50 @@
     ViewBag.Title = "Company";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<br />
-<a href="@Url.Action("Create","Company", new { area = "Admin"})" class="btn btn-primary">Add Company</a>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Max No of Employee</th>
-            <th>Max Total Salary</th>
-            <th>#</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.ID</td>
-                <td>@item.COMP_NAME</td>
-                <td>@item.COMP_ADDR</td>
-                <td>@item.MAX_EMP_NO</td>
-                <td>@item.MAX_SALARY</td>
-                <td>
-                    <div role="group" class="w-60 btn-group">
-                        <a asp-area="Admin" asp-controller="Company" asp-action="Create" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
-                        <a asp-area="Admin" asp-controller="Company" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="card card-primary card-outline">
+    <div class="card-header border-0">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title m-0">@ViewBag.Title</h5>
+            <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> Add Company</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Max No of Employee</th>
+                    <th>Max Total Salary</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.COMP_NAME</td>
+                        <td>@item.COMP_ADDR</td>
+                        <td>@item.MAX_EMP_NO</td>
+                        <td>@item.MAX_SALARY</td>
+                        <td class="text-right">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="#">
+                                    <a class="dropdown-item btn btn-outline-danger btn-flat btn-sm" asp-area="Admin" asp-controller="Company" asp-action="Create" asp-route-id="@item.ID"><i class="fas fa-edit"></i> Edit</a>
+                                    <button data-url="@Url.Action("Delete")" data-param="@item.ID" class="dropdown-item btn btn-outline-danger btn-flat btn-sm confirm-item" type="button">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

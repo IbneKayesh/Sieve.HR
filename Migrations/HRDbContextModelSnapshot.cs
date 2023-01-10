@@ -507,6 +507,50 @@ namespace Sieve.HR.Migrations
                     b.ToTable("HR_EMP_EDU");
                 });
 
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_JOB", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<int>("APPROVED_BY")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CONF_DATE")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DESIG_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("END_DATE")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("GROSS_SALARY")
+                        .HasColumnType("int");
+
+                    b.Property<int>("INITIATED_BY")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SECTION_ID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("START_DATE")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("VERIFIED_BY")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HR_EMP_JOB");
+                });
+
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_REF", b =>
                 {
                     b.Property<int>("ID")

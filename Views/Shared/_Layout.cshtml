@@ -9,18 +9,27 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="~/themes/plugins/fontawesome-free/css/all.min.css">
+
+    <link rel="stylesheet" href="~/themes/plugins/jquery-ui/jquery-ui.min.css" />
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="~/themes/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="~/themes/dist/css/adminlte.min.css">
+    <!-- Pace Js <Auto Detected Loading Animation> -->
+    <script data-pace-options='{ "ajax": false }' src="~/themes/sev/pace.min.js"></script>
+    <link rel="stylesheet" href="~/themes/sev/minimal.css">
+    <!-- Upper Case -->
+    <link rel="stylesheet" href="~/themes/sev/site.css">
 </head>
 <body class="hold-transition layout-top-nav">
+    <noscript>Please enable JavaScript to work with the Application</noscript>
     <div class="wrapper">
-
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <nav class="main-header navbar navbar-expand-md navbar-light navbar-dark">
             <div class="container">
                 <a href="/" class="navbar-brand">
                     <img src="~/themes/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                    <span class="brand-text font-weight-light">AdminLTE 3</span>
+                    <span class="brand-text font-weight-light">HER HR</span>
                 </a>
 
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,42 +40,33 @@
                     <!-- Left navbar links -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="index3.html" class="nav-link">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Contact</a>
+                            <a href="/" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
-                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                                <li><a href="#" class="dropdown-item">Some action </a></li>
-                                <li><a href="#" class="dropdown-item">Some other action</a></li>
-
+                            <a id="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Organization</a>
+                            <ul aria-labelledby="organizationMenu" class="dropdown-menu border-0 shadow">
+                                <li><a href="~/Admin/Company" class="dropdown-item">Company</a></li>
+                                <li><a href="~/Admin/Department" class="dropdown-item">Department</a></li>
+                                <li><a href="~/Admin/Section" class="dropdown-item">Section</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Employee</a>
+                            <ul aria-labelledby="employeeMenu" class="dropdown-menu border-0 shadow">
+                                <li><a href="~/Admin/EmployeeDetail" class="dropdown-item">Employee</a></li>
+                                <li><a href="~/Admin/EmployeeEducation" class="dropdown-item">Employee Education</a></li>
+                                <li><a href="~/Admin/EmpRef" class="dropdown-item">Employee Referances</a></li>
                                 <li class="dropdown-divider"></li>
-
-                                <!-- Level two dropdown-->
-                                <li class="dropdown-submenu dropdown-hover">
-                                    <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
-                                    <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-                                        <li>
-                                            <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
-                                        </li>
-
-                                        <!-- Level three dropdown-->
-                                        <li class="dropdown-submenu">
-                                            <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
-                                            <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
-                                                <li><a href="#" class="dropdown-item">3rd level</a></li>
-                                                <li><a href="#" class="dropdown-item">3rd level</a></li>
-                                            </ul>
-                                        </li>
-                                        <!-- End Level three -->
-
-                                        <li><a href="#" class="dropdown-item">level 2</a></li>
-                                        <li><a href="#" class="dropdown-item">level 2</a></li>
-                                    </ul>
-                                </li>
-                                <!-- End Level two -->
+                                <li><a href="~/Admin/Designation" class="dropdown-item">Designation</a></li>
+                                <li><a href="~/Admin/EdutType" class="dropdown-item">Education Type</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Attendance</a>
+                            <ul aria-labelledby="employeeMenu" class="dropdown-menu border-0 shadow">
+                                <li><a href="#" class="dropdown-item">Employee Attendance</a></li>
+                                <li><a href="#" class="dropdown-item">Employee Duty</a></li>
+                                <li><a href="#" class="dropdown-item">Employee Job</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -187,7 +187,7 @@
                 <div class="container">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0"> Top Navigation <small>Example 3.0</small></h1>
+                            <h4 class="m-0">@ViewBag.Title</h4>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -203,10 +203,7 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container">
-                    <div class="row">
-                        @RenderBody()
-                    </div>
-                    <!-- /.row -->
+                    @RenderBody()
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content -->
@@ -233,10 +230,65 @@
     <script src="~/themes/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="~/themes/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/themes/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="~/themes/plugins/sweetalert2/sweetalert2.min.js"></script>
     <!-- AdminLTE App -->
     <script src="~/themes/dist/js/adminlte.min.js"></script>
+
+    <script src="~/themes/plugins/jquery-validation/jquery.validate.min.js"></script>
+
+    <!-- Loading Overlay -->
+    <script src="~/themes/sev/loadingoverlay.min.js"></script>
+
+
     <!-- AdminLTE for demo purposes -->
     @*<script src="~/themes/dist/js/demo.js"></script>*@
     @await RenderSectionAsync("Scripts", required: false)
+    <script type="text/javascript">
+        //Sweet Alert
+        @Html.Raw(TempData["msg"]);
+        $('#sidebarMenu').load("/Home/SideBar");
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".confirm-item").click(function (e) {
+                e.preventDefault();
+                var thisObj = $(this);
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, do it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "POST",
+                            url: thisObj.attr("data-url"),
+                            data: { id: thisObj.data("param") },
+                            success: function (response) {
+                                if (response.success) {
+                                    thisObj.parents("tr").remove();
+                                    Swal.fire({ title: "Success!", text: response.messages, icon: "success", button: "Ok!" });
+                                } else {
+                                    Swal.fire({ title: "Failed!", text: response.messages, icon: "error", button: "Ok!" });
+                                }
+                            },
+                            failure: function (response) {
+                                Swal.fire({ title: "Failed!", text: response.messages, icon: "error", button: "Ok!" });
+                            },
+                            error: function (response) {
+                                Swal.fire({ title: "Failed!", text: response.messages, icon: "error", button: "Ok!" });
+                            }
+                        });
+                    }
+                });
+            });
+        })
+    </script>
 </body>
 </html>

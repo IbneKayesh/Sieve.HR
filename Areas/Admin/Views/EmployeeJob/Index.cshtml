@@ -12,11 +12,15 @@
         <tr>
             <th>Id</th>
             <th>Employee ID</th>
-            <th>Institution/Training Type</th>
-            <th>Institution/Training Title</th>
-            <th>Passing Year</th>
-            <th>Passing Grade</th>
-            <th>Institute Name</th>
+            <th>Desgination</th>
+            <th>Section</th>
+            <th>Start Date</th>
+            <th>Confirmation Date</th>
+            <th>End Date</th>
+            <th>Gross Salary</th>
+            <th>Initiated By</th>
+            <th>Verified By</th>
+            <th>Approved By</th>
             <th>#</th>
         </tr>
     </thead>
@@ -27,11 +31,15 @@
             <tr>
                 <td>@item.ID</td>
                 <td>@item.EMP_ID</td>
-                <td>@item.EDU_TYPE_ID</td>
-                <td>@item.EDU_TITLE</td>
-                <td>@item.EDU_YEAR</td>
-                <td>@item.EDU_GRADE</td>
-                <td>@item.INSTITUE_NAME</td>
+                <td>@item.DESIG_ID</td>
+                <td>@item.SECTION_ID</td>
+                <td>@item.START_DATE</td>
+                <td>@item.CONF_DATE</td>
+                <td>@item.END_DATE</td>
+                <td>@item.GROSS_SALARY</td>
+                <td>@item.INITIATED_BY</td>
+                <td>@item.VERIFIED_BY</td>
+                <td>@item.APPROVED_BY</td>
                 <td>
                     <div role="group" class="w-60 btn-group">
                         <a asp-area="Admin" asp-controller="EmployeeJob" asp-action="Create" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;

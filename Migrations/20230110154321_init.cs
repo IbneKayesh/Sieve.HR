@@ -135,6 +135,28 @@ namespace Sieve.HR.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HR_EMP_JOB",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EMP_ID = table.Column<int>(type: "int", nullable: false),
+                    DESIG_ID = table.Column<int>(type: "int", nullable: false),
+                    SECTION_ID = table.Column<int>(type: "int", nullable: false),
+                    START_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CONF_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    END_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    GROSS_SALARY = table.Column<int>(type: "int", nullable: false),
+                    INITIATED_BY = table.Column<int>(type: "int", nullable: false),
+                    VERIFIED_BY = table.Column<int>(type: "int", nullable: false),
+                    APPROVED_BY = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HR_EMP_JOB", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HR_HOLIDAY_CALENDER",
                 columns: table => new
                 {
@@ -452,6 +474,9 @@ namespace Sieve.HR.Migrations
 
             migrationBuilder.DropTable(
                 name: "HR_EMP_EDU");
+
+            migrationBuilder.DropTable(
+                name: "HR_EMP_JOB");
 
             migrationBuilder.DropTable(
                 name: "HR_EMP_REF");
