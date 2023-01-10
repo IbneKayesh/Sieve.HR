@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_EMP_JOB>
+
+@{
+    ViewBag.Title = "Employee Education";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<a href="@Url.Action("Create","EmployeeJob", new { area = "Admin"})" class="btn btn-primary">Add New Job</a>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Employee ID</th>
+            <th>Institution/Training Type</th>
+            <th>Institution/Training Title</th>
+            <th>Passing Year</th>
+            <th>Passing Grade</th>
+            <th>Institute Name</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.EMP_ID</td>
+                <td>@item.EDU_TYPE_ID</td>
+                <td>@item.EDU_TITLE</td>
+                <td>@item.EDU_YEAR</td>
+                <td>@item.EDU_GRADE</td>
+                <td>@item.INSTITUE_NAME</td>
+                <td>
+                    <div role="group" class="w-60 btn-group">
+                        <a asp-area="Admin" asp-controller="EmployeeJob" asp-action="Create" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

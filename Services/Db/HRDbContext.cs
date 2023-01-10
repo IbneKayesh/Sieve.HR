@@ -78,6 +78,7 @@ namespace Sieve.HR.Services.Db
         public virtual DbSet<HR_EDU_TYPE> HR_EDU_TYPE { get; set; }
         public virtual DbSet<HR_EMP_DETAIL> HR_EMP_DETAIL { get; set; }
         public virtual DbSet<HR_EMP_EDU> HR_EMP_EDU { get; set; }
+        public virtual DbSet<HR_EMP_JOB> HR_EMP_JOB { get; set; }
         public virtual DbSet<HR_EMP_REF> HR_EMP_REF { get; set; }
         public virtual DbSet<HR_EMP_ROSTER> HR_EMP_ROSTER { get; set; }
         public virtual DbSet<HR_EMP_SALARY> HR_EMP_SALARY { get; set; }

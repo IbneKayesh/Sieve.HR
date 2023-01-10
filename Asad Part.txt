@@ -24,25 +24,8 @@
 
 Working:
 
-
-HR_EMP_EDU - crud
 HR_EMP_JOB - crud
 HR_EMP_LEAVE_APPS - crud
-
-
-
-Done:
-
-0. HR_COMPANY - crud
-1. HR_EMP_DETAIL - crud
-2. HR_DEPARTMENT - crud
-3. HR_SECTIONS - crud
-4. HR_EMP_REF - crud
-5. HR_EMP_ROSTER - crud
-6. HR_EMP_PAYSLIP - crud
-7. HR_EMP_PAYSLIP_DETAIL - crud
-8. HR_ATTENDANCE_SHEET - Only View
-9. HR_DESIGNATIONS - crud
 
 
 Kayesh:
