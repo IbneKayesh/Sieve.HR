@@ -1,7 +1,7 @@
 ﻿Models:
 
 Working:
-HR_ATTENDANCE_SHEET
+HR_ATTENDANCE_SHEET - Only View
 
 Done:
 
@@ -13,6 +13,7 @@ Done:
 5. HR_EMP_ROSTER
 6. HR_EMP_PAYSLIP
 7. HR_EMP_PAYSLIP_DETAIL
+8. HR_ATTENDANCE_SHEET - Only View
 
 
 Kayesh:

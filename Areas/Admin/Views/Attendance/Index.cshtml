@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_ATTENDANCE_SHEET>
+
+@{
+    ViewBag.Title = "Employee Attendance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+@*<a href="@Url.Action("Create","Attendance", new { area = "Admin"})" class="btn btn-primary">Add Company</a>*@
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Employee Id</th>
+            <th>Year</th>
+            <th>Month</th>
+            <th>Day</th>
+            <th>In Time</th>
+            <th>In Time</th>
+            <th>Out Time</th>
+            <th>OT Hours</th>
+            <th>Attendance Status</th>
+            <th>Duty Roster</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EMP_ID</td>
+                <td>@item.YEAR_ID</td>
+                <td>@item.MONTH_ID</td>
+                <td>@item.DAY_ID</td>
+                <td>@item.IN_TIME</td>
+                <td>@item.OUT_TIME</td>
+                <td>@item.OT_HOURS</td>
+                <td>@item.ATTEND_STATUS</td>
+                <td>@item.ROSTER_ID</td>
+@*                <td>
+                    <div role="group" class="w-60 btn-group">
+                        <a asp-area="Admin" asp-controller="Company" asp-action="Create" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                        <a asp-area="Admin" asp-controller="Company" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                    </div>
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
