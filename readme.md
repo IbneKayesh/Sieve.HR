@@ -24,3 +24,6 @@ Scaffold-DbContext "Server=172.17.107.209; Database=SieveHR; User Id=sa; Passwor
 3. Duty Profile
 ------------------------------
 3.1 Duty Roster
+
+
+some things should be copied from > Preclinic-Hospital-Bootstrap4-Admin
