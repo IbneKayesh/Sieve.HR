@@ -1,63 +1,4 @@
-﻿@*@model Sieve.HR.Areas.Admin.Models.HR_COMPANY
-
-@{
-    ViewBag.Title = "Company";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<div class="container shadow p-5">
-    <div class="row pb-2">
-        <h2>Add Company</h2>
-    </div>
-
-    <form method="post">
-        <div asp-validation-summary="All"></div>
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label asp-for="COMP_NAME">Company Name</label>
-                <input type="text" class="form-control mb-3" asp-for="COMP_NAME" placeholder="Enter Company Name">
-                <span asp-validation-for="COMP_NAME" class=" alert-danger"></span>
-            </div>
-            <div class="form-group col-md-6">
-                <label asp-for="COMP_ADDR">Company Address</label>
-                <input type="text" class="form-control mb-3" asp-for="COMP_ADDR" placeholder="Enter Company Address">
-                <span asp-validation-for="COMP_ADDR" class=" alert-danger"></span>
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label asp-for="MAX_EMP_NO">Total Employees</label>
-                <input type="number" class="form-control mb-3" asp-for="MAX_EMP_NO" placeholder="Total Employees">
-                <span asp-validation-for="MAX_EMP_NO" class=" alert-danger"></span>
-            </div>
-            <div class="form-group col-md-6 mb-3">
-                <label asp-for="MAX_SALARY">Total Salary</label>
-                <input type="number" class="form-control" asp-for="MAX_SALARY" placeholder="Total Salary">
-                <span asp-validation-for="MAX_SALARY" class=" alert-danger"></span>
-            </div>
-        </div>
-
-
-        <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Save</button>
-        <a asp-controller="Company" asp-action="Index" class="btn btn-lg btn-warning p-2">Back To List</a>
-    </form>
-
-</div>
-
-
-@*//for front end validations*@
-@*
-@section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial" />
-    }
-}*@
-
-
-
-@model Sieve.HR.Areas.Admin.Models.HR_COMPANY
+﻿@model Sieve.HR.Areas.Admin.Models.HR_COMPANY
 @{
     ViewBag.Title = "Company";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -98,18 +39,6 @@
                 @Html.ValidationMessageFor(model => model.MAX_SALARY, "", new { @class = "text-danger" })
             </div>
         </div>
-        @*<div class="row">
-            <div class="col">
-                @Html.LabelFor(model => model.MAX_EMP_NO, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.MAX_EMP_NO, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MAX_EMP_NO) } })
-                @Html.ValidationMessageFor(model => model.MAX_EMP_NO, "", new { @class = "text-danger" })
-            </div>
-            <div class="col">
-                @Html.LabelFor(model => model.MAX_SALARY, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.MAX_SALARY, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MAX_SALARY) } })
-                @Html.ValidationMessageFor(model => model.MAX_SALARY, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
     </div>
 }
 
@@ -117,4 +46,4 @@
     @{
         <partial name="_ValidationScriptsPartial" />
     }
-    }
+}

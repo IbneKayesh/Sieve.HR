@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL>
+
+@{
+    ViewBag.Title = "Employee Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<a href="@Url.Action("Create","EmployeeDetail", new { area = "Admin"})" class="btn btn-primary">Add Employee</a>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Contact No</th>
+            <th>Email Address</th>
+            <th>Gender</th>
+            <th>Nationality</th>
+            <th>Birthdate</th>
+            <th>Marital Status</th>
+            <th>Spouse Name</th>
+            <th>National ID</th>
+            <th>Passport Number</th>
+            <th>Father Name</th>
+            <th>Mother Name</th>
+            <th>Parent Contact</th>
+            <th>Present Address</th>
+            <th>Parmanent Address</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.FULL_NAME</td>
+                <td>@item.CONTACT_NO</td>
+                <td>@item.EMAIL_ID</td>
+                <td>@item.GENDER_ID</td>
+                <td>@item.NATIONALITY</td>
+                <td>@item.BIRTH_DATE</td>
+                <td>@item.MARITAIL_STATUS</td>
+                <td>@item.SPOUSE_NAME</td>
+                <td>@item.NATIONAL_ID</td>
+                <td>@item.PASSPORT_ID</td>
+                <td>@item.FATHER_NAME</td>
+                <td>@item.MOTHER_NAME</td>
+                <td>@item.PARENTS_CONACT</td>
+                <td>@item.PRESENT_ADDRESS</td>
+                <td>@item.PARMANENT_ADDRESS</td>
+                <td>
+                    <div role="group" class="w-60 btn-group">
+                        <a asp-area="Admin" asp-controller="EmployeeDetail" asp-action="Create" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                        <a asp-area="Admin" asp-controller="EmployeeDetail" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

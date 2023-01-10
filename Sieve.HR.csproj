@@ -30,4 +30,12 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="F:\Sheikh Asad Quadir\ASP.NET CORE\Kayes Vai\HR2\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="F:\Sheikh Asad Quadir\ASP.NET CORE\Kayes Vai\HR2\.editorconfig" />
+  </ItemGroup>
+
 </Project>
