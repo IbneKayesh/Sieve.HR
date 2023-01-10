@@ -3,6 +3,16 @@
 Working:
 HR_ATTENDANCE_SHEET - Only View
 
+
+HR_DESIGNATIONS - crud
+HR_DUTY_ROSTER - crud
+HR_EDU_TYPE - crud
+HR_EMP_EDU - crud
+HR_EMP_JOB - crud
+HR_EMP_LEAVE_APPS - crud
+
+
+
 Done:
 
 0. HR_COMPANY
