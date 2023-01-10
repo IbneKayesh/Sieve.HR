@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_EMP_REF>
+
+@{
+    ViewBag.Title = "Employee Reference";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card card-primary card-outline">
+    <div class="card-header border-0">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title m-0">@ViewBag.Title</h5>
+            <a asp-area="Admin" asp-controller="EmpRef" asp-action="Create" class="btn btn-lg btn-primary"><i class="bi bi-file-plus-fill"></i>Add Employee Ref</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Emp Id</th>
+                    <th>Emp Name</th>
+                    <th>Ref Name</th>
+                    <th>Designation</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.EMP_ID</td>
+                        <td>@item.FULL_NAME</td>
+                        <td>@item.REF_NAME</td>
+                        <td>@item.DESIGNATION</td>
+                        <td>@item.REF_CONTACT</td>
+                        <td>@item.REF_EMAIL</td>
+                        <td>@item.REF_ADDR</td>
+                        <td>
+                            <div role="group" class="w-60 btn-group">
+                                <a asp-area="Admin" asp-controller="EmpRef" asp-action="Create" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                                <a asp-area="Admin" asp-controller="EmpRef" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
