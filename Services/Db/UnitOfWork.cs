@@ -1,60 +1,33 @@
-﻿using Sieve.HR.Areas.Admin.Models;
+﻿using Sieve.HR.Areas.Admin.IRep;
+using Sieve.HR.Areas.Admin.Rep;
+using Sieve.HR.Migrations;
 
 namespace Sieve.HR.Services.Db
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
-        private HRDbContext context = new HRDbContext();
-        private HRRepository<HR_COMPANY> HR_COMPANY_Repository;
-        private HRRepository<HR_DEPARTMENT> HR_DEPARTMENT_Repository;
-
-        public HRRepository<HR_COMPANY> HR_COMPANYRepository
+        private HRDbContext context;
+        public UnitOfWork(HRDbContext context)
         {
-            get
-            {
-                if (this.HR_COMPANY_Repository == null)
-                {
-                    this.HR_COMPANY_Repository = new HRRepository<HR_COMPANY>(context);
-                }
-                return HR_COMPANY_Repository;
-            }
+            this.context = context;
+            Company = new CompanyRep(this.context);
         }
-
-        public HRRepository<HR_DEPARTMENT> HR_DEPARTMENTRepository
-        {
-            get
-            {
-                if (this.HR_DEPARTMENT_Repository == null)
-                {
-                    this.HR_DEPARTMENT_Repository = new HRRepository<HR_DEPARTMENT>(context);
-                }
-                return HR_DEPARTMENT_Repository;
-            }
-        }
-
-        public void Save()
-        {
-            context.SaveChanges();
-        }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            this.disposed = true;
-        }
-
+        public ICompanyRep Company   { get;  private set;    }
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            context.Dispose();
+        }
+        public int Commit()
+        {
+            try
+            {
+                return context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException($"{ex.Message} is not a valid integer.");
+            }
+           
         }
     }
 }

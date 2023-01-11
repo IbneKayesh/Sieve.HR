@@ -5,10 +5,6 @@ namespace Sieve.HR.Services.Db
 {
     public partial class HRDbContext : DbContext
     {
-        public HRDbContext()
-        {
-
-        }
         public HRDbContext(DbContextOptions<HRDbContext> options) : base(options)
         {
 
@@ -18,6 +14,11 @@ namespace Sieve.HR.Services.Db
             modelBuilder.Entity<HR_ATTENDANCE_SHEET>(entity =>
             {
                 entity.HasNoKey();
+            });
+
+            modelBuilder.Entity<HR_COMPANY>(entity =>
+            {
+                entity.HasIndex(e => e.COMP_NAME).IsUnique();
             });
 
             modelBuilder.Entity<HR_DEPARTMENT>(entity =>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sieve.HR.Migrations
 {
-    public partial class asad1 : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -154,6 +154,58 @@ namespace Sieve.HR.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HR_EMP_JOB", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HR_EMP_LEAVE_APPS",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EMP_ID = table.Column<int>(type: "int", nullable: false),
+                    FROM_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TO_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TOTAL_DAYS = table.Column<int>(type: "int", nullable: false),
+                    LEAVE_TYPE_ID = table.Column<int>(type: "int", nullable: false),
+                    LEAVE_DETAIL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    VERIFY_BY = table.Column<int>(type: "int", nullable: false),
+                    APPROVED_BY = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HR_EMP_LEAVE_APPS", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HR_EMP_LEAVE_BALANCE",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EMP_ID = table.Column<int>(type: "int", nullable: false),
+                    YEAR_ID = table.Column<int>(type: "int", nullable: false),
+                    LEAVE_QTY = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HR_EMP_LEAVE_BALANCE", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HR_EMP_PAYSLIP",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EMP_ID = table.Column<int>(type: "int", nullable: false),
+                    SECTION_ID = table.Column<int>(type: "int", nullable: false),
+                    YEAR_ID = table.Column<int>(type: "int", nullable: false),
+                    MONTH_ID = table.Column<int>(type: "int", nullable: false),
+                    NET_PAY = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HR_EMP_PAYSLIP", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -421,6 +473,12 @@ namespace Sieve.HR.Migrations
                 values: new object[] { 2, 2, 2, 10, 1000000, "Second Floor, Mail Branch", "IT Product" });
 
             migrationBuilder.CreateIndex(
+                name: "IX_HR_COMPANY_COMP_NAME",
+                table: "HR_COMPANY",
+                column: "COMP_NAME",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_HR_DEPARTMENT_COMP_ID",
                 table: "HR_DEPARTMENT",
                 column: "COMP_ID");
@@ -477,6 +535,15 @@ namespace Sieve.HR.Migrations
 
             migrationBuilder.DropTable(
                 name: "HR_EMP_JOB");
+
+            migrationBuilder.DropTable(
+                name: "HR_EMP_LEAVE_APPS");
+
+            migrationBuilder.DropTable(
+                name: "HR_EMP_LEAVE_BALANCE");
+
+            migrationBuilder.DropTable(
+                name: "HR_EMP_PAYSLIP");
 
             migrationBuilder.DropTable(
                 name: "HR_EMP_REF");

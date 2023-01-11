@@ -12,8 +12,8 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    [Migration("20230111041446_asad1")]
-    partial class asad1
+    [Migration("20230111172035_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,6 +85,9 @@ namespace Sieve.HR.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("COMP_NAME")
+                        .IsUnique();
 
                     b.ToTable("HR_COMPANY");
 
@@ -551,6 +554,94 @@ namespace Sieve.HR.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("HR_EMP_JOB");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_LEAVE_APPS", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<int>("APPROVED_BY")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FROM_DATE")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LEAVE_DETAIL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LEAVE_TYPE_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TOTAL_DAYS")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("TO_DATE")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("VERIFY_BY")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HR_EMP_LEAVE_APPS");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_LEAVE_BALANCE", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LEAVE_QTY")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YEAR_ID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HR_EMP_LEAVE_BALANCE");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_PAYSLIP", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MONTH_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NET_PAY")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SECTION_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YEAR_ID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HR_EMP_PAYSLIP");
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_REF", b =>

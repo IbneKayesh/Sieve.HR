@@ -84,6 +84,9 @@ namespace Sieve.HR.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("COMP_NAME")
+                        .IsUnique();
+
                     b.ToTable("HR_COMPANY");
 
                     b.HasData(
@@ -609,6 +612,34 @@ namespace Sieve.HR.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("HR_EMP_LEAVE_BALANCE");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_PAYSLIP", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MONTH_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NET_PAY")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SECTION_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YEAR_ID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HR_EMP_PAYSLIP");
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_REF", b =>

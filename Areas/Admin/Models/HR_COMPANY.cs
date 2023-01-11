@@ -1,4 +1,4 @@
-﻿using Sieve.HR.Models;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sieve.HR.Areas.Admin.Models
