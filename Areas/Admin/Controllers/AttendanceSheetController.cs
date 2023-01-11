@@ -6,10 +6,10 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class AttendanceController : Controller
+    public class AttendanceSheetController : Controller
     {
         private readonly HRDbContext _context;
-        public AttendanceController(HRDbContext context)
+        public AttendanceSheetController(HRDbContext context)
         {
             _context = context;
         }

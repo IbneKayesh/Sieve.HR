@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_DESIGNATIONS>
+﻿@*@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_DESIGNATIONS>
 
 @{
     ViewBag.Title = "Employee Designation";
@@ -40,3 +40,63 @@
         }
     </tbody>
 </table>
+
+
+
+*@
+
+@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_DESIGNATIONS>
+
+@{
+    ViewBag.Title = "Designation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="card card-primary card-outline">
+    <div class="card-header border-0">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title m-0">@ViewBag.Title</h5>
+            <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> Add @ViewBag.Title</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Short Name</th>
+                    <th>Full Name</th>
+                    <th>Top Level Designation</th>
+                    <th>Roster Name</th>
+                    <th>Maximum Salary</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.SHORT_FORM</td>
+                        <td>@item.FULL_FORM</td>
+                        <td>@item.PARENT_ID</td>
+                        <td>@item.MIN_SALARY</td>
+                        <td>@item.MAX_SALARY</td>
+                        <td class="text-right">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="#">
+                                    <a class="dropdown-item btn btn-outline-danger btn-flat btn-sm" asp-area="Admin" asp-controller="Designation" asp-action="Create" asp-route-id="@item.ID"><i class="fas fa-edit"></i> Edit</a>
+                                    <button data-url="@Url.Action("Delete")" data-param="@item.ID" class="dropdown-item btn btn-outline-danger btn-flat btn-sm confirm-item" type="button">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -49,7 +49,7 @@ namespace Sieve.HR.Areas.Admin.Models
 
         //Foreign Key
         [ForeignKey("COMP_ID")]
-        public virtual HR_COMPANY HR_COMPANY { get; set; } = null!;
+        public virtual HR_COMPANY? HR_COMPANY { get; set; }
 
         //For Navigation
         public virtual ICollection<HR_SECTIONS> HR_SECTIONS_NAV { get; set; } = null!;

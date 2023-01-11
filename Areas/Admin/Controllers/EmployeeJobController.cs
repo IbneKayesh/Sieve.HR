@@ -58,6 +58,8 @@ namespace Sieve.HR.Areas.Admin.Controllers
         private void DropDownListFor_Create()
         {
             ViewBag.DESIG_ID = _context.HR_DESIGNATIONS.Select(s => new SelectListItem() { Text = s.SHORT_FORM.ToString(), Value = s.ID.ToString() }).ToList();
+
+            ViewBag.SECTION_ID = _context.HR_SECTIONS.Select(s => new SelectListItem() { Text = s.SECT_NAME.ToString(), Value = s.ID.ToString() }).ToList();
         }
     }
 }

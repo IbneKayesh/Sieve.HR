@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Sieve.HR.Areas.Admin.Models;
 using Sieve.HR.Services.Db;
+using Sieve.HR.Utilities;
 
 namespace Sieve.HR.Areas.Admin.Controllers
 {
@@ -52,6 +53,23 @@ namespace Sieve.HR.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             return View(obj);
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            var Deleterecord = _context.HR_DEPARTMENT.Find(id);
+
+            if (id == null || id == 0 || Deleterecord == null)
+            {
+                return Json(new JSON_CONFIRM_MESSAGES("Failed"));
+            }
+            else
+            {
+                _context.HR_DEPARTMENT.Remove(Deleterecord);
+                _context.SaveChanges();
+                return Json(new JSON_CONFIRM_MESSAGES(true, id.ToString())); ;
+            }
+
         }
 
         private void DropDownListFor_Create()

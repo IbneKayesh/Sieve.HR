@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Sieve.HR.Areas.Admin.Models;
 using Sieve.HR.Services.Db;
+using Sieve.HR.Utilities;
 
 namespace Sieve.HR.Areas.Admin.Controllers
 {
@@ -57,16 +58,15 @@ namespace Sieve.HR.Areas.Admin.Controllers
         {
             var Deleterecord = _context.HR_DESIGNATIONS.Find(id);
 
-            if (id == null || id == 0)
+            if (id == null || id == 0 || Deleterecord == null)
             {
-                return NotFound();
+                return Json(new JSON_CONFIRM_MESSAGES("Failed"));
             }
             else
             {
                 _context.HR_DESIGNATIONS.Remove(Deleterecord);
                 _context.SaveChanges();
-                TempData["ResultOk"] = "Data Deleted Successfully !";
-                return RedirectToAction("Index");
+                return Json(new JSON_CONFIRM_MESSAGES(true, id.ToString())); ;
             }
 
         }

@@ -1,0 +1,94 @@
+﻿@model Sieve.HR.Areas.Admin.Models.HR_EMP_JOB
+@{
+    ViewBag.Title = "Employee job";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card card-primary card-outline">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="card-header border-0">
+            <h5 class="card-title m-0">Add/Edit @ViewBag.Title</h5>
+            <div class="d-flex justify-content-end">
+                <a href="@Url.Action("Index")" class="btn btn-outline-info btn-flat btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
+                <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> New</a>
+                <button type="submit" class="btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-save"></i> Save</button>
+            </div>
+        </div>
+        <div class="card-body">
+            @Html.HiddenFor(model=>model.ID)
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.EMP_ID, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.EMP_ID, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.EMP_ID) } })
+                    @Html.ValidationMessageFor(model => model.EMP_ID, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.DESIG_ID, htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.DESIG_ID, ViewBag.DESIG_ID as List<SelectListItem>, new { @class = "form-control form-control-sm" })
+                    @Html.ValidationMessageFor(model => model.DESIG_ID, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.SECTION_ID, htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.SECTION_ID, ViewBag.SECTION_ID as List<SelectListItem>, new { @class = "form-control form-control-sm" })
+                    @Html.ValidationMessageFor(model => model.SECTION_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.START_DATE, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.START_DATE, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.START_DATE) } })
+                    @Html.ValidationMessageFor(model => model.START_DATE, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.CONF_DATE, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.CONF_DATE, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.CONF_DATE) } })
+                    @Html.ValidationMessageFor(model => model.CONF_DATE, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.END_DATE, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.END_DATE, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.END_DATE) } })
+                    @Html.ValidationMessageFor(model => model.END_DATE, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.GROSS_SALARY, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.GROSS_SALARY, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.GROSS_SALARY) } })
+                    @Html.ValidationMessageFor(model => model.GROSS_SALARY, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.INITIATED_BY, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.INITIATED_BY, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.INITIATED_BY) } })
+                    @Html.ValidationMessageFor(model => model.INITIATED_BY, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col">
+                    @Html.LabelFor(model => model.VERIFIED_BY, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.VERIFIED_BY, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.VERIFIED_BY) } })
+                    @Html.ValidationMessageFor(model => model.VERIFIED_BY, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.APPROVED_BY, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.APPROVED_BY, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.APPROVED_BY) } })
+                    @Html.ValidationMessageFor(model => model.APPROVED_BY, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }
