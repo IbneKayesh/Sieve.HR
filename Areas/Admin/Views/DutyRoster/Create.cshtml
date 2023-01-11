@@ -1,46 +1,50 @@
 ﻿@model Sieve.HR.Areas.Admin.Models.HR_DUTY_ROSTER
 @{
-    ViewBag.Title = "Create/Update Duty Roster";
+    ViewBag.Title = "Duty Roster";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="card-header">
-        <div class="card-title">
-            <a href="@Url.Action("Index")" class="btn btn-outline-info btn-flat btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
-            <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> New</a>
-            <button type="submit" class="btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-save"></i> Save</button>
-        </div>
-    </div>
-    <div class="card-body">
-        @Html.HiddenFor(model=>model.ID)
-        <div class="row">
-            <div class="col">
-                @Html.LabelFor(model => model.DUTY_ROSTER_NAME, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.DUTY_ROSTER_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.DUTY_ROSTER_NAME) } })
-                @Html.ValidationMessageFor(model => model.DUTY_ROSTER_NAME, "", new { @class = "text-danger" })
-            </div>
-            <div class="col">
-                @Html.LabelFor(model => model.IN_TIME, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.IN_TIME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.IN_TIME) } })
-                @Html.ValidationMessageFor(model => model.IN_TIME, "", new { @class = "text-danger" })
-            </div>
-            <div class="col">
-                @Html.LabelFor(model => model.OUT_TIME, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.OUT_TIME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.OUT_TIME) } })
-                @Html.ValidationMessageFor(model => model.OUT_TIME, "", new { @class = "text-danger" })
-            </div>
-            <div class="col">
-                @Html.LabelFor(model => model.MAX_OT_HOUR, htmlAttributes: new { @class = "control-label" })
-                @Html.EditorFor(model => model.MAX_OT_HOUR, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MAX_OT_HOUR) } })
-                @Html.ValidationMessageFor(model => model.MAX_OT_HOUR, "", new { @class = "text-danger" })
+<div class="card card-primary card-outline">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="card-header border-0">
+            <h5 class="card-title m-0">Add/Edit @ViewBag.Title</h5>
+            <div class="d-flex justify-content-end">
+                <a href="@Url.Action("Index")" class="btn btn-outline-info btn-flat btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
+                <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> New</a>
+                <button type="submit" class="btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-save"></i> Save</button>
             </div>
         </div>
-    </div>
-}
+        <div class="card-body">
+            @Html.HiddenFor(model=>model.ID)
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.DUTY_ROSTER_NAME, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.DUTY_ROSTER_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.DUTY_ROSTER_NAME) } })
+                    @Html.ValidationMessageFor(model => model.DUTY_ROSTER_NAME, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.IN_TIME, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.IN_TIME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.IN_TIME) } })
+                    @Html.ValidationMessageFor(model => model.IN_TIME, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.OUT_TIME, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.OUT_TIME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.OUT_TIME) } })
+                    @Html.ValidationMessageFor(model => model.OUT_TIME, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.MAX_OT_HOUR, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.MAX_OT_HOUR, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MAX_OT_HOUR) } })
+                    @Html.ValidationMessageFor(model => model.MAX_OT_HOUR, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
 
 @section Scripts{
     @{

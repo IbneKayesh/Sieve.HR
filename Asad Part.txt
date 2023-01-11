@@ -1,26 +1,26 @@
 ﻿Models:
 
 0. HR_ATTENDANCE_SHEET  - Only View - Done - View Changed
-1. HR_ATTENDANCE_STATUS
+1. HR_ATTENDANCE_STATUS - No Need To Work
 2. HR_COMPANY - crud - Done - View Changed
 3. HR_DEPARTMENT - crud - Done - View Changed
 4. HR_DESIGNATIONS - crud - Done - View Changed
-5. HR_DUTY_ROSTER - cru - Done
-6. HR_EDU_TYPE - crud - Done
-7. HR_EMP_DETAIL - crud - Done
-8. HR_EMP_EDU - cru - Done
+5. HR_DUTY_ROSTER - cru - Done - View Changed
+6. HR_EDU_TYPE - crud - Done - View Changed
+7. HR_EMP_DETAIL - crud - Done - View Changed
+8. HR_EMP_EDU - cru - Done - View Changed
 9. HR_EMP_JOB -cru - Done - View Changed
 10. HR_EMP_LEAVE_APPS - cru - Done - View Changed 
-11. HR_EMP_LEAVE_BALANCE
-12. HR_EMP_PAYSLIP - crud - K
-13. HR_EMP_PAYSLIP_DETAIL - crud - K
-14. HR_EMP_REF - crud - K
-15. HR_EMP_ROSTER - crud - K
+11. HR_EMP_LEAVE_BALANCE - V - Done - View Changed 
+12. HR_EMP_PAYSLIP - crud - 
+13. HR_EMP_PAYSLIP_DETAIL - crud - 
+14. HR_EMP_REF - crud - 
+15. HR_EMP_ROSTER - crud - 
 16. HR_EMP_SALARY
 17. HR_HOLIDAY_CALENDER
 18. HR_LEAVE_TYPE
 19. HR_SALARY_TYPE
-20. HR_SECTIONS - crud - Done
+20. HR_SECTIONS - cru - Done - View Changed 
 
 Working:
 HR_EMP_REF

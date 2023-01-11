@@ -41,6 +41,6 @@ namespace Sieve.HR.Areas.Admin.Models
         //Foreign Key
 
         [ForeignKey("DEPT_ID")]
-        public virtual HR_DEPARTMENT HR_DEPARTMENT { get; set; } = null!;
+        public virtual HR_DEPARTMENT? HR_DEPARTMENT { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace Sieve.HR.Areas.Admin.Models
     public class HR_EMP_ROSTER
     {
         [Key]
-        [Display(Name = "ID")]
+        [Display(Name = "Employee ID")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int EMP_ID { get; set; }     
 
