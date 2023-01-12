@@ -26,6 +26,9 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "Month")]
         [Required(ErrorMessage = "{0} is required")]
         public int MONTH_ID { get; set; }
+
+        [Display(Name = "Net Pay")]
+        [Required(ErrorMessage = "{0} is required")]
         public int NET_PAY { get; set; }
     }
 }

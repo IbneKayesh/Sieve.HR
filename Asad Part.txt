@@ -12,20 +12,17 @@
 9. HR_EMP_JOB -cru - Done - View Changed
 10. HR_EMP_LEAVE_APPS - cru - Done - View Changed 
 11. HR_EMP_LEAVE_BALANCE - V - Done - View Changed 
-12. HR_EMP_PAYSLIP - crud - 
-13. HR_EMP_PAYSLIP_DETAIL - crud - 
-14. HR_EMP_REF - crud - 
-15. HR_EMP_ROSTER - crud - 
+12. HR_EMP_PAYSLIP - crud - Done - View Changed  
+13. HR_EMP_PAYSLIP_DETAIL - crud - Done - View Changed  
+14. HR_EMP_REF - crud - Done - View Changed   
+15. HR_EMP_ROSTER - crud - Done - Only View
 16. HR_EMP_SALARY
 17. HR_HOLIDAY_CALENDER
 18. HR_LEAVE_TYPE
 19. HR_SALARY_TYPE
 20. HR_SECTIONS - cru - Done - View Changed 
 
-Working:
-HR_EMP_REF
-HR_EMP_ROSTER
-HR_EMP_PAYSLIP
-HR_EMP_PAYSLIP_DETAIL
+
+
 
 

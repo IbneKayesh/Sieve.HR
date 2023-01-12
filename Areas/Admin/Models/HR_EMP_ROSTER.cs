@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Sieve.HR.Areas.Admin.Models
 {
     public class HR_EMP_ROSTER
-    {
+    {       
         [Key]
         [Display(Name = "Employee ID")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

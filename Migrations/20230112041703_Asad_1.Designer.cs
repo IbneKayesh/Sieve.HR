@@ -12,8 +12,8 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    [Migration("20230111172035_init")]
-    partial class init
+    [Migration("20230112041703_Asad_1")]
+    partial class Asad_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

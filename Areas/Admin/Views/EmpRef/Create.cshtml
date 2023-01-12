@@ -1,0 +1,78 @@
+﻿@model Sieve.HR.Areas.Admin.Models.HR_EMP_REF
+@{
+    ViewBag.Title = "Employee Reference";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card card-primary card-outline">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="card-header border-0">
+            <h5 class="card-title m-0">Add/Edit @ViewBag.Title</h5>
+            <div class="d-flex justify-content-end">
+                <a href="@Url.Action("Index")" class="btn btn-outline-info btn-flat btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
+                <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> New</a>
+                <button type="submit" class="btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-save"></i> Save</button>
+            </div>
+        </div>
+        <div class="card-body">
+            @Html.HiddenFor(model=>model.ID)
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.EMP_ID, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.EMP_ID, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.EMP_ID) } })
+                    @Html.ValidationMessageFor(model => model.EMP_ID, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.FULL_NAME, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.FULL_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.FULL_NAME) } })
+                    @Html.ValidationMessageFor(model => model.FULL_NAME, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.REF_NAME, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.REF_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.REF_NAME) } })
+                    @Html.ValidationMessageFor(model => model.REF_NAME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.DESIGNATION, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.DESIGNATION, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.DESIGNATION) } })
+                    @Html.ValidationMessageFor(model => model.DESIGNATION, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.REF_CONTACT, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.REF_CONTACT, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.REF_CONTACT) } })
+                    @Html.ValidationMessageFor(model => model.REF_CONTACT, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.REF_EMAIL, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.REF_EMAIL, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.REF_EMAIL) } })
+                    @Html.ValidationMessageFor(model => model.REF_EMAIL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.REF_ADDR, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.REF_ADDR, new { htmlAttributes = new { @class = "form-control form-control-sm", @rows="5", @Placeholder = Html.DisplayNameFor(x => x.REF_ADDR) } })
+                    @Html.ValidationMessageFor(model => model.REF_ADDR, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

@@ -83,6 +83,7 @@ namespace Sieve.HR.Services.Db
         public virtual DbSet<HR_EMP_LEAVE_APPS> HR_EMP_LEAVE_APPS { get; set; }
         public virtual DbSet<HR_EMP_LEAVE_BALANCE> HR_EMP_LEAVE_BALANCE { get; set; }
         public virtual DbSet<HR_EMP_PAYSLIP> HR_EMP_PAYSLIP { get; set; }
+        public virtual DbSet<HR_EMP_PAYSLIP_DETAIL> HR_EMP_PAYSLIP_DETAIL { get; set; }
         public virtual DbSet<HR_EMP_REF> HR_EMP_REF { get; set; }
         public virtual DbSet<HR_EMP_ROSTER> HR_EMP_ROSTER { get; set; }
         public virtual DbSet<HR_EMP_SALARY> HR_EMP_SALARY { get; set; }
