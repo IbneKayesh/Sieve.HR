@@ -24,7 +24,7 @@
         }
         public static string ShowError(string errorTxt)
         {
-            return $"Swal.fire('error','{errorTxt}','error')";
+            return $"Swal.fire('error','{errorTxt.Replace("'", "").Replace("\r\n","")}','error')";
         }
         public static string DeleteSuccessOK()
         {

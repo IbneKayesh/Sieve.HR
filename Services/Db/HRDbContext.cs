@@ -18,21 +18,28 @@ namespace Sieve.HR.Services.Db
 
             modelBuilder.Entity<HR_COMPANY>(entity =>
             {
-                entity.HasIndex(e => e.COMP_NAME).IsUnique();
+                entity.HasIndex(e => e.COMP_NAME)
+                      .HasDatabaseName("IX_HR_COMPANY_COMP_NAME")
+                      .IsUnique();
+
+                entity.Property(p => p.RowVersion)
+                      .IsConcurrencyToken();
             });
 
             modelBuilder.Entity<HR_DEPARTMENT>(entity =>
             {
                 entity.HasOne(d => d.HR_COMPANY)
                     .WithMany(p => p.HR_DEPARTMENT_NAV)
-                    .HasForeignKey(d => d.COMP_ID);
+                    .HasForeignKey(d => d.COMP_ID)
+                    .OnDelete(DeleteBehavior.NoAction);
             });
 
             modelBuilder.Entity<HR_SECTIONS>(entity =>
             {
                 entity.HasOne(d => d.HR_DEPARTMENT)
                     .WithMany(p => p.HR_SECTIONS_NAV)
-                    .HasForeignKey(d => d.DEPT_ID);
+                    .HasForeignKey(d => d.DEPT_ID)
+                    .OnDelete(DeleteBehavior.NoAction);
             });
 
             modelBuilder.Entity<HR_EMP_ROSTER>(entity =>

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
@@ -16,7 +15,7 @@ namespace Sieve.HR.Areas.Admin.Models
 
         [Display(Name = "Company Name")]
         [Required(ErrorMessage = "{0} is required")]
-        [StringLength(100,ErrorMessage ="{0} length is between {2} and {1}", MinimumLength = 3)]
+        [StringLength(100, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 3)]
         public string? COMP_NAME { get; set; }
 
         [Display(Name = "Company Address")]
@@ -31,6 +30,11 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "Total Salary")]
         [Required(ErrorMessage = "{0} is required")]
         public int MAX_SALARY { get; set; } = 1000000;
+
+        [Display(Name = "Concurrency TimeStamp")]
+        [Required(ErrorMessage = "{0} is required")]
+        [Timestamp]
+        public byte[]? RowVersion { get; set; }
 
         //For Navigation
         public virtual ICollection<HR_DEPARTMENT> HR_DEPARTMENT_NAV { get; set; }

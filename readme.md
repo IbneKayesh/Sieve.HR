@@ -1,4 +1,4 @@
-HR Management
+﻿HR Management
 Development Start Date: 09-01-2023
 Development End Date: 29-01-2023
 
@@ -27,12 +27,6 @@ Scaffold-DbContext "Server=172.17.107.209; Database=SieveHR; User Id=sa; Passwor
 
 
 some things should be copied from > Preclinic-Hospital-Bootstrap4-Admin
-
-
-
-
-
-
 
 Krestal Server Error
 ------------------------------

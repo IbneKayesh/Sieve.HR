@@ -21,16 +21,11 @@ builder.Services.AddMvc().AddJsonOptions(options =>
 //builder.Services.AddDbContext<EmrDbContext>(options =>
 //options.UseSqlite(builder.Configuration.GetConnectionString("DefaulConnection")));
 //end ----option 2
-builder.Services.AddDbContext<HRDbContext>(
-    options => options.UseSqlServer(
-        builder.Configuration.GetConnectionString("HrDbCon")
-        ));
-builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
+builder.Services.AddDataServices(builder.Configuration);
 
 //session --new added
 builder.Services.AddDistributedMemoryCache();
-
 builder.Services.AddSession(options =>
 {
     options.Cookie.Name = ".sieve.Session";
@@ -39,6 +34,8 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 //session --new added
+
+
 
 var app = builder.Build();
 

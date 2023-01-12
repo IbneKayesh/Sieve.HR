@@ -82,6 +82,12 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("MAX_SALARY")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.HasKey("ID");
 
                     b.HasIndex("COMP_NAME")
@@ -956,7 +962,7 @@ namespace Sieve.HR.Migrations
                     b.HasOne("Sieve.HR.Areas.Admin.Models.HR_COMPANY", "HR_COMPANY")
                         .WithMany("HR_DEPARTMENT_NAV")
                         .HasForeignKey("COMP_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("HR_COMPANY");
@@ -1036,7 +1042,7 @@ namespace Sieve.HR.Migrations
                     b.HasOne("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", "HR_DEPARTMENT")
                         .WithMany("HR_SECTIONS_NAV")
                         .HasForeignKey("DEPT_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("HR_DEPARTMENT");

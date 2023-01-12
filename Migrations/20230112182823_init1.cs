@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sieve.HR.Migrations
 {
-    public partial class Asad_1 : Migration
+    public partial class init1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,7 +36,8 @@ namespace Sieve.HR.Migrations
                     COMP_NAME = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     COMP_ADDR = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     MAX_EMP_NO = table.Column<int>(type: "int", nullable: false),
-                    MAX_SALARY = table.Column<int>(type: "int", nullable: false)
+                    MAX_SALARY = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -209,6 +210,21 @@ namespace Sieve.HR.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HR_EMP_PAYSLIP_DETAIL",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PAYSLIP_ID = table.Column<int>(type: "int", nullable: false),
+                    SALARY_TYPE_ID = table.Column<int>(type: "int", nullable: false),
+                    PAYSLIP_AMT = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HR_EMP_PAYSLIP_DETAIL", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "HR_HOLIDAY_CALENDER",
                 columns: table => new
                 {
@@ -270,8 +286,7 @@ namespace Sieve.HR.Migrations
                         name: "FK_HR_DEPARTMENT_HR_COMPANY_COMP_ID",
                         column: x => x.COMP_ID,
                         principalTable: "HR_COMPANY",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ID");
                 });
 
             migrationBuilder.CreateTable(
@@ -381,8 +396,7 @@ namespace Sieve.HR.Migrations
                         name: "FK_HR_SECTIONS_HR_DEPARTMENT_DEPT_ID",
                         column: x => x.DEPT_ID,
                         principalTable: "HR_DEPARTMENT",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ID");
                 });
 
             migrationBuilder.InsertData(
@@ -544,6 +558,9 @@ namespace Sieve.HR.Migrations
 
             migrationBuilder.DropTable(
                 name: "HR_EMP_PAYSLIP");
+
+            migrationBuilder.DropTable(
+                name: "HR_EMP_PAYSLIP_DETAIL");
 
             migrationBuilder.DropTable(
                 name: "HR_EMP_REF");

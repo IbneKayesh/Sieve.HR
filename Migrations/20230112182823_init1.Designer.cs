@@ -12,8 +12,8 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    [Migration("20230112041703_Asad_1")]
-    partial class Asad_1
+    [Migration("20230112182823_init1")]
+    partial class init1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,6 +83,12 @@ namespace Sieve.HR.Migrations
 
                     b.Property<int>("MAX_SALARY")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.HasKey("ID");
 
@@ -644,6 +650,28 @@ namespace Sieve.HR.Migrations
                     b.ToTable("HR_EMP_PAYSLIP");
                 });
 
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_PAYSLIP_DETAIL", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<int>("PAYSLIP_AMT")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PAYSLIP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SALARY_TYPE_ID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("HR_EMP_PAYSLIP_DETAIL");
+                });
+
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_REF", b =>
                 {
                     b.Property<int>("ID")
@@ -936,7 +964,7 @@ namespace Sieve.HR.Migrations
                     b.HasOne("Sieve.HR.Areas.Admin.Models.HR_COMPANY", "HR_COMPANY")
                         .WithMany("HR_DEPARTMENT_NAV")
                         .HasForeignKey("COMP_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("HR_COMPANY");
@@ -1016,7 +1044,7 @@ namespace Sieve.HR.Migrations
                     b.HasOne("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", "HR_DEPARTMENT")
                         .WithMany("HR_SECTIONS_NAV")
                         .HasForeignKey("DEPT_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("HR_DEPARTMENT");

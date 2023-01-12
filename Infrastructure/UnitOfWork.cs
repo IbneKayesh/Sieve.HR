@@ -37,7 +37,7 @@ namespace Sieve.HR.Infrastructure
             {
                 context.Database.RollbackTransaction();
                 eQ.SUCCESS = false;
-                eQ.MESSAGES = ex.Message;
+                eQ.MESSAGES = ex.Message.Contains("See the inner exception for details") ? ex.InnerException?.Message : ex.Message;
                 eQ.ROWS = 0;
             }
             return eQ;

@@ -40,7 +40,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
             {
                 if (obj.ID <= 0)
                 {
-                   // unitOfWork.Company.Insert(obj);
+                    // unitOfWork.Company.Insert(obj);
                     unitOfWork.Company.Insert2(obj);
                 }
                 else
@@ -48,9 +48,17 @@ namespace Sieve.HR.Areas.Admin.Controllers
                     unitOfWork.Company.Update(obj);
                 }
                 EQResult eQ = unitOfWork.Commit();
-                TempData["msg"] = SweetMessages.SaveSuccessOK();
+                if (eQ.SUCCESS && eQ.ROWS > 0)
+                {
+                    TempData["msg"] = SweetMessages.SaveSuccessOK();
+                }
+                else
+                {
+                    TempData["msg"] = SweetMessages.ShowError(eQ.MESSAGES);
+                }
                 return RedirectToAction(nameof(Create));
             }
+            TempData["msg"] = SweetMessages.ShowError(string.Join(", ", ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)));
             return View(obj);
         }
 
