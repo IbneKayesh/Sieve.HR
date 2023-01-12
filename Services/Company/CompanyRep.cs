@@ -7,5 +7,10 @@ namespace Sieve.HR.Services.Company
     public class CompanyRep : GenericRepository<HR_COMPANY>, ICompanyRep
     {
         public CompanyRep(HRDbContext context) : base(context) { }
+
+        public void Insert2(HR_COMPANY entity)
+        {
+            context.Add(entity);
+        }
     }
 }

@@ -27,3 +27,18 @@ Scaffold-DbContext "Server=172.17.107.209; Database=SieveHR; User Id=sa; Passwor
 
 
 some things should be copied from > Preclinic-Hospital-Bootstrap4-Admin
+
+
+
+
+
+
+
+Krestal Server Error
+------------------------------
+SocketException: An attempt was made to access a socket in a way forbidden by its access permissions.
+
+Solution
+------------------------------
+net stop hns
+net start hns

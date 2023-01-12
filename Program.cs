@@ -23,7 +23,7 @@ builder.Services.AddMvc().AddJsonOptions(options =>
 //end ----option 2
 builder.Services.AddDbContext<HRDbContext>(
     options => options.UseSqlServer(
-        builder.Configuration.GetConnectionString("HrDbCon3")
+        builder.Configuration.GetConnectionString("HrDbCon")
         ));
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 

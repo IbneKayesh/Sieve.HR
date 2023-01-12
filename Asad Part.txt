@@ -16,10 +16,10 @@
 13. HR_EMP_PAYSLIP_DETAIL - crud - Done - View Changed  
 14. HR_EMP_REF - crud - Done - View Changed   
 15. HR_EMP_ROSTER - crud - Done - Only View
-16. HR_EMP_SALARY
-17. HR_HOLIDAY_CALENDER
-18. HR_LEAVE_TYPE
-19. HR_SALARY_TYPE
+16. HR_EMP_SALARY - crud
+17. HR_HOLIDAY_CALENDER - crud
+18. HR_LEAVE_TYPE - crud
+19. HR_SALARY_TYPE - crud
 20. HR_SECTIONS - cru - Done - View Changed 
 
 

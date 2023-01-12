@@ -6,10 +6,10 @@ namespace Sieve.HR.Infrastructure
     public class UnitOfWork : IUnitOfWork
     {
         private HRDbContext context;
-        public UnitOfWork(HRDbContext context)
+        public UnitOfWork(HRDbContext _context)
         {
-            this.context = context;
-            Company = new CompanyRep(this.context);
+            this.context = _context;
+            Company = new CompanyRep(context);
         }
         public ICompanyRep Company { get; private set; }
 
@@ -29,10 +29,13 @@ namespace Sieve.HR.Infrastructure
             EQResult eQ = new EQResult();
             try
             {
+                context.Database.BeginTransaction();
                 eQ.ROWS = context.SaveChanges();
+                context.Database.CommitTransaction();
             }
             catch (Exception ex)
             {
+                context.Database.RollbackTransaction();
                 eQ.SUCCESS = false;
                 eQ.MESSAGES = ex.Message;
                 eQ.ROWS = 0;
