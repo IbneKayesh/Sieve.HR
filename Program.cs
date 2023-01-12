@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Sieve.HR.Infrastructure;
 using Sieve.HR.Services.Db;
 
 var builder = WebApplication.CreateBuilder(args);

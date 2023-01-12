@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Sieve.HR.Areas.Admin.Models;
-using Sieve.HR.Services.Db;
+using Sieve.HR.Infrastructure;
 using Sieve.HR.Utilities;
 
 namespace Sieve.HR.Areas.Admin.Controllers
@@ -21,7 +21,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
         //}
         public IActionResult Index()
         {
-            IEnumerable<HR_COMPANY> objList = unitOfWork.Company.GetAll();
+            IEnumerable<HR_COMPANY> objList = unitOfWork.Company.SelectAll();
             return View(objList);
             //IEnumerable<HR_COMPANY> objList = _context.HR_COMPANY;
             //return View(objList);
@@ -35,7 +35,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
             }
             else
             {
-                objDb = unitOfWork.Company.GetById(id.Value);
+                objDb = unitOfWork.Company.SelectById(id.Value);
                 return View(objDb);
             }
             //objDb = _context.HR_COMPANY.Find(id)!;         
@@ -50,7 +50,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
                 if (obj.ID <= 0)
                 {
                     // _context.HR_COMPANY.Add(obj);
-                    unitOfWork.Company.Add(obj);
+                    unitOfWork.Company.Insert(obj);
                 }
                 else
                 {
@@ -58,7 +58,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
                     unitOfWork.Company.Update(obj);
                 }
                 //_context.SaveChanges();
-                unitOfWork.Commit();
+                EQResult eQ = unitOfWork.Commit();
                 TempData["msg"] = SweetMessages.SaveSuccessOK();
                 return RedirectToAction(nameof(Create));
             }
@@ -69,7 +69,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
         public IActionResult Delete(int? id)
         {
             // var obj = _context.HR_COMPANY.Find(id);
-            var obj = unitOfWork.Company.GetById(id.Value);
+            var obj = unitOfWork.Company.SelectById(id.Value);
 
             if (id == null || id == 0 || obj == null)
             {
@@ -79,8 +79,8 @@ namespace Sieve.HR.Areas.Admin.Controllers
             {
                 //_context.HR_COMPANY.Remove(obj);
                 //_context.SaveChanges();
-                unitOfWork.Company.Remove(obj);
-                unitOfWork.Commit();
+                unitOfWork.Company.Delete(obj);
+                EQResult eQ = unitOfWork.Commit();
                 return Json(new JSON_CONFIRM_MESSAGES(true, id.ToString()!)); ;
             }
 
