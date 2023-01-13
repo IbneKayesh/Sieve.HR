@@ -30,11 +30,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="features.txt" />
+    <None Remove="error and solutions.txt" />
+    <None Remove="to-do-list.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="features.txt" />
+    <Compile Include="error and solutions.txt" />
+    <Compile Include="to-do-list.txt" />
   </ItemGroup>
 
   <ItemGroup>
