@@ -15,11 +15,13 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Max No of Employee</th>
-                    <th>Max Total Salary</th>
+                    <th>@Html.DisplayNameFor(model => model.ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.COMP_NAME)</th>
+                    <th>@Html.DisplayNameFor(model => model.COMP_ADDR)</th>
+                    <th>@Html.DisplayNameFor(model => model.MAX_EMP_NO)</th>
+                    <th>@Html.DisplayNameFor(model => model.MAX_EMP_NO_1)</th>
+                    <th>@Html.DisplayNameFor(model => model.MAX_SALARY)</th>
+                    <th>@Html.DisplayNameFor(model => model.MAX_SALARY_1)</th>
                     <th>#</th>
                 </tr>
             </thead>
@@ -31,7 +33,9 @@
                         <td>@item.COMP_NAME</td>
                         <td>@item.COMP_ADDR</td>
                         <td>@item.MAX_EMP_NO</td>
+                        <td>@item.MAX_EMP_NO_1</td>
                         <td>@item.MAX_SALARY</td>
+                        <td>@item.MAX_SALARY_1</td>
                         <td class="text-right">
                             <div class="dropdown">
                                 <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

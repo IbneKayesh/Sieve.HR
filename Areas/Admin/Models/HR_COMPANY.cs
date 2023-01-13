@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
@@ -7,6 +8,7 @@ namespace Sieve.HR.Areas.Admin.Models
         public HR_COMPANY()
         {
             HR_DEPARTMENT_NAV = new HashSet<HR_DEPARTMENT>();
+            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 };
         }
 
         [Key]
@@ -25,16 +27,29 @@ namespace Sieve.HR.Areas.Admin.Models
 
         [Display(Name = "Maximum Employees")]
         [Required(ErrorMessage = "{0} is required")]
+        [Range(minimum: 10, maximum: int.MaxValue)]
         public int MAX_EMP_NO { get; set; } = 10;
 
-        [Display(Name = "Total Salary")]
+        [Display(Name = "Total Employee")]
+        [NotMapped]
+        public int MAX_EMP_NO_1 { get; set; } = 0;
+
+
+        [Display(Name = "Maximum Salary")]
         [Required(ErrorMessage = "{0} is required")]
+        [Range(minimum: 1000, maximum: int.MaxValue)]
         public int MAX_SALARY { get; set; } = 1000000;
 
-        [Display(Name = "Concurrency TimeStamp")]
+        [Display(Name = "Total Salary")]
+        [NotMapped]
+        public int MAX_SALARY_1 { get; set; } = 0;
+
+
+        [Display(Name = "Concurrency Timestamp")]
         [Required(ErrorMessage = "{0} is required")]
+        [ConcurrencyCheck]
         [Timestamp]
-        public byte[]? RowVersion { get; set; }
+        public byte[] RowVersion { get; set; }
 
         //For Navigation
         public virtual ICollection<HR_DEPARTMENT> HR_DEPARTMENT_NAV { get; set; }

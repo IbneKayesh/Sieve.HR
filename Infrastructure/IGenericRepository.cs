@@ -3,11 +3,14 @@
 namespace Sieve.HR.Infrastructure
 {
     public interface IGenericRepository<T> where T : class
-    {
-        IEnumerable<T> Select(Expression<Func<T, bool>> expression);
+    {   
         T SelectById(int id);
-        IEnumerable<T> SelectAll();        
-        
+        IEnumerable<T> SelectAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null);
+        IEnumerable<T> SelectAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, params Expression<Func<T, object>>[] includes);
+
+
+
+
         void Insert(T entity);
         void InsertAll(IEnumerable<T> entities);
 

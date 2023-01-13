@@ -1,0 +1,14 @@
+﻿Company > Index
+1. Show rest or available employee count
+2. Show rest or available total salary
+
+
+Company > Create
+1. Should not submit less then total employee count of assigned departments
+2. Should not submit less then total salary of assigned departments
+
+
+
+Department > Index
+1. Show rest or available employee count
+2. Show rest or available total salary

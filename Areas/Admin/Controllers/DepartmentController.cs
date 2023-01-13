@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Sieve.HR.Areas.Admin.Models;
-using Sieve.HR.Services.Db;
+using Sieve.HR.Infrastructure;
 using Sieve.HR.Utilities;
 
 namespace Sieve.HR.Areas.Admin.Controllers
@@ -10,15 +9,27 @@ namespace Sieve.HR.Areas.Admin.Controllers
     [Area("Admin")]
     public class DepartmentController : Controller
     {
-        private readonly HRDbContext _context;
-        public DepartmentController(HRDbContext context)
+
+        private readonly IUnitOfWork unitOfWork;
+        public DepartmentController(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            this.unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<HR_DEPARTMENT> objList = _context.HR_DEPARTMENT;
+            //Include IEnumerable<HR_DEPARTMENT> objList = unitOfWork.Department.SelectAll(includes: x=>x.HR_COMPANY);
+            //Filter IEnumerable<HR_DEPARTMENT> objList = unitOfWork.Department.SelectAll(filter: x => x.DEPT_NAME == "Admin");
+            //Order By IEnumerable<HR_DEPARTMENT> objList = unitOfWork.Department.SelectAll(orderBy: x => x.OrderBy(x => x.COMP_ID));
+
+
+            IEnumerable<HR_DEPARTMENT> objList = unitOfWork.Department.SelectAll(orderBy: o => o.OrderBy(x => x.ID), includes: x => x.HR_COMPANY);
+            foreach (HR_DEPARTMENT item in objList)
+            {
+                IEnumerable<HR_SECTIONS> subList = unitOfWork.Section.SelectAll(x => x.DEPT_ID == item.ID);
+                item.MAX_EMP_NO_1 = subList.Sum(s => s.MAX_EMP_NO);
+                item.MAX_SALARY_1 = subList.Sum(s => s.MAX_SALARY);
+            }
             return View(objList);
         }
         public IActionResult Create(int? id)
@@ -29,8 +40,11 @@ namespace Sieve.HR.Areas.Admin.Controllers
             {
                 return View(objDb);
             }
-            objDb = _context.HR_DEPARTMENT.Find(id);
-            return View(objDb);
+            else
+            {
+                objDb = unitOfWork.Department.SelectById(id.Value);
+                return View(objDb);
+            }
         }
 
         [HttpPost]
@@ -42,39 +56,58 @@ namespace Sieve.HR.Areas.Admin.Controllers
             {
                 if (obj.ID <= 0)
                 {
-                    _context.HR_DEPARTMENT.Add(obj);
+                    unitOfWork.Department.Insert(obj);
                 }
                 else
                 {
-                    _context.Entry(obj).State = EntityState.Modified;
+                    Int64 maxEmp = unitOfWork.Department.AvailableEmployeeDesk(obj.ID, obj.COMP_ID, obj.MAX_EMP_NO);
+                    if (maxEmp < 0)
+                    {
+                        TempData["msg"] = SweetMessages.ShowInfo($"Maximum number ({maxEmp}) of employee is less then you entered");
+                        return View(obj);
+                    }
+                    double maxSalary = unitOfWork.Department.AvailableLeftSalary(obj.ID, obj.MAX_SALARY);
+                    if (maxSalary < 0)
+                    {
+                        TempData["msg"] = SweetMessages.ShowInfo($"Total Salary ({maxSalary}) of selected Department is less then you entered");
+                        return View(obj);
+                    }
+                    unitOfWork.Department.Update(obj);
                 }
-                _context.SaveChanges();
-                TempData["ResultOk"] = "Record Added/Updated Successfully !";
-                return RedirectToAction("Index");
+                EQResult eQ = unitOfWork.Commit();
+                if (eQ.SUCCESS && eQ.ROWS > 0)
+                {
+                    TempData["msg"] = SweetMessages.SaveSuccessOK();
+                }
+                else
+                {
+                    TempData["msg"] = SweetMessages.ShowError(eQ.MESSAGES);
+                }
+                return RedirectToAction(nameof(Create));
             }
+            TempData["msg"] = SweetMessages.ShowError(string.Join(", ", ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)));
             return View(obj);
         }
 
         public IActionResult Delete(int? id)
         {
-            var Deleterecord = _context.HR_DEPARTMENT.Find(id);
+            var obj = unitOfWork.Department.SelectById(id.Value);
 
-            if (id == null || id == 0 || Deleterecord == null)
+            if (id == null || id == 0 || obj == null)
             {
                 return Json(new JSON_CONFIRM_MESSAGES("Failed"));
             }
             else
             {
-                _context.HR_DEPARTMENT.Remove(Deleterecord);
-                _context.SaveChanges();
-                return Json(new JSON_CONFIRM_MESSAGES(true, id.ToString())); ;
+                unitOfWork.Department.Delete(obj);
+                EQResult eQ = unitOfWork.Commit();
+                return Json(new JSON_CONFIRM_MESSAGES(true, id.ToString()!));
             }
-
         }
 
         private void DropDownListFor_Create()
         {
-            ViewBag.COMP_ID = _context.HR_COMPANY.Select(s => new SelectListItem() { Text = s.COMP_NAME, Value = s.ID.ToString() }).ToList();
+            ViewBag.COMP_ID = unitOfWork.Company.SelectAll().Select(s => new SelectListItem() { Text = s.COMP_NAME, Value = s.ID.ToString() }).ToList();
         }
     }
 }

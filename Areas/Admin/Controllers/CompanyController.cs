@@ -16,6 +16,12 @@ namespace Sieve.HR.Areas.Admin.Controllers
         public IActionResult Index()
         {
             IEnumerable<HR_COMPANY> objList = unitOfWork.Company.SelectAll();
+            foreach (HR_COMPANY item in objList)
+            {
+                IEnumerable<HR_DEPARTMENT> subList = unitOfWork.Department.SelectAll(x => x.COMP_ID == item.ID);
+                item.MAX_EMP_NO_1 = subList.Sum(s => s.MAX_EMP_NO);
+                item.MAX_SALARY_1 = subList.Sum(s => s.MAX_SALARY);
+            }
             return View(objList);
         }
         public IActionResult Create(int? id)
@@ -40,11 +46,22 @@ namespace Sieve.HR.Areas.Admin.Controllers
             {
                 if (obj.ID <= 0)
                 {
-                    // unitOfWork.Company.Insert(obj);
-                    unitOfWork.Company.Insert2(obj);
+                    unitOfWork.Company.Insert(obj);
                 }
                 else
                 {
+                    Int64 maxEmp = unitOfWork.Company.AvailableEmployeeDesk(obj.ID, obj.MAX_EMP_NO);
+                    if (maxEmp < 0)
+                    {
+                        TempData["msg"] = SweetMessages.ShowInfo($"Maximum number ({maxEmp}) of employee is less then you entered");
+                        return View(obj);
+                    }
+                    double maxSalary = unitOfWork.Company.AvailableLeftSalary(obj.ID, obj.MAX_SALARY);
+                    if (maxSalary < 0)
+                    {
+                        TempData["msg"] = SweetMessages.ShowInfo($"Total Salary ({maxSalary}) of selected Department is less then you entered");
+                        return View(obj);
+                    }
                     unitOfWork.Company.Update(obj);
                 }
                 EQResult eQ = unitOfWork.Commit();
@@ -75,7 +92,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
             {
                 unitOfWork.Company.Delete(obj);
                 EQResult eQ = unitOfWork.Commit();
-                return Json(new JSON_CONFIRM_MESSAGES(true, id.ToString()!)); ;
+                return Json(new JSON_CONFIRM_MESSAGES(true, id.ToString()!));
             }
 
         }

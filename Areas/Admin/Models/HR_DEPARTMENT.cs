@@ -37,14 +37,23 @@ namespace Sieve.HR.Areas.Admin.Models
         [Required(ErrorMessage = "{0} is required")]
         public int HEAD_EMP_ID { get; set; }
 
-        [Display(Name = "Total Employees")]
+        [Display(Name = "Maximum Employees")]
         [Required(ErrorMessage = "{0} is required")]
+        [Range(minimum: 10, maximum: int.MaxValue)]
         public int MAX_EMP_NO { get; set; } = 5;
 
-        [Display(Name = "Total Salary")]
+        [Display(Name = "Total Employee")]
+        [NotMapped]
+        public int MAX_EMP_NO_1 { get; set; } = 0;
+
+        [Display(Name = "Maximum Salary")]
         [Required(ErrorMessage = "{0} is required")]
+        [Range(minimum: 1000, maximum: int.MaxValue)]
         public int MAX_SALARY { get; set; } = 500000;
 
+        [Display(Name = "Total Salary")]
+        [NotMapped]
+        public int MAX_SALARY_1 { get; set; } = 0;
 
 
         //Foreign Key

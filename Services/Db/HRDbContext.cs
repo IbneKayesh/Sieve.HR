@@ -23,6 +23,8 @@ namespace Sieve.HR.Services.Db
                       .IsUnique();
 
                 entity.Property(p => p.RowVersion)
+                      .IsRowVersion()
+                      .ValueGeneratedOnAddOrUpdate()
                       .IsConcurrencyToken();
             });
 
@@ -71,6 +73,8 @@ namespace Sieve.HR.Services.Db
 
             modelBuilder.Entity<HR_HOLIDAY_CALENDER>()
                 .HasKey(p => new { p.YEAR_ID, p.MONTH_ID, p.DAY_ID });
+
+            base.OnModelCreating(modelBuilder);
 
             new DbInitializer(modelBuilder).Seed();
         }

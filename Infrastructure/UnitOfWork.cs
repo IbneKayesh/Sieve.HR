@@ -1,5 +1,7 @@
 ﻿using Sieve.HR.Services.Company;
 using Sieve.HR.Services.Db;
+using Sieve.HR.Services.Department;
+using Sieve.HR.Services.Section;
 
 namespace Sieve.HR.Infrastructure
 {
@@ -10,20 +12,17 @@ namespace Sieve.HR.Infrastructure
         {
             this.context = _context;
             Company = new CompanyRep(context);
+            Department = new DepartmentRep(context);
+            Section = new SectionRep(context);
         }
         public ICompanyRep Company { get; private set; }
+        public IDepartmentRep Department { get; private set; }
+        public ISectionRep Section { get; private set; }
 
 
 
+        //Transaction Commit
 
-
-
-
-
-
-
-
-          
         EQResult IUnitOfWork.Commit()
         {
             EQResult eQ = new EQResult();

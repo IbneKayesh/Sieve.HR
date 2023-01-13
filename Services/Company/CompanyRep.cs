@@ -8,9 +8,14 @@ namespace Sieve.HR.Services.Company
     {
         public CompanyRep(HRDbContext context) : base(context) { }
 
-        public void Insert2(HR_COMPANY entity)
+        public Int64 AvailableEmployeeDesk(int entityId, int maxEmp)
         {
-            context.Add(entity);
+            return maxEmp - context.HR_DEPARTMENT.Where(c => c.COMP_ID == entityId).Sum(s => s.MAX_EMP_NO);
+        }
+
+        public double AvailableLeftSalary(int entityId, int maxSalary)
+        {
+            return maxSalary - context.HR_DEPARTMENT.Where(c => c.COMP_ID == entityId).Sum(s => s.MAX_SALARY);
         }
     }
 }
