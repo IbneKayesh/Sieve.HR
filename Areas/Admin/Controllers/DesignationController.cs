@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Sieve.HR.Areas.Admin.Models;
-using Sieve.HR.Services.Db;
+using Sieve.HR.Infrastructure;
 using Sieve.HR.Utilities;
 
 namespace Sieve.HR.Areas.Admin.Controllers
@@ -9,66 +9,64 @@ namespace Sieve.HR.Areas.Admin.Controllers
     [Area("Admin")]
     public class DesignationController : Controller
     {
-        private readonly HRDbContext _context;
-        public DesignationController(HRDbContext context)
+        private readonly IUnitOfWork unitOfWork;
+        public DesignationController(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            this.unitOfWork = unitOfWork;
         }
+
         public IActionResult Index()
         {
-            IEnumerable<HR_DESIGNATIONS> objList = _context.HR_DESIGNATIONS;
+            IEnumerable<HR_DESIGNATIONS> objList = unitOfWork.Designation.SelectAll(orderBy: x => x.OrderBy(o => o.ID));
             return View(objList);
         }
         public IActionResult Create(int? id)
         {
-            //return View();
-
+            DropDownListFor_Create();
             HR_DESIGNATIONS objDb = new HR_DESIGNATIONS();
             if (id == null || id == 0)
             {
                 return View(objDb);
             }
-            objDb = _context.HR_DESIGNATIONS.Find(id);
-            return View(objDb);
+            else
+            {
+                objDb = unitOfWork.Designation.SelectById(id.Value);
+                return View(objDb);
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(HR_DESIGNATIONS obj)
         {
+            DropDownListFor_Create();
             if (ModelState.IsValid)
             {
                 if (obj.ID <= 0)
                 {
-                    _context.HR_DESIGNATIONS.Add(obj);
+                    unitOfWork.Designation.Insert(obj);
                 }
                 else
                 {
-                    _context.Entry(obj).State = EntityState.Modified;
+                    unitOfWork.Designation.Update(obj);
                 }
-                _context.SaveChanges();
-                TempData["ResultOk"] = "Record Added/Updated Successfully !";
-                return RedirectToAction("Index");
+                EQResult eQ = unitOfWork.Commit();
+                if (eQ.SUCCESS && eQ.ROWS > 0)
+                {
+                    TempData["msg"] = SweetMessages.SaveSuccessOK();
+                }
+                else
+                {
+                    TempData["msg"] = SweetMessages.ShowError(eQ.MESSAGES);
+                }
+                return RedirectToAction(nameof(Create));
             }
+            TempData["msg"] = SweetMessages.ShowError(string.Join(", ", ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)));
             return View(obj);
         }
-
-
-        public IActionResult Delete(int? id)
+        private void DropDownListFor_Create()
         {
-            var Deleterecord = _context.HR_DESIGNATIONS.Find(id);
-
-            if (id == null || id == 0 || Deleterecord == null)
-            {
-                return Json(new JSON_CONFIRM_MESSAGES("Failed"));
-            }
-            else
-            {
-                _context.HR_DESIGNATIONS.Remove(Deleterecord);
-                _context.SaveChanges();
-                return Json(new JSON_CONFIRM_MESSAGES(true, id.ToString())); ;
-            }
-
+            ViewBag.PARENT_ID = unitOfWork.Designation.SelectAll().Select(s => new SelectListItem() { Text = s.SHORT_FORM, Value = s.ID.ToString() }).ToList();
         }
     }
 }

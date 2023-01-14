@@ -1,51 +1,4 @@
-﻿@*@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_DESIGNATIONS>
-
-@{
-    ViewBag.Title = "Employee Designation";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<br />
-<a href="@Url.Action("Create","Designation", new { area = "Admin"})" class="btn btn-primary">Add Designation</a>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Short Name</th>
-            <th>Full Name</th>
-            <th>Top Level Designation</th>
-            <th>Roster Name</th>
-            <th>Maximum Salary</th>
-            <th>#</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.ID</td>
-                <td>@item.SHORT_FORM</td>
-                <td>@item.FULL_FORM</td>
-                <td>@item.PARENT_ID</td>
-                <td>@item.MIN_SALARY</td>
-                <td>@item.MAX_SALARY</td>
-                <td>
-                    <div role="group" class="w-60 btn-group">
-                        <a asp-area="Admin" asp-controller="Designation" asp-action="Create" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
-                        <a asp-area="Admin" asp-controller="Designation" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-
-
-*@
-
-@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_DESIGNATIONS>
+﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_DESIGNATIONS>
 
 @{
     ViewBag.Title = "Designation";
@@ -62,12 +15,12 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Short Name</th>
-                    <th>Full Name</th>
-                    <th>Top Level Designation</th>
-                    <th>Roster Name</th>
-                    <th>Maximum Salary</th>
+                    <th>@Html.DisplayNameFor(model => model.ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.SHORT_FORM)</th>
+                    <th>@Html.DisplayNameFor(model => model.FULL_FORM)</th>
+                    <th>@Html.DisplayNameFor(model => model.PARENT_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.MIN_SALARY)</th>
+                    <th>@Html.DisplayNameFor(model => model.MAX_SALARY)</th>
                     <th>#</th>
                 </tr>
             </thead>
@@ -88,9 +41,6 @@
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="#">
                                     <a class="dropdown-item btn btn-outline-danger btn-flat btn-sm" asp-area="Admin" asp-controller="Designation" asp-action="Create" asp-route-id="@item.ID"><i class="fas fa-edit"></i> Edit</a>
-                                    <button data-url="@Url.Action("Delete")" data-param="@item.ID" class="dropdown-item btn btn-outline-danger btn-flat btn-sm confirm-item" type="button">
-                                        <i class="fas fa-trash"></i> Delete
-                                    </button>
                                 </div>
                             </div>
                         </td>

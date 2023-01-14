@@ -32,7 +32,7 @@
                 </div>
                 <div class="col">
                     @Html.LabelFor(model => model.PARENT_ID, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.PARENT_ID, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.PARENT_ID) } })
+                    @Html.DropDownListFor(model => model.PARENT_ID, ViewBag.COMP_ID as List<SelectListItem>, new { @class = "form-control form-control-sm" })
                     @Html.ValidationMessageFor(model => model.PARENT_ID, "", new { @class = "text-danger" })
                 </div>
                 <div class="col">

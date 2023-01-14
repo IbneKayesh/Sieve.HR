@@ -189,12 +189,22 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("PARENT_ID")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<string>("SHORT_FORM")
                         .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("SHORT_FORM")
+                        .IsUnique()
+                        .HasDatabaseName("IX_HR_DESIGNATIONS_SHORT_FORM");
 
                     b.ToTable("HR_DESIGNATIONS");
 
@@ -206,6 +216,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 0,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "CEO"
                         },
                         new
@@ -215,6 +226,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 1,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "ED"
                         },
                         new
@@ -224,6 +236,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 2,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "COO"
                         },
                         new
@@ -233,6 +246,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 3,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "GM"
                         },
                         new
@@ -242,6 +256,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 4,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "DGM"
                         },
                         new
@@ -251,6 +266,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 5,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "AGM"
                         },
                         new
@@ -260,6 +276,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 6,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "SM"
                         },
                         new
@@ -269,6 +286,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 7,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "M"
                         },
                         new
@@ -278,6 +296,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 8,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "Dym"
                         },
                         new
@@ -287,6 +306,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 9,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "AM"
                         },
                         new
@@ -296,6 +316,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 10,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "SAM"
                         },
                         new
@@ -305,6 +326,7 @@ namespace Sieve.HR.Migrations
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 11,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "TE"
                         });
                 });
@@ -545,6 +567,9 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("GROSS_SALARY")
                         .HasColumnType("int");
 
+                    b.Property<int?>("HR_DESIGNATIONSID")
+                        .HasColumnType("int");
+
                     b.Property<int>("INITIATED_BY")
                         .HasColumnType("int");
 
@@ -558,6 +583,8 @@ namespace Sieve.HR.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("HR_DESIGNATIONSID");
 
                     b.ToTable("HR_EMP_JOB");
                 });
@@ -789,6 +816,12 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
                     b.HasKey("YEAR_ID", "MONTH_ID", "DAY_ID");
 
                     b.ToTable("HR_HOLIDAY_CALENDER");
@@ -970,6 +1003,13 @@ namespace Sieve.HR.Migrations
                     b.Navigation("HR_COMPANY");
                 });
 
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_JOB", b =>
+                {
+                    b.HasOne("Sieve.HR.Areas.Admin.Models.HR_DESIGNATIONS", null)
+                        .WithMany("HR_EMP_JOB_NAV")
+                        .HasForeignKey("HR_DESIGNATIONSID");
+                });
+
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_REF", b =>
                 {
                     b.HasOne("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", "EMP")
@@ -1058,6 +1098,11 @@ namespace Sieve.HR.Migrations
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", b =>
                 {
                     b.Navigation("HR_SECTIONS_NAV");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DESIGNATIONS", b =>
+                {
+                    b.Navigation("HR_EMP_JOB_NAV");
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DUTY_ROSTER", b =>

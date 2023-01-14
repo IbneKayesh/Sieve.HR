@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sieve.HR.Migrations
 {
-    public partial class Asad_1 : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,11 +50,12 @@ namespace Sieve.HR.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SHORT_FORM = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    SHORT_FORM = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
                     FULL_FORM = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     PARENT_ID = table.Column<int>(type: "int", nullable: false),
                     MIN_SALARY = table.Column<int>(type: "int", nullable: false),
-                    MAX_SALARY = table.Column<int>(type: "int", nullable: false)
+                    MAX_SALARY = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -136,28 +137,6 @@ namespace Sieve.HR.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HR_EMP_JOB",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EMP_ID = table.Column<int>(type: "int", nullable: false),
-                    DESIG_ID = table.Column<int>(type: "int", nullable: false),
-                    SECTION_ID = table.Column<int>(type: "int", nullable: false),
-                    START_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CONF_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    END_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GROSS_SALARY = table.Column<int>(type: "int", nullable: false),
-                    INITIATED_BY = table.Column<int>(type: "int", nullable: false),
-                    VERIFIED_BY = table.Column<int>(type: "int", nullable: false),
-                    APPROVED_BY = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HR_EMP_JOB", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "HR_EMP_LEAVE_APPS",
                 columns: table => new
                 {
@@ -231,6 +210,8 @@ namespace Sieve.HR.Migrations
                     YEAR_ID = table.Column<int>(type: "int", nullable: false),
                     MONTH_ID = table.Column<int>(type: "int", nullable: false),
                     DAY_ID = table.Column<int>(type: "int", nullable: false),
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     HOLIDAY_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -286,6 +267,34 @@ namespace Sieve.HR.Migrations
                         name: "FK_HR_DEPARTMENT_HR_COMPANY_COMP_ID",
                         column: x => x.COMP_ID,
                         principalTable: "HR_COMPANY",
+                        principalColumn: "ID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HR_EMP_JOB",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EMP_ID = table.Column<int>(type: "int", nullable: false),
+                    DESIG_ID = table.Column<int>(type: "int", nullable: false),
+                    SECTION_ID = table.Column<int>(type: "int", nullable: false),
+                    START_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CONF_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    END_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    GROSS_SALARY = table.Column<int>(type: "int", nullable: false),
+                    INITIATED_BY = table.Column<int>(type: "int", nullable: false),
+                    VERIFIED_BY = table.Column<int>(type: "int", nullable: false),
+                    APPROVED_BY = table.Column<int>(type: "int", nullable: false),
+                    HR_DESIGNATIONSID = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HR_EMP_JOB", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_HR_EMP_JOB_HR_DESIGNATIONS_HR_DESIGNATIONSID",
+                        column: x => x.HR_DESIGNATIONSID,
+                        principalTable: "HR_DESIGNATIONS",
                         principalColumn: "ID");
                 });
 
@@ -498,6 +507,17 @@ namespace Sieve.HR.Migrations
                 column: "COMP_ID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_HR_DESIGNATIONS_SHORT_FORM",
+                table: "HR_DESIGNATIONS",
+                column: "SHORT_FORM",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HR_EMP_JOB_HR_DESIGNATIONSID",
+                table: "HR_EMP_JOB",
+                column: "HR_DESIGNATIONSID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_HR_EMP_REF_EMP_ID",
                 table: "HR_EMP_REF",
                 column: "EMP_ID");
@@ -539,9 +559,6 @@ namespace Sieve.HR.Migrations
                 name: "HR_ATTENDANCE_SHEET");
 
             migrationBuilder.DropTable(
-                name: "HR_DESIGNATIONS");
-
-            migrationBuilder.DropTable(
                 name: "HR_EDU_TYPE");
 
             migrationBuilder.DropTable(
@@ -579,6 +596,9 @@ namespace Sieve.HR.Migrations
 
             migrationBuilder.DropTable(
                 name: "HR_SECTIONS");
+
+            migrationBuilder.DropTable(
+                name: "HR_DESIGNATIONS");
 
             migrationBuilder.DropTable(
                 name: "HR_DUTY_ROSTER");

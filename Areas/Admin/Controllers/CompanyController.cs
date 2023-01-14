@@ -15,7 +15,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<HR_COMPANY> objList = unitOfWork.Company.SelectAll();
+            IEnumerable<HR_COMPANY> objList = unitOfWork.Company.SelectAll(orderBy: x => x.OrderBy(o => o.ID));
             foreach (HR_COMPANY item in objList)
             {
                 IEnumerable<HR_DEPARTMENT> subList = unitOfWork.Department.SelectAll(x => x.COMP_ID == item.ID);

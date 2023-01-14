@@ -1,5 +1,6 @@
 ﻿using Sieve.HR.Services.Company;
 using Sieve.HR.Services.Department;
+using Sieve.HR.Services.Designation;
 using Sieve.HR.Services.Section;
 
 namespace Sieve.HR.Infrastructure
@@ -8,6 +9,7 @@ namespace Sieve.HR.Infrastructure
     {
         ICompanyRep Company { get; }
         IDepartmentRep Department { get; }
+        IDesignationRep Designation { get; }
         ISectionRep Section { get; }
 
         EQResult Commit();

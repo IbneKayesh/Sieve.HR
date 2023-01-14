@@ -36,6 +36,18 @@ namespace Sieve.HR.Services.Db
                     .OnDelete(DeleteBehavior.NoAction);
             });
 
+            modelBuilder.Entity<HR_DESIGNATIONS>(entity =>
+            {
+                entity.HasIndex(e => e.SHORT_FORM)
+                      .HasDatabaseName("IX_HR_DESIGNATIONS_SHORT_FORM")
+                      .IsUnique();
+
+                entity.Property(p => p.RowVersion)
+                      .IsRowVersion()
+                      .ValueGeneratedOnAddOrUpdate()
+                      .IsConcurrencyToken();
+            });
+
             modelBuilder.Entity<HR_SECTIONS>(entity =>
             {
                 entity.HasOne(d => d.HR_DEPARTMENT)
