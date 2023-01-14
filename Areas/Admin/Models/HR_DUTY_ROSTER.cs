@@ -6,7 +6,8 @@ namespace Sieve.HR.Areas.Admin.Models
     {
         public HR_DUTY_ROSTER()
         {
-            HR_EMP_ROSTERS = new HashSet<HR_EMP_ROSTER>();
+            HR_EMP_ROSTERS_NAV = new HashSet<HR_EMP_ROSTER>();
+            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 };
         }
         [Key]
         [Display(Name = "ID")]
@@ -37,6 +38,14 @@ namespace Sieve.HR.Areas.Admin.Models
         [Required(ErrorMessage = "{0} is required")]
         public int MAX_OT_HOUR { get; set; } = 0;
 
-        public virtual ICollection<HR_EMP_ROSTER> HR_EMP_ROSTERS { get; set; }
+
+        [Display(Name = "Concurrency Timestamp")]
+        [Required(ErrorMessage = "{0} is required")]
+        [ConcurrencyCheck]
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
+        //For Navigation
+        public virtual ICollection<HR_EMP_ROSTER> HR_EMP_ROSTERS_NAV { get; set; }
     }
 }

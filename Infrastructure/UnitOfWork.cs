@@ -2,6 +2,7 @@
 using Sieve.HR.Services.Db;
 using Sieve.HR.Services.Department;
 using Sieve.HR.Services.Designation;
+using Sieve.HR.Services.DutyRoster;
 using Sieve.HR.Services.Section;
 
 namespace Sieve.HR.Infrastructure
@@ -15,11 +16,13 @@ namespace Sieve.HR.Infrastructure
             Company = new CompanyRep(context);
             Department = new DepartmentRep(context);
             Designation = new DesignationRep(context);
+            DutyRoster = new DutyRosterRep(context);
             Section = new SectionRep(context);
         }
         public ICompanyRep Company { get; private set; }
         public IDepartmentRep Department { get; private set; }
         public IDesignationRep Designation { get; private set; }
+        public IDutyRosterRep DutyRoster { get; private set; }
         public ISectionRep Section { get; private set; }
 
 

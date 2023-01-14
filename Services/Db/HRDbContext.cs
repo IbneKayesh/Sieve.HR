@@ -48,6 +48,18 @@ namespace Sieve.HR.Services.Db
                       .IsConcurrencyToken();
             });
 
+            modelBuilder.Entity<HR_DUTY_ROSTER>(entity =>
+            {
+                entity.HasIndex(e => e.DUTY_ROSTER_NAME)
+                      .HasDatabaseName("IX_HR_DUTY_ROSTER_DUTY_ROSTER_NAME")
+                      .IsUnique();
+
+                entity.Property(p => p.RowVersion)
+                      .IsRowVersion()
+                      .ValueGeneratedOnAddOrUpdate()
+                      .IsConcurrencyToken();
+            });
+
             modelBuilder.Entity<HR_SECTIONS>(entity =>
             {
                 entity.HasOne(d => d.HR_DEPARTMENT)
@@ -71,7 +83,7 @@ namespace Sieve.HR.Services.Db
                     .HasConstraintName("FK_HR_EMP_ROSTER_HR_EMP_HEAD");
 
                 entity.HasOne(d => d.ROSTER)
-                    .WithMany(p => p.HR_EMP_ROSTERS)
+                    .WithMany(p => p.HR_EMP_ROSTERS_NAV)
                     .HasForeignKey(d => d.ROSTER_ID)
                     .OnDelete(DeleteBehavior.NoAction)
                     .HasConstraintName("FK_HR_EMP_ROSTER_HR_DUTY_ROSTER");

@@ -39,9 +39,9 @@ namespace Sieve.HR.Services.Db
 
 
             modelBuilder.Entity<HR_DUTY_ROSTER>().HasData(
-                  new HR_DUTY_ROSTER() { ID = 1, DUTY_ROSTER_NAME = "General Shift", IN_TIME = "0900", OUT_TIME = "1700", MAX_OT_HOUR = 0 },
-                  new HR_DUTY_ROSTER() { ID = 2, DUTY_ROSTER_NAME = "Morning Shift", IN_TIME = "0600", OUT_TIME = "1800", MAX_OT_HOUR = 2 },
-                  new HR_DUTY_ROSTER() { ID = 3, DUTY_ROSTER_NAME = "Evening Shift", IN_TIME = "1800", OUT_TIME = "0600", MAX_OT_HOUR = 2 }
+                  new HR_DUTY_ROSTER() { ID = 1, DUTY_ROSTER_NAME = "General Shift", IN_TIME = "09:00", OUT_TIME = "17:00", MAX_OT_HOUR = 0 },
+                  new HR_DUTY_ROSTER() { ID = 2, DUTY_ROSTER_NAME = "Morning Shift", IN_TIME = "06:00", OUT_TIME = "18:00", MAX_OT_HOUR = 2 },
+                  new HR_DUTY_ROSTER() { ID = 3, DUTY_ROSTER_NAME = "Evening Shift", IN_TIME = "18:00", OUT_TIME = "06:00", MAX_OT_HOUR = 2 }
             );
 
             modelBuilder.Entity<HR_EDU_TYPE>().HasData(

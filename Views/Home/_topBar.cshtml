@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Sieve.HR.Models.TOP_BAR_ICONS>
+<div class="box-body">
+    @foreach (var item in Model)
+    {
+        <a class="btn btn-app" href="@item.LINK">
+            <i class="@item.ICON"></i> @item.NAME
+        </a>
+    }
+</div>
