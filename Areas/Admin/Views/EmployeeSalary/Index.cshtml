@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_EDU_TYPE>
+﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_EMP_SALARY>
 
 @{
-    ViewBag.Title = "Institution/Training";
+    ViewBag.Title = "Employee Salary";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -18,7 +18,10 @@
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Education Type</th>
+                    <th>Year Month</th>
+                    <th>Employee ID</th>
+                    <th>Salary Type</th>
+                    <th>Salary Amount</th>
                     <th>#</th>
                 </tr>
             </thead>
@@ -27,14 +30,17 @@
                 {
                     <tr>
                         <td>@item.ID</td>
-                        <td>@item.TYPE_NAME</td>
+                        <td>@item.YYYYMM</td>
+                        <td>@item.EMP_ID</td>
+                        <td>@item.SALARY_TYPE_ID</td>
+                        <td>@item.SALARY_AMNT</td>
                         <td class="text-right">
                             <div class="dropdown">
                                 <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Actions
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="#">
-                                    <a class="dropdown-item btn btn-outline-danger btn-flat btn-sm" asp-area="Admin" asp-controller="EduType" asp-action="Create" asp-route-id="@item.ID"><i class="fas fa-edit"></i> Edit</a>
+                                    <a class="dropdown-item btn btn-outline-danger btn-flat btn-sm" asp-area="Admin" asp-controller="EmployeeSalary" asp-action="Create" asp-route-id="@item.ID"><i class="fas fa-edit"></i> Edit</a>
                                 </div>
                             </div>
                         </td>

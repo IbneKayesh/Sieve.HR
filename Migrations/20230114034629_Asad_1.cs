@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sieve.HR.Migrations
 {
-    public partial class init1 : Migration
+    public partial class Asad_1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

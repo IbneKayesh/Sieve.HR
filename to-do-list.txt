@@ -1,4 +1,5 @@
-﻿Company > Index
+﻿/*
+Company > Index
 1. Show rest or available employee count
 2. Show rest or available total salary
 
@@ -17,3 +18,5 @@ Department > Create
 2. Should not submit more then total salary of assigned departments
 3. Should not submit less then total employee count of assigned sections
 4. Should not submit less then total salary of assigned sections
+
+*/

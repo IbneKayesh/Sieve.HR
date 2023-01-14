@@ -91,7 +91,8 @@ namespace Sieve.HR.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("COMP_NAME")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("IX_HR_COMPANY_COMP_NAME");
 
                     b.ToTable("HR_COMPANY");
 
@@ -102,7 +103,8 @@ namespace Sieve.HR.Migrations
                             COMP_ADDR = "Dhaka, Bangladesh",
                             COMP_NAME = "Sieve Org",
                             MAX_EMP_NO = 1000,
-                            MAX_SALARY = 100000000
+                            MAX_SALARY = 100000000,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
                         });
                 });
 

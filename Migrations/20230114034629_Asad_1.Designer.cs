@@ -12,8 +12,8 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    [Migration("20230112182823_init1")]
-    partial class init1
+    [Migration("20230114034629_Asad_1")]
+    partial class Asad_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,7 +93,8 @@ namespace Sieve.HR.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("COMP_NAME")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasDatabaseName("IX_HR_COMPANY_COMP_NAME");
 
                     b.ToTable("HR_COMPANY");
 
@@ -104,7 +105,8 @@ namespace Sieve.HR.Migrations
                             COMP_ADDR = "Dhaka, Bangladesh",
                             COMP_NAME = "Sieve Org",
                             MAX_EMP_NO = 1000,
-                            MAX_SALARY = 100000000
+                            MAX_SALARY = 100000000,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
                         });
                 });
 

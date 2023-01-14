@@ -12,9 +12,10 @@ namespace Sieve.HR.Areas.Admin.Models
 
 
         [Display(Name = "Year Month")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/yyyy}")]
         public int YYYYMM{ get; set; }
 
-        [Display(Name = "Employee")]
+        [Display(Name = "Employee ID")]
         [Required(ErrorMessage = "{0} is required")]
         public int EMP_ID { get; set; }
 
@@ -30,9 +31,9 @@ namespace Sieve.HR.Areas.Admin.Models
 
         //Foreign Key
         [ForeignKey("EMP_ID")]
-        public virtual HR_EMP_DETAIL HR_EMP_DETAIL { get; set; } = null!;
+        public virtual HR_EMP_DETAIL HR_EMP_DETAIL { get; set; } = null;
 
         [ForeignKey("SALARY_TYPE_ID")]
-        public virtual HR_SALARY_TYPE HR_SALARY_TYPE { get; set; } = null!;
+        public virtual HR_SALARY_TYPE? HR_SALARY_TYPE { get; set; } = null;
     }
 }
