@@ -47,6 +47,6 @@ namespace Sieve.HR.Areas.Admin.Models
 
         //Foreign Key
         [ForeignKey("EMP_ID")]
-        public virtual HR_EMP_DETAIL EMP { get; set; } = null!;
+        public virtual HR_EMP_DETAIL? EMP { get; set; }
     }
 }
