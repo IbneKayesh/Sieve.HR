@@ -1,0 +1,58 @@
+﻿@model Sieve.HR.Areas.Admin.Models.HR_HOLIDAY_CALENDER
+@{
+    ViewBag.Title = "Holiday Calander";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card card-primary card-outline">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="card-header border-0">
+            <h5 class="card-title m-0">Add/Edit @ViewBag.Title</h5>
+            <div class="d-flex justify-content-end">
+                <a href="@Url.Action("Index")" class="btn btn-outline-info btn-flat btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
+                <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> New</a>
+                <button type="submit" class="btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-save"></i> Save</button>
+            </div>
+        </div>
+        <div class="card-body">
+            @Html.HiddenFor(model=>model.ID)
+            <div class="row">
+                <div class="col">
+                    @Html.LabelFor(model => model.YEAR_ID, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.YEAR_ID, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.YEAR_ID) } })
+                    @Html.ValidationMessageFor(model => model.YEAR_ID, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.MONTH_ID, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.MONTH_ID, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MONTH_ID) } })
+                    @Html.ValidationMessageFor(model => model.MONTH_ID, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.DAY_ID, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.DAY_ID, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.DAY_ID) } })
+                    @Html.ValidationMessageFor(model => model.DAY_ID, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
+                    @Html.LabelFor(model => model.HOLIDAY_NAME, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.HOLIDAY_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.HOLIDAY_NAME) } })
+                    @Html.ValidationMessageFor(model => model.HOLIDAY_NAME, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+
+
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }

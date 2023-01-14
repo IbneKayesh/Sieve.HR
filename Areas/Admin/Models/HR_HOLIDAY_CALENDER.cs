@@ -6,6 +6,11 @@ namespace Sieve.HR.Areas.Admin.Models
 {
     public class HR_HOLIDAY_CALENDER
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name = "ID")]
+        public int ID { get; set; }
+
         [Key, Column(Order = 0)]
         [Display(Name = "Year")]
         public int YEAR_ID { get; set; }
