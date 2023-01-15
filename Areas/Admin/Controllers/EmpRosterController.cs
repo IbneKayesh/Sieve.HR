@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using Sieve.HR.Areas.Admin.Models;
-using Sieve.HR.Services.Db;
+using Sieve.HR.Infrastructure;
 using Sieve.HR.Utilities;
 
 namespace Sieve.HR.Areas.Admin.Controllers
@@ -10,66 +9,84 @@ namespace Sieve.HR.Areas.Admin.Controllers
     [Area("Admin")]
     public class EmpRosterController : Controller
     {
-        private readonly HRDbContext _context;
-        public EmpRosterController(HRDbContext context)
+        private readonly IUnitOfWork unitOfWork;
+        public EmpRosterController(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            this.unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            IEnumerable<HR_EMP_ROSTER> objList = _context.HR_EMP_ROSTER;
+            IEnumerable<HR_EMP_ROSTER> objList = unitOfWork.EmpRoster.SelectAll(filter: x => x.EMP_ID == id);
             return View(objList);
         }
-        public IActionResult Create(int? id)
+        public IActionResult Create(int id)
         {
-
-            HR_EMP_ROSTER objDb = new HR_EMP_ROSTER();
-            if (id == null || id == 0)
+            DropDownListFor_Create();
+            HR_EMP_DETAIL emp = unitOfWork.EmpDetail.SelectById(id);
+            if (emp == null)
             {
+                TempData["msg"] = SweetMessages.ShowError($"No Employee found with the ID: {id}");
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                List<HR_EMP_JOB> empJob = unitOfWork.EmpJob.SelectAll(filter: x => x.EMP_ID == id).ToList();
+                if (empJob.Count == 0)
+                {
+                    TempData["msg"] = SweetMessages.ShowError("Emplopyee Job placement is required to before assigning the Duty Roster");
+                    return RedirectToAction(nameof(Index));
+                }
+                HR_EMP_ROSTER objDb = unitOfWork.EmpRoster.SelectById(id);
+                if (objDb == null)
+                {
+                    objDb = new HR_EMP_ROSTER();
+                    objDb.ID = 0;
+                    objDb.EMP_ID = id;
+                    objDb.FULL_NAME = emp.FULL_NAME;
+                    objDb.SUPERVISOR_ID = empJob.First().VERIFIED_BY;
+                    objDb.HEAD_ID = empJob.First().APPROVED_BY;
+                }
+                else
+                {
+                    objDb.ID = 1;
+                }
                 return View(objDb);
             }
-            objDb = _context.HR_EMP_ROSTER.Find(id);
-            return View(objDb);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(HR_EMP_ROSTER obj)
         {
-
+            DropDownListFor_Create();
             if (ModelState.IsValid)
             {
-                if (obj.EMP_ID <= 0)
+                if (obj.ID <= 0)
                 {
-                    _context.HR_EMP_ROSTER.Add(obj);
+                    unitOfWork.EmpRoster.Insert(obj);
                 }
                 else
                 {
-                    _context.Entry(obj).State = EntityState.Modified;
+                    unitOfWork.EmpRoster.Update(obj);
                 }
-                _context.SaveChanges();
-                TempData["ResultOk"] = "Record Added/Updated Successfully !";
-                return RedirectToAction("Index");
+                EQResult eQ = unitOfWork.Commit();
+                if (eQ.SUCCESS && eQ.ROWS > 0)
+                {
+                    TempData["msg"] = SweetMessages.SaveSuccessOK();
+                }
+                else
+                {
+                    TempData["msg"] = SweetMessages.ShowError(eQ.MESSAGES);
+                }
+                return RedirectToAction(nameof(Create));
             }
+            TempData["msg"] = SweetMessages.ShowError(string.Join(", ", ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)));
             return View(obj);
         }
-
-        public IActionResult Delete(int? id)
+        private void DropDownListFor_Create()
         {
-            var Deleterecord = _context.HR_EMP_ROSTER.Find(id);
-
-            if (id == null || id == 0 || Deleterecord == null)
-            {
-                return Json(new JSON_CONFIRM_MESSAGES("Failed"));
-            }
-            else
-            {
-                _context.HR_EMP_ROSTER.Remove(Deleterecord);
-                _context.SaveChanges();
-                return Json(new JSON_CONFIRM_MESSAGES(true, id.ToString())); ;
-            }
-
+            ViewBag.ROSTER_ID = unitOfWork.DutyRoster.SelectListDutyRoster();
         }
 
     }

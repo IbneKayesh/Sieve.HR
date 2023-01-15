@@ -25,14 +25,13 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "Start Date")]
         [Required(ErrorMessage = "{0} is required")]
         public DateTime START_DATE { get; set; }
-        
+
         [Display(Name = "Confirmation Date")]
         [Required(ErrorMessage = "{0} is required")]
         public DateTime? CONF_DATE { get; set; }
 
         [Display(Name = "End Date")]
-        [Required(ErrorMessage = "{0} is required")]
-        public DateTime END_DATE { get; set; }
+        public DateTime? END_DATE { get; set; }
 
         [Display(Name = "Gross Salary")]
         [Required(ErrorMessage = "{0} is required")]
@@ -41,13 +40,16 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "Initiated By")]
         [Required(ErrorMessage = "{0} is required")]
         public int INITIATED_BY { get; set; }
+        public DateTime? INITIATED_DATE { get; set; }
 
         [Display(Name = "Varified By")]
         [Required(ErrorMessage = "{0} is required")]
         public int VERIFIED_BY { get; set; }
+        public DateTime? VERIFIED_DATE { get; set; }
 
         [Display(Name = "Approved By")]
         [Required(ErrorMessage = "{0} is required")]
         public int APPROVED_BY { get; set; }
+        public DateTime? APPROVED_DATE { get; set; }
     }
 }

@@ -1,15 +1,27 @@
-﻿using Sieve.HR.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_EMP_ROSTER
-    {       
+    public class HR_EMP_ROSTER : HR_COMMON
+    {
+        public HR_EMP_ROSTER()
+        {
+
+        }
+        [NotMapped]
+        public int ID { get; set; } = 0;
+
         [Key]
-        [Display(Name = "Emp ID")]
+        [Display(Name = "Employee ID")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int EMP_ID { get; set; }     
+        public int EMP_ID { get; set; }
+
+        [Display(Name = "Employee Name")]
+        [Required(ErrorMessage = "{0} is required")]
+        [NotMapped]
+        public string? FULL_NAME { get; set; }
+
 
 
         [Display(Name = "Duty Roster")]
@@ -19,6 +31,7 @@ namespace Sieve.HR.Areas.Admin.Models
 
         [Display(Name = "Weekend Day Number")]
         [Required(ErrorMessage = "{0} is required")]
+        [Range(minimum: 0, maximum: 6, ErrorMessage = "{0} range is between {2} and {1}")]
         public int WEEKEND_DAYNO { get; set; }
 
 
@@ -32,9 +45,10 @@ namespace Sieve.HR.Areas.Admin.Models
         public int HEAD_ID { get; set; }
 
 
+
         //Foreign Key
         [ForeignKey("EMP_ID")]
-        public virtual HR_EMP_DETAIL EMP { get; set; } = null!;
+        public virtual HR_EMP_DETAIL? EMP { get; set; }
 
         //Foreign Key
         [ForeignKey("ROSTER_ID")]

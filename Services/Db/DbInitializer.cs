@@ -49,6 +49,17 @@ namespace Sieve.HR.Services.Db
                    new HR_EDU_TYPE() { ID = 2, TYPE_NAME = "Training" }
             );
 
+
+            modelBuilder.Entity<HR_EMP_DETAIL>().HasData(
+                   new HR_EMP_DETAIL() { ID = 1, EMP_NO = "EMP-00001", FULL_NAME = "Md. Ibne Kayesh", CONTACT_NO = "008801722688266", EMAIL_ID = "ibnekayesh91@gmail.com", GENDER_ID = "Male", NATIONALITY = "Bangladeshi", BIRTH_DATE = DateTime.Now.AddYears(-25), MARITAIL_STATUS = "Married", SPOUSE_NAME = "N/A", NATIONAL_ID = "1234567890", PASSPORT_ID = "1234567890", FATHER_NAME = "Father", MOTHER_NAME = "Mother", PARENTS_CONACT = "Dhaka", PRESENT_ADDRESS = "Dhaka, Bangladesh", PARMANENT_ADDRESS = "Dhaka, Bangladesh" }
+            );
+
+            modelBuilder.Entity<HR_EMP_JOB>().HasData(
+                new HR_EMP_JOB() { ID = 1, EMP_ID = 1, DESIG_ID = 1, SECTION_ID = 1, START_DATE = DateTime.Now.AddMonths(3), CONF_DATE=DateTime.Now.AddMonths(1), GROSS_SALARY = 1900000, INITIATED_BY = 1, VERIFIED_BY = 1, APPROVED_BY = 1 }
+         );
+
+
+
             modelBuilder.Entity<HR_LEAVE_TYPE>().HasData(
                   new HR_LEAVE_TYPE() { ID = 1, TYPE_NAME = "Casual", TYPE_QTY = 10 },
                   new HR_LEAVE_TYPE() { ID = 2, TYPE_NAME = "Sick", TYPE_QTY = 14 },

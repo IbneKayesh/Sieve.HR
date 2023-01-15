@@ -13,11 +13,12 @@
             <h5 class="card-title m-0">Add/Edit @ViewBag.Title</h5>
             <div class="d-flex justify-content-end">
                 <a href="@Url.Action("Index")" class="btn btn-outline-info btn-flat btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
-                <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> New</a>
                 <button type="submit" class="btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-save"></i> Save</button>
             </div>
         </div>
         <div class="card-body">
+            @Html.HiddenFor(model=>model.ID)
+            @Html.HiddenFor(model=>model.RowVersion)
             <div class="row">
                 <div class="col">
                     @Html.LabelFor(model => model.EMP_ID, htmlAttributes: new { @class = "control-label" })
@@ -25,8 +26,13 @@
                     @Html.ValidationMessageFor(model => model.EMP_ID, "", new { @class = "text-danger" })
                 </div>
                 <div class="col">
+                    @Html.LabelFor(model => model.FULL_NAME, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.FULL_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.FULL_NAME) } })
+                    @Html.ValidationMessageFor(model => model.FULL_NAME, "", new { @class = "text-danger" })
+                </div>
+                <div class="col">
                     @Html.LabelFor(model => model.ROSTER_ID, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.ROSTER_ID, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.ROSTER_ID) } })
+                    @Html.DropDownListFor(model => model.ROSTER_ID, ViewBag.ROSTER_ID as List<SelectListItem>, new { @class = "form-control form-control-sm" })
                     @Html.ValidationMessageFor(model => model.ROSTER_ID, "", new { @class = "text-danger" })
                 </div>
                 <div class="col">

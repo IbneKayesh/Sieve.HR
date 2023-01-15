@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sieve.HR.Migrations
 {
-    public partial class Asad1 : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -98,6 +98,7 @@ namespace Sieve.HR.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    EMP_NO = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     FULL_NAME = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CONTACT_NO = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     EMAIL_ID = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
@@ -283,11 +284,14 @@ namespace Sieve.HR.Migrations
                     SECTION_ID = table.Column<int>(type: "int", nullable: false),
                     START_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CONF_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    END_DATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    END_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     GROSS_SALARY = table.Column<int>(type: "int", nullable: false),
                     INITIATED_BY = table.Column<int>(type: "int", nullable: false),
+                    INITIATED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     VERIFIED_BY = table.Column<int>(type: "int", nullable: false),
+                    VERIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     APPROVED_BY = table.Column<int>(type: "int", nullable: false),
+                    APPROVED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     HR_DESIGNATIONSID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -332,7 +336,8 @@ namespace Sieve.HR.Migrations
                     ROSTER_ID = table.Column<int>(type: "int", nullable: false),
                     WEEKEND_DAYNO = table.Column<int>(type: "int", nullable: false),
                     SUPERVISOR_ID = table.Column<int>(type: "int", nullable: false),
-                    HEAD_ID = table.Column<int>(type: "int", nullable: false)
+                    HEAD_ID = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -453,6 +458,16 @@ namespace Sieve.HR.Migrations
                     { 1, "Institution" },
                     { 2, "Training" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "HR_EMP_DETAIL",
+                columns: new[] { "ID", "BIRTH_DATE", "CONTACT_NO", "EMAIL_ID", "EMP_NO", "FATHER_NAME", "FULL_NAME", "GENDER_ID", "MARITAIL_STATUS", "MOTHER_NAME", "NATIONALITY", "NATIONAL_ID", "PARENTS_CONACT", "PARMANENT_ADDRESS", "PASSPORT_ID", "PRESENT_ADDRESS", "SPOUSE_NAME" },
+                values: new object[] { 1, new DateTime(1998, 1, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6606), "008801722688266", "ibnekayesh91@gmail.com", "EMP-00001", "Father", "Md. Ibne Kayesh", "Male", "Married", "Mother", "Bangladeshi", "1234567890", "Dhaka", "Dhaka, Bangladesh", "1234567890", "Dhaka, Bangladesh", "N/A" });
+
+            migrationBuilder.InsertData(
+                table: "HR_EMP_JOB",
+                columns: new[] { "ID", "APPROVED_BY", "APPROVED_DATE", "CONF_DATE", "DESIG_ID", "EMP_ID", "END_DATE", "GROSS_SALARY", "HR_DESIGNATIONSID", "INITIATED_BY", "INITIATED_DATE", "SECTION_ID", "START_DATE", "VERIFIED_BY", "VERIFIED_DATE" },
+                values: new object[] { 1, 1, null, new DateTime(2023, 2, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6702), 1, 1, null, 1900000, null, 1, null, 1, new DateTime(2023, 4, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6695), 1, null });
 
             migrationBuilder.InsertData(
                 table: "HR_LEAVE_TYPE",
