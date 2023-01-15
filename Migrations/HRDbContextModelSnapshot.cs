@@ -979,6 +979,12 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("MAX_SALARY")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<string>("SECT_ADDR")
                         .IsRequired()
                         .HasMaxLength(250)
@@ -1003,6 +1009,7 @@ namespace Sieve.HR.Migrations
                             HEAD_EMP_ID = 1,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "First Floor, Mail Branch",
                             SECT_NAME = "Admin"
                         },
@@ -1013,6 +1020,7 @@ namespace Sieve.HR.Migrations
                             HEAD_EMP_ID = 2,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "Second Floor, Mail Branch",
                             SECT_NAME = "IT Product"
                         });

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sieve.HR.Migrations
 {
-    public partial class init : Migration
+    public partial class Asad1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -71,7 +71,8 @@ namespace Sieve.HR.Migrations
                     DUTY_ROSTER_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     IN_TIME = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     OUT_TIME = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
-                    MAX_OT_HOUR = table.Column<int>(type: "int", nullable: false)
+                    MAX_OT_HOUR = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -396,7 +397,8 @@ namespace Sieve.HR.Migrations
                     SECT_ADDR = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     HEAD_EMP_ID = table.Column<int>(type: "int", nullable: false),
                     MAX_EMP_NO = table.Column<int>(type: "int", nullable: false),
-                    MAX_SALARY = table.Column<int>(type: "int", nullable: false)
+                    MAX_SALARY = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -437,9 +439,9 @@ namespace Sieve.HR.Migrations
                 columns: new[] { "ID", "DUTY_ROSTER_NAME", "IN_TIME", "MAX_OT_HOUR", "OUT_TIME" },
                 values: new object[,]
                 {
-                    { 1, "General Shift", "0900", 0, "1700" },
-                    { 2, "Morning Shift", "0600", 2, "1800" },
-                    { 3, "Evening Shift", "1800", 2, "0600" }
+                    { 1, "General Shift", "09:00", 0, "17:00" },
+                    { 2, "Morning Shift", "06:00", 2, "18:00" },
+                    { 3, "Evening Shift", "18:00", 2, "06:00" }
                 });
 
             migrationBuilder.InsertData(
@@ -510,6 +512,12 @@ namespace Sieve.HR.Migrations
                 name: "IX_HR_DESIGNATIONS_SHORT_FORM",
                 table: "HR_DESIGNATIONS",
                 column: "SHORT_FORM",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HR_DUTY_ROSTER_DUTY_ROSTER_NAME",
+                table: "HR_DUTY_ROSTER",
+                column: "DUTY_ROSTER_NAME",
                 unique: true);
 
             migrationBuilder.CreateIndex(

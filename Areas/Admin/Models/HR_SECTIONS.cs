@@ -5,7 +5,12 @@ namespace Sieve.HR.Areas.Admin.Models
 {
     public class HR_SECTIONS
     {
-        [Key]
+        public HR_SECTIONS()
+        {
+            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 };
+        }
+
+        [Key] // Primary Key
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "ID")]
         public int ID { get; set; }
@@ -28,15 +33,20 @@ namespace Sieve.HR.Areas.Admin.Models
         [Required(ErrorMessage = "{0} is required")]
         public int HEAD_EMP_ID { get; set; }
 
-        [Display(Name = "Total Employees")]
+        [Display(Name = "Max No of Employee")]
         [Required(ErrorMessage = "{0} is required")]
         public int MAX_EMP_NO { get; set; } = 5;
 
-        [Display(Name = "Total Salary")]
+        [Display(Name = "Max Total Salary")]
         [Required(ErrorMessage = "{0} is required")]
         public int MAX_SALARY { get; set; } = 100000;
 
 
+        [Display(Name = "Concurrency Timestamp")]
+        [Required(ErrorMessage = "{0} is required")]
+        [ConcurrencyCheck]
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
 
         //Foreign Key
 

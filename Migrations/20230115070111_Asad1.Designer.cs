@@ -12,8 +12,8 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    [Migration("20230114161044_init")]
-    partial class init
+    [Migration("20230115070111_Asad1")]
+    partial class Asad1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -359,7 +359,17 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("DUTY_ROSTER_NAME")
+                        .IsUnique()
+                        .HasDatabaseName("IX_HR_DUTY_ROSTER_DUTY_ROSTER_NAME");
 
                     b.ToTable("HR_DUTY_ROSTER");
 
@@ -368,25 +378,28 @@ namespace Sieve.HR.Migrations
                         {
                             ID = 1,
                             DUTY_ROSTER_NAME = "General Shift",
-                            IN_TIME = "0900",
+                            IN_TIME = "09:00",
                             MAX_OT_HOUR = 0,
-                            OUT_TIME = "1700"
+                            OUT_TIME = "17:00",
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
                         },
                         new
                         {
                             ID = 2,
                             DUTY_ROSTER_NAME = "Morning Shift",
-                            IN_TIME = "0600",
+                            IN_TIME = "06:00",
                             MAX_OT_HOUR = 2,
-                            OUT_TIME = "1800"
+                            OUT_TIME = "18:00",
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
                         },
                         new
                         {
                             ID = 3,
                             DUTY_ROSTER_NAME = "Evening Shift",
-                            IN_TIME = "1800",
+                            IN_TIME = "18:00",
                             MAX_OT_HOUR = 2,
-                            OUT_TIME = "0600"
+                            OUT_TIME = "06:00",
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
                         });
                 });
 
@@ -955,6 +968,12 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("MAX_SALARY")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<string>("SECT_ADDR")
                         .IsRequired()
                         .HasMaxLength(250)
@@ -979,6 +998,7 @@ namespace Sieve.HR.Migrations
                             HEAD_EMP_ID = 1,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "First Floor, Mail Branch",
                             SECT_NAME = "Admin"
                         },
@@ -989,9 +1009,24 @@ namespace Sieve.HR.Migrations
                             HEAD_EMP_ID = 2,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "Second Floor, Mail Branch",
                             SECT_NAME = "IT Product"
                         });
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.ViewModels.COMP_DEPT_SECT", b =>
+                {
+                    b.Property<string>("COMP_NAME")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DEPT_NAME")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SECT_NAME")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToView("COMP_DEPT_SECT");
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", b =>
@@ -1040,7 +1075,7 @@ namespace Sieve.HR.Migrations
                         .HasConstraintName("FK_HR_EMP_ROSTER_HR_EMP_HEAD");
 
                     b.HasOne("Sieve.HR.Areas.Admin.Models.HR_DUTY_ROSTER", "ROSTER")
-                        .WithMany("HR_EMP_ROSTERS")
+                        .WithMany("HR_EMP_ROSTERS_NAV")
                         .HasForeignKey("ROSTER_ID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired()
@@ -1109,7 +1144,7 @@ namespace Sieve.HR.Migrations
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DUTY_ROSTER", b =>
                 {
-                    b.Navigation("HR_EMP_ROSTERS");
+                    b.Navigation("HR_EMP_ROSTERS_NAV");
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", b =>
