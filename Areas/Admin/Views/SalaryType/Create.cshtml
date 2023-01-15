@@ -19,6 +19,7 @@
         </div>
         <div class="card-body">
             @Html.HiddenFor(model=>model.ID)
+            @Html.HiddenFor(model=>model.RowVersion)
             <div class="row">
                 <div class="col">
                     @Html.LabelFor(model => model.TYPE_NAME, htmlAttributes: new { @class = "control-label" })
@@ -27,12 +28,11 @@
                 </div>
                 <div class="col">
                     @Html.LabelFor(model => model.TYPE_EFFECT, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.TYPE_EFFECT, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.TYPE_EFFECT) } })
+                    @Html.DropDownListFor(model => model.TYPE_EFFECT, ViewBag.TYPE_EFFECT as List<SelectListItem>, new { @class = "form-control form-control-sm" })
                     @Html.ValidationMessageFor(model => model.TYPE_EFFECT, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
-
     }
 </div>
 

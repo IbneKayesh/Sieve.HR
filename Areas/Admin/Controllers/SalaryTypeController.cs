@@ -1,27 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Sieve.HR.Areas.Admin.Models;
-using Sieve.HR.Services.Db;
+using Sieve.HR.Infrastructure;
+using Sieve.HR.Utilities;
 
 namespace Sieve.HR.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class SalaryTypeController : Controller
     {
-        private readonly HRDbContext _context;
-        public SalaryTypeController(HRDbContext context)
+        private readonly IUnitOfWork unitOfWork;
+        public SalaryTypeController(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            this.unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<HR_SALARY_TYPE> objList = _context.HR_SALARY_TYPE;
+            IEnumerable<HR_SALARY_TYPE> objList = unitOfWork.SalaryType.SelectAll(orderBy: x => x.OrderBy(x => x.ID));
             return View(objList);
         }
 
         public IActionResult Create(int? id)
         {
+            DropDownListFor_Create();
             HR_SALARY_TYPE objDb = new HR_SALARY_TYPE();
             if (id == null || id == 0)
             {
@@ -29,7 +31,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
             }
             else
             {
-                objDb = _context.HR_SALARY_TYPE.Find(id);
+                objDb = unitOfWork.SalaryType.SelectById(id.Value);
                 return View(objDb);
             }
         }
@@ -39,21 +41,34 @@ namespace Sieve.HR.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(HR_SALARY_TYPE obj)
         {
+            DropDownListFor_Create();
             if (ModelState.IsValid)
             {
                 if (obj.ID <= 0)
                 {
-                    _context.HR_SALARY_TYPE.Add(obj);
+                    unitOfWork.SalaryType.Insert(obj);
                 }
                 else
                 {
-                    _context.Entry(obj).State = EntityState.Modified;
+                    unitOfWork.SalaryType.Update(obj);
                 }
-                _context.SaveChanges();
-                TempData["ResultOk"] = "Record Added/Updated Successfully !";
-                return RedirectToAction("Index");
+                EQResult eQ = unitOfWork.Commit();
+                if (eQ.SUCCESS && eQ.ROWS > 0)
+                {
+                    TempData["msg"] = SweetMessages.SaveSuccessOK();
+                }
+                else
+                {
+                    TempData["msg"] = SweetMessages.ShowError(eQ.MESSAGES);
+                }
+                return RedirectToAction(nameof(Create));
             }
+            TempData["msg"] = SweetMessages.ShowError(string.Join(", ", ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)));
             return View(obj);
+        }
+        private void DropDownListFor_Create()
+        {
+            ViewBag.TYPE_EFFECT = unitOfWork.SalaryType.SelectListsTypeEffect();
         }
     }
 }
