@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sieve.HR.Areas.Admin.Models;
+using Sieve.HR.Areas.ViewModels;
 
 namespace Sieve.HR.Services.Db
 {
@@ -98,6 +99,12 @@ namespace Sieve.HR.Services.Db
             modelBuilder.Entity<HR_HOLIDAY_CALENDER>()
                 .HasKey(p => new { p.YEAR_ID, p.MONTH_ID, p.DAY_ID });
 
+
+            modelBuilder.Entity<COMP_DEPT_SECT>()
+                .ToView("COMP_DEPT_SECT")
+                .HasNoKey();
+
+
             base.OnModelCreating(modelBuilder);
 
             new DbInitializer(modelBuilder).Seed();
@@ -126,6 +133,12 @@ namespace Sieve.HR.Services.Db
         public virtual DbSet<HR_LEAVE_TYPE> HR_LEAVE_TYPE { get; set; }
         public virtual DbSet<HR_SALARY_TYPE> HR_SALARY_TYPE { get; set; }
         public virtual DbSet<HR_SECTIONS> HR_SECTIONS { get; set; }
+
+
+
+
+        //Views
+        public virtual DbSet<COMP_DEPT_SECT> COMP_DEPT_SECT { get; set; }
 
     }
 }
