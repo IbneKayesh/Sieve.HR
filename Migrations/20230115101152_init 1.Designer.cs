@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sieve.HR.Services.Db;
 
@@ -11,9 +12,10 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    partial class HRDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230115101152_init 1")]
+    partial class init1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -979,12 +981,6 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("MAX_SALARY")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
                     b.Property<string>("SECT_ADDR")
                         .IsRequired()
                         .HasMaxLength(250)
@@ -1009,7 +1005,6 @@ namespace Sieve.HR.Migrations
                             HEAD_EMP_ID = 1,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
-                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "First Floor, Mail Branch",
                             SECT_NAME = "Admin"
                         },
@@ -1020,7 +1015,6 @@ namespace Sieve.HR.Migrations
                             HEAD_EMP_ID = 2,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
-                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "Second Floor, Mail Branch",
                             SECT_NAME = "IT Product"
                         });
