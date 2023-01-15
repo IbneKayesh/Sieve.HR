@@ -376,27 +376,27 @@ namespace Sieve.HR.Migrations
                         {
                             ID = 1,
                             DUTY_ROSTER_NAME = "General Shift",
-                            IN_TIME = "0900",
+                            IN_TIME = "09:00",
                             MAX_OT_HOUR = 0,
-                            OUT_TIME = "1700",
+                            OUT_TIME = "17:00",
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
                         },
                         new
                         {
                             ID = 2,
                             DUTY_ROSTER_NAME = "Morning Shift",
-                            IN_TIME = "0600",
+                            IN_TIME = "06:00",
                             MAX_OT_HOUR = 2,
-                            OUT_TIME = "1800",
+                            OUT_TIME = "18:00",
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
                         },
                         new
                         {
                             ID = 3,
                             DUTY_ROSTER_NAME = "Evening Shift",
-                            IN_TIME = "1800",
+                            IN_TIME = "18:00",
                             MAX_OT_HOUR = 2,
-                            OUT_TIME = "0600",
+                            OUT_TIME = "06:00",
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
                         });
                 });
@@ -966,6 +966,12 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("MAX_SALARY")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<string>("SECT_ADDR")
                         .IsRequired()
                         .HasMaxLength(250)
@@ -990,6 +996,7 @@ namespace Sieve.HR.Migrations
                             HEAD_EMP_ID = 1,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "First Floor, Mail Branch",
                             SECT_NAME = "Admin"
                         },
@@ -1000,6 +1007,7 @@ namespace Sieve.HR.Migrations
                             HEAD_EMP_ID = 2,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "Second Floor, Mail Branch",
                             SECT_NAME = "IT Product"
                         });
