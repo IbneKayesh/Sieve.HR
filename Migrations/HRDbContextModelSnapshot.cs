@@ -1013,6 +1013,20 @@ namespace Sieve.HR.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Sieve.HR.Areas.ViewModels.COMP_DEPT_SECT", b =>
+                {
+                    b.Property<string>("COMP_NAME")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DEPT_NAME")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SECT_NAME")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToView("COMP_DEPT_SECT");
+                });
+
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", b =>
                 {
                     b.HasOne("Sieve.HR.Areas.Admin.Models.HR_COMPANY", "HR_COMPANY")

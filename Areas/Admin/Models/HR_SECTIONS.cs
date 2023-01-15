@@ -33,11 +33,11 @@ namespace Sieve.HR.Areas.Admin.Models
         [Required(ErrorMessage = "{0} is required")]
         public int HEAD_EMP_ID { get; set; }
 
-        [Display(Name = "Total Employees")]
+        [Display(Name = "Max No of Employee")]
         [Required(ErrorMessage = "{0} is required")]
         public int MAX_EMP_NO { get; set; } = 5;
 
-        [Display(Name = "Total Salary")]
+        [Display(Name = "Max Total Salary")]
         [Required(ErrorMessage = "{0} is required")]
         public int MAX_SALARY { get; set; } = 100000;
 

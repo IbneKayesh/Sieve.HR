@@ -12,7 +12,7 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    [Migration("20230115052357_Asad1")]
+    [Migration("20230115070111_Asad1")]
     partial class Asad1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1013,6 +1013,20 @@ namespace Sieve.HR.Migrations
                             SECT_ADDR = "Second Floor, Mail Branch",
                             SECT_NAME = "IT Product"
                         });
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.ViewModels.COMP_DEPT_SECT", b =>
+                {
+                    b.Property<string>("COMP_NAME")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DEPT_NAME")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SECT_NAME")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToView("COMP_DEPT_SECT");
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_DEPARTMENT", b =>

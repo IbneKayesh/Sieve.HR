@@ -19,7 +19,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<HR_SECTIONS> objList = unitOfWork.Section.SelectAll(orderBy: x => x.OrderBy(o => o.ID));
+            IEnumerable<HR_SECTIONS> objList = unitOfWork.Section.SelectAll(orderBy: x => x.OrderBy(o => o.ID),includes:x=>x.HR_DEPARTMENT);
             return View(objList);
         }
         public IActionResult Create(int? id)
@@ -46,53 +46,86 @@ namespace Sieve.HR.Areas.Admin.Controllers
             {
                 if (obj.ID <= 0)
                 {
-                    Int64 AvailableNumberOfEmployee = unitOfWork.Section.AvailableNumberOfEmployee(obj.DEPT_ID);
+                    Int64 AvailableNumberOfEmployee = unitOfWork.Section.AvailableNumberOfEmployee(obj.DEPT_ID);                    
                     if (obj.MAX_EMP_NO > AvailableNumberOfEmployee)
                     {
-                        TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of employee can be assigned ({AvailableNumberOfEmployee})");
-                        return View(obj);
+                        if (AvailableNumberOfEmployee == 0)
+                        {
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of employee Already Crossed For This Department...!!");
+                            return View(obj);
+                        }
+                        else
+                        {
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of employee can not be higher then ({AvailableNumberOfEmployee})");
+                            return View(obj);
+                        }                        
                     }
-
-                    double maxSalary = unitOfWork.Section.AvailableLeftSalary(obj.ID, obj.MAX_SALARY);
-                    if (maxSalary < 0)
+                    double maxSalaryAvailable = unitOfWork.Section.AvailableLeftSalary(obj.DEPT_ID);
+                    if (obj.MAX_SALARY > maxSalaryAvailable)
                     {
-                        TempData["msg"] = SweetMessages.ShowInfo($"Total Salary ({maxSalary}) of selected Department is less then you entered");
-                        return View(obj);
+                        if (maxSalaryAvailable == 0)
+                        {
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum Salary Already Crossed For This Department...!!");
+                            return View(obj);
+                        }
+                        else
+                        {
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum Salary can not be higher then ({maxSalaryAvailable})");
+                            return View(obj);
+                        }
                     }
-
-                    else
-                    {
-                        unitOfWork.Section.Insert(obj);
-                    }                   
+                    unitOfWork.Section.Insert(obj);
+                 
                 }
                 else
                 {
-                    //Int64 AvailableNumberOfEmployee = unitOfWork.Section.AvailableNumberOfEmployee(obj.DEPT_ID);
-                    //if (obj.MAX_EMP_NO > AvailableNumberOfEmployee)
-                    //{
-                    //    TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of employee can be assigned ({AvailableNumberOfEmployee})");
-                    //    return View(obj);
-                    //}
-
-                    //double maxSalary = unitOfWork.Section.AvailableLeftSalary(obj.ID, obj.MAX_SALARY);
-                    //if (maxSalary < 0)
-                    //{
-                    //    TempData["msg"] = SweetMessages.ShowInfo($"Total Salary ({maxSalary}) of selected Department is less then you entered");
-                    //    return View(obj);
-                    //}
-                    //unitOfWork.Company.Update(obj);
+                    Int64 AvailableNumberOfEmployee = unitOfWork.Section.AvailableNumberOfEmployee(obj.DEPT_ID);
+                    if (obj.MAX_EMP_NO > AvailableNumberOfEmployee)
+                    {
+                        if (AvailableNumberOfEmployee == 0)
+                        {
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of employee Already Crossed For This Department...!!");
+                            return View(obj);
+                        }
+                        else
+                        {
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of employee can not be higher then ({AvailableNumberOfEmployee})");
+                            return View(obj);
+                        }
+                    }
+                    double maxSalaryAvailable = unitOfWork.Section.AvailableLeftSalary(obj.DEPT_ID);
+                    if (obj.MAX_SALARY > maxSalaryAvailable)
+                    {
+                        if (maxSalaryAvailable == 0)
+                        {
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum Salary Already Crossed For This Department...!!");
+                            return View(obj);
+                        }
+                        else
+                        {
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum Salary can not be higher then ({maxSalaryAvailable})");
+                            return View(obj);
+                        }
+                    }
+                    unitOfWork.Section.Update(obj);
                 }
-               // _context.SaveChanges();
-                TempData["ResultOk"] = "Record Added/Updated Successfully !";
-                return RedirectToAction("Index");
+                EQResult eQ = unitOfWork.Commit();
+                if (eQ.SUCCESS && eQ.ROWS > 0)
+                {
+                    TempData["msg"] = SweetMessages.SaveSuccessOK();
+                }
+                else
+                {
+                    TempData["msg"] = SweetMessages.ShowError(eQ.MESSAGES);
+                }
+                return RedirectToAction(nameof(Create));
             }
+            TempData["msg"] = SweetMessages.ShowError(string.Join(", ", ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)));
             return View(obj);
         }
 
         private void DropDownListFor_Create()
         {
-            //ViewBag.DEPT_ID = _context.HR_DEPARTMENT.Select(s => new SelectListItem() { Text = s.DEPT_NAME + "-" + s.HR_COMPANY.COMP_NAME, Value = s.ID.ToString() }).ToList();
-
             ViewBag.DEPT_ID = unitOfWork.Department.SelectAll(includes:x => x.HR_COMPANY).Select(s => new SelectListItem() { Text = s.DEPT_NAME + "-" + s.HR_COMPANY.COMP_NAME, Value = s.ID.ToString() }).ToList();
         }
     }

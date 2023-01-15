@@ -18,4 +18,22 @@ Solution
 net stop hns
 net start hns
 
+
+View Problem
+------------------------------
+
+ public partial class createatestview : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.Sql(@"CREATE VIEW dbo.COMP_DEPT_SECT as select c.COMP_NAME,DEPT_NAME,SECT_NAME from dbo.HR_COMPANY c join dbo.HR_DEPARTMENT d on c.ID=d.COMP_ID join dbo.HR_SECTIONS s on d.ID=s.DEPT_ID");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.Sql(@"DROP VIEW dbo.COMP_DEPT_SECT");
+        }
+    }
+
+
 */
