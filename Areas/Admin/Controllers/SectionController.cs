@@ -46,17 +46,17 @@ namespace Sieve.HR.Areas.Admin.Controllers
             {
                 if (obj.ID <= 0)
                 {
-                    Int64 AvailableNumberOfEmployee = unitOfWork.Section.AvailableNumberOfEmployee(obj.DEPT_ID);                    
-                    if (obj.MAX_EMP_NO > AvailableNumberOfEmployee)
+                    Int64 AvailableNumberOfEmp = unitOfWork.Section.AvailableNumberOfEmp(obj.DEPT_ID);                    
+                    if (obj.MAX_EMP_NO > AvailableNumberOfEmp)
                     {
-                        if (AvailableNumberOfEmployee == 0)
+                        if (AvailableNumberOfEmp == 0)
                         {
-                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of employee Already Crossed For This Department...!!");
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of Emp Already Crossed For This Department...!!");
                             return View(obj);
                         }
                         else
                         {
-                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of employee can not be higher then ({AvailableNumberOfEmployee})");
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of Emp can not be higher then ({AvailableNumberOfEmp})");
                             return View(obj);
                         }                        
                     }
@@ -79,17 +79,17 @@ namespace Sieve.HR.Areas.Admin.Controllers
                 }
                 else
                 {
-                    Int64 AvailableNumberOfEmployee = unitOfWork.Section.AvailableNumberOfEmployee(obj.DEPT_ID);
-                    if (obj.MAX_EMP_NO > AvailableNumberOfEmployee)
+                    Int64 AvailableNumberOfEmp = unitOfWork.Section.AvailableNumberOfEmp(obj.DEPT_ID);
+                    if (obj.MAX_EMP_NO > AvailableNumberOfEmp)
                     {
-                        if (AvailableNumberOfEmployee == 0)
+                        if (AvailableNumberOfEmp == 0)
                         {
-                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of employee Already Crossed For This Department...!!");
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of Emp Already Crossed For This Department...!!");
                             return View(obj);
                         }
                         else
                         {
-                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of employee can not be higher then ({AvailableNumberOfEmployee})");
+                            TempData["msg"] = SweetMessages.ShowInfo($"Maximum number of Emp can not be higher then ({AvailableNumberOfEmp})");
                             return View(obj);
                         }
                     }

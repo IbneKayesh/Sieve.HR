@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_EMP_SALARY>
+
+@{
+    ViewBag.Title = "Emp Salary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card card-primary card-outline">
+    <div class="card-header border-0">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title m-0">@ViewBag.Title</h5>
+            <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> Add @ViewBag.Title</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Year Month</th>
+                    <th>Emp ID</th>
+                    <th>Salary Type</th>
+                    <th>Salary Amount</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.YYYYMM</td>
+                        <td>@item.EMP_ID</td>
+                        <td>@item.SALARY_TYPE_ID</td>
+                        <td>@item.SALARY_AMNT</td>
+                        <td class="text-right">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="#">
+                                    <a class="dropdown-item btn btn-outline-danger btn-flat btn-sm" asp-area="Admin" asp-controller="EmpSalary" asp-action="Create" asp-route-id="@item.ID"><i class="fas fa-edit"></i> Edit</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -5,7 +5,7 @@ namespace Sieve.HR.Areas.Admin.Models
 {
     public class HR_ATTENDANCE_SHEET
     {
-        [Display(Name = "Employee Id")]
+        [Display(Name = "Emp Id")]
         public int EMP_ID { get; set; }
 
         [Display(Name = "Year Id")]

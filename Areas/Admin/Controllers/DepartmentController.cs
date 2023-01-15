@@ -60,10 +60,10 @@ namespace Sieve.HR.Areas.Admin.Controllers
                 }
                 else
                 {
-                    Int64 maxEmp = unitOfWork.Department.AvailableEmployeeDesk(obj.ID, obj.COMP_ID, obj.MAX_EMP_NO);
+                    Int64 maxEmp = unitOfWork.Department.AvailableEmpDesk(obj.ID, obj.COMP_ID, obj.MAX_EMP_NO);
                     if (maxEmp < 0)
                     {
-                        TempData["msg"] = SweetMessages.ShowInfo($"Maximum number ({maxEmp}) of employee is less then you entered");
+                        TempData["msg"] = SweetMessages.ShowInfo($"Maximum number ({maxEmp}) of Emp is less then you entered");
                         return View(obj);
                     }
                     double maxSalary = unitOfWork.Department.AvailableLeftSalary(obj.ID, obj.MAX_SALARY);

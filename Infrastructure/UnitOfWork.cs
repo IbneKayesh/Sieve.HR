@@ -3,6 +3,7 @@ using Sieve.HR.Services.Db;
 using Sieve.HR.Services.Department;
 using Sieve.HR.Services.Designation;
 using Sieve.HR.Services.DutyRoster;
+using Sieve.HR.Services.EmpDetail;
 using Sieve.HR.Services.SalaryType;
 using Sieve.HR.Services.Section;
 
@@ -20,6 +21,7 @@ namespace Sieve.HR.Infrastructure
             DutyRoster = new DutyRosterRep(context);
             SalaryType = new SalaryTypeRep(context);
             Section = new SectionRep(context);
+            EmpDetail = new EmpDetailRep(context);
         }
         public ICompanyRep Company { get; private set; }
         public IDepartmentRep Department { get; private set; }
@@ -27,6 +29,7 @@ namespace Sieve.HR.Infrastructure
         public IDutyRosterRep DutyRoster { get; private set; }
         public ISalaryTypeRep SalaryType { get; private set; }
         public ISectionRep Section { get; private set; }
+        public IEmpDetailRep EmpDetail { get; private set; }
 
 
 

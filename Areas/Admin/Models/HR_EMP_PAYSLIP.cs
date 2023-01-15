@@ -11,7 +11,7 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "ID")]
         public int ID { get; set; }
 
-        [Display(Name = "Employee ID")]
+        [Display(Name = "Emp ID")]
         [Required(ErrorMessage = "{0} is required")]
         public int EMP_ID { get; set; }
 

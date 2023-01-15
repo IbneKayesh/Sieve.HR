@@ -37,12 +37,12 @@ namespace Sieve.HR.Areas.Admin.Models
         [Required(ErrorMessage = "{0} is required")]
         public int HEAD_EMP_ID { get; set; }
 
-        [Display(Name = "Maximum Employees")]
+        [Display(Name = "Maximum Emps")]
         [Required(ErrorMessage = "{0} is required")]
         [Range(minimum: 10, maximum: int.MaxValue)]
         public int MAX_EMP_NO { get; set; } = 5;
 
-        [Display(Name = "Total Employee")]
+        [Display(Name = "Total Emp")]
         [NotMapped]
         public int MAX_EMP_NO_1 { get; set; } = 0;
 

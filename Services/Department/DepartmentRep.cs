@@ -7,7 +7,7 @@ namespace Sieve.HR.Services.Department
     public class DepartmentRep : GenericRepository<HR_DEPARTMENT>, IDepartmentRep
     {
         public DepartmentRep(HRDbContext context) : base(context) { }
-        public Int64 AvailableEmployeeDesk(int entityId, int parentEntityId, int maxEmp)
+        public Int64 AvailableEmpDesk(int entityId, int parentEntityId, int maxEmp)
         {
             return maxEmp - context.HR_SECTIONS.Where(c => c.DEPT_ID == entityId).Sum(s => s.MAX_EMP_NO);
         }

@@ -1,22 +1,22 @@
 ﻿/*
 Company > Index
-1. Show rest or available employee count
+1. Show rest or available Emp count
 2. Show rest or available total salary
 
 
 Company > Create
-1. Should not submit less then total employee count of assigned departments
+1. Should not submit less then total Emp count of assigned departments
 2. Should not submit less then total salary of assigned departments
 
 Department > Index
-1. Show rest or available employee count from current Department
+1. Show rest or available Emp count from current Department
 2. Show rest or available total salary from current Department
 3. Show assigned Company name
 
 Department > Create
-1. Should not submit more then total employee count of assigned departments
+1. Should not submit more then total Emp count of assigned departments
 2. Should not submit more then total salary of assigned departments
-3. Should not submit less then total employee count of assigned sections
+3. Should not submit less then total Emp count of assigned sections
 4. Should not submit less then total salary of assigned sections
 
 */

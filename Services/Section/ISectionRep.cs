@@ -5,7 +5,7 @@ namespace Sieve.HR.Services.Section
 {
     public interface ISectionRep : IGenericRepository<HR_SECTIONS>
     {
-        Int64 AvailableNumberOfEmployee(int entityDeptId);
+        Int64 AvailableNumberOfEmp(int entityDeptId);
         double AvailableLeftSalary(int entityDeptId);
     }
 }

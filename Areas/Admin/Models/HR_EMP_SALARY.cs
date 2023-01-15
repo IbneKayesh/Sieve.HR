@@ -15,7 +15,7 @@ namespace Sieve.HR.Areas.Admin.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/yyyy}")]
         public int YYYYMM{ get; set; }
 
-        [Display(Name = "Employee ID")]
+        [Display(Name = "Emp ID")]
         [Required(ErrorMessage = "{0} is required")]
         public int EMP_ID { get; set; }
 

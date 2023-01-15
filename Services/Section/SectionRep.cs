@@ -8,13 +8,13 @@ namespace Sieve.HR.Services.Section
     {
         public SectionRep(HRDbContext context) : base(context) { }
 
-        public long AvailableNumberOfEmployee(int entityDeptId)
+        public long AvailableNumberOfEmp(int entityDeptId)
         {
-            var availableMaxEmployeeForTheSelectedDepartment = context.HR_DEPARTMENT.Where(c => c.ID == entityDeptId).Select(x=>x.MAX_EMP_NO).Single(); 
-            var SumOfEmployeeAlreadyAssignedIntheDifferentSectionsUnderThisDepartment = context.HR_SECTIONS.Where(c => c.DEPT_ID == entityDeptId).Sum(s => s.MAX_EMP_NO);
-            var EmployeeCanBeAssigned = availableMaxEmployeeForTheSelectedDepartment - SumOfEmployeeAlreadyAssignedIntheDifferentSectionsUnderThisDepartment;
+            var availableMaxEmpForTheSelectedDepartment = context.HR_DEPARTMENT.Where(c => c.ID == entityDeptId).Select(x=>x.MAX_EMP_NO).Single(); 
+            var SumOfEmpAlreadyAssignedIntheDifferentSectionsUnderThisDepartment = context.HR_SECTIONS.Where(c => c.DEPT_ID == entityDeptId).Sum(s => s.MAX_EMP_NO);
+            var EmpCanBeAssigned = availableMaxEmpForTheSelectedDepartment - SumOfEmpAlreadyAssignedIntheDifferentSectionsUnderThisDepartment;
 
-            return EmployeeCanBeAssigned;
+            return EmpCanBeAssigned;
         }
 
         public double AvailableLeftSalary(int entityDeptId)

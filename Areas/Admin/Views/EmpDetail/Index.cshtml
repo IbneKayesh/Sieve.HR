@@ -1,0 +1,147 @@
+﻿@*@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL>
+
+@{
+    ViewBag.Title = "Emp Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<a href="@Url.Action("Create","EmpDetail", new { area = "Admin"})" class="btn btn-primary">Add Emp</a>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Full Name</th>
+            <th>Contact No</th>
+            <th>Email Address</th>
+            <th>Gender</th>
+            <th>Nationality</th>
+            <th>Birthdate</th>
+            <th>Marital Status</th>
+            <th>Spouse Name</th>
+            <th>National ID</th>
+            <th>Passport Number</th>
+            <th>Father Name</th>
+            <th>Mother Name</th>
+            <th>Parent Contact</th>
+            <th>Present Address</th>
+            <th>Parmanent Address</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.FULL_NAME</td>
+                <td>@item.CONTACT_NO</td>
+                <td>@item.EMAIL_ID</td>
+                <td>@item.GENDER_ID</td>
+                <td>@item.NATIONALITY</td>
+                <td>@item.BIRTH_DATE</td>
+                <td>@item.MARITAIL_STATUS</td>
+                <td>@item.SPOUSE_NAME</td>
+                <td>@item.NATIONAL_ID</td>
+                <td>@item.PASSPORT_ID</td>
+                <td>@item.FATHER_NAME</td>
+                <td>@item.MOTHER_NAME</td>
+                <td>@item.PARENTS_CONACT</td>
+                <td>@item.PRESENT_ADDRESS</td>
+                <td>@item.PARMANENT_ADDRESS</td>
+                <td>
+                    <div role="group" class="w-60 btn-group">
+                        <a asp-area="Admin" asp-controller="EmpDetail" asp-action="Create" asp-route-id="@item.ID" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i>Edit</a>&nbsp;
+                        <a asp-area="Admin" asp-controller="EmpDetail" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i>Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+*@
+
+@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL>
+
+@{
+    ViewBag.Title = "Emp Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="card card-primary card-outline">
+    <div class="card-header border-0">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title m-0">@ViewBag.Title</h5>
+            <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> Add @ViewBag.Title</a>
+        </div>
+    </div>
+    <div class="card-body table-responsive ">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Full Name</th>
+                    <th>Contact No</th>
+                    <th>Email Address</th>
+                    <th>Gender</th>
+                    <th>Nationality</th>
+                    <th>Birthdate</th>
+                    <th>Marital Status</th>
+                    <th>Spouse Name</th>
+                    <th>National ID</th>
+                    <th>Passport Number</th>
+                    <th>Father Name</th>
+                    <th>Mother Name</th>
+                    <th>Parent Contact</th>
+                    <th>Present Address</th>
+                    <th>Parmanent Address</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.FULL_NAME</td>
+                        <td>@item.CONTACT_NO</td>
+                        <td>@item.EMAIL_ID</td>
+                        <td>@item.GENDER_ID</td>
+                        <td>@item.NATIONALITY</td>
+                        <td>@item.BIRTH_DATE</td>
+                        <td>@item.MARITAIL_STATUS</td>
+                        <td>@item.SPOUSE_NAME</td>
+                        <td>@item.NATIONAL_ID</td>
+                        <td>@item.PASSPORT_ID</td>
+                        <td>@item.FATHER_NAME</td>
+                        <td>@item.MOTHER_NAME</td>
+                        <td>@item.PARENTS_CONACT</td>
+                        <td>@item.PRESENT_ADDRESS</td>
+                        <td>@item.PARMANENT_ADDRESS</td>
+                        <td class="text-right">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Actions
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="#">
+                                    <a class="dropdown-item btn btn-outline-danger btn-flat btn-sm" asp-area="Admin" asp-controller="EmpDetail" asp-action="Create" asp-route-id="@item.ID"><i class="fas fa-edit"></i> Edit</a>
+@*                                    <button data-url="@Url.Action("Delete")" data-param="@item.ID" class="dropdown-item btn btn-outline-danger btn-flat btn-sm confirm-item" type="button">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>*@
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
