@@ -12,6 +12,7 @@ namespace Sieve.HR.Infrastructure
 {
     public interface IUnitOfWork : IDisposable
     {
+        
         ICompanyRep Company { get; }
         IDepartmentRep Department { get; }
         IDesignationRep Designation { get; }

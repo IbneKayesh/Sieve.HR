@@ -1,4 +1,5 @@
-﻿using Sieve.HR.Services.Company;
+﻿using Sieve.HR.Services.AttendanceSheet;
+using Sieve.HR.Services.Company;
 using Sieve.HR.Services.Db;
 using Sieve.HR.Services.Department;
 using Sieve.HR.Services.Designation;
@@ -17,6 +18,7 @@ namespace Sieve.HR.Infrastructure
         public UnitOfWork(HRDbContext _context)
         {
             this.context = _context;
+            AttendanceSheet = new AttendanceSheetRep(context);
             Company = new CompanyRep(context);
             Department = new DepartmentRep(context);
             Designation = new DesignationRep(context);
@@ -27,6 +29,7 @@ namespace Sieve.HR.Infrastructure
             SalaryType = new SalaryTypeRep(context);
             Section = new SectionRep(context);
         }
+        public IAttendanceSheetRep AttendanceSheet { get; private set; }
         public ICompanyRep Company { get; private set; }
         public IDepartmentRep Department { get; private set; }
         public IDesignationRep Designation { get; private set; }
