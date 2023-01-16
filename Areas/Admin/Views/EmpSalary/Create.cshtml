@@ -18,6 +18,7 @@
             </div>
         </div>
         <div class="card-body">
+            @Html.HiddenFor(model=>model.RowVersion)
             <div class="row">
                 <div class="col">
                     @Html.LabelFor(model => model.YYYYMM, htmlAttributes: new { @class = "control-label" })
