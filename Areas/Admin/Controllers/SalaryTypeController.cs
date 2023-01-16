@@ -68,7 +68,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
         }
         private void DropDownListFor_Create()
         {
-            ViewBag.TYPE_EFFECT = unitOfWork.SalaryType.SelectListsTypeEffect();
+            ViewBag.TYPE_EFFECT = unitOfWork.SalaryType.SelectListTypeEffect();
         }
     }
 }

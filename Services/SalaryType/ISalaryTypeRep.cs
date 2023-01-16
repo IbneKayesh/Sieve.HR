@@ -6,6 +6,6 @@ namespace Sieve.HR.Services.SalaryType
 {
     public interface ISalaryTypeRep : IGenericRepository<HR_SALARY_TYPE>
     {
-        List<SelectListItem> SelectListsTypeEffect();
+        List<SelectListItem> SelectListTypeEffect();
     }
 }

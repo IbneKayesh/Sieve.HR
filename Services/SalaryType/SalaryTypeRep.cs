@@ -9,7 +9,7 @@ namespace Sieve.HR.Services.SalaryType
     {
         public SalaryTypeRep(HRDbContext context) : base(context) { }
 
-        public List<SelectListItem> SelectListsTypeEffect()
+        public List<SelectListItem> SelectListTypeEffect()
         {
             List<SelectListItem> listItems = new List<SelectListItem>();
             listItems.Add(new SelectListItem { Text = "Payable", Value = "0", Selected = true });

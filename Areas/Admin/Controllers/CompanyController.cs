@@ -18,7 +18,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
             IEnumerable<HR_COMPANY> objList = unitOfWork.Company.SelectAll(orderBy: x => x.OrderBy(o => o.ID));
             foreach (HR_COMPANY item in objList)
             {
-                IEnumerable<HR_DEPARTMENT> subList = unitOfWork.Department.SelectAll(x => x.COMP_ID == item.ID);
+                IEnumerable<HR_DEPARTMENT> subList = unitOfWork.Department.SelectAll(filter: x => x.COMP_ID == item.ID);
                 item.MAX_EMP_NO_1 = subList.Sum(s => s.MAX_EMP_NO);
                 item.MAX_SALARY_1 = subList.Sum(s => s.MAX_SALARY);
             }

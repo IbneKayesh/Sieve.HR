@@ -452,6 +452,11 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("EMP_NO")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<string>("FATHER_NAME")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -514,6 +519,28 @@ namespace Sieve.HR.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("HR_EMP_DETAIL");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            BIRTH_DATE = new DateTime(1998, 1, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6606),
+                            CONTACT_NO = "008801722688266",
+                            EMAIL_ID = "ibnekayesh91@gmail.com",
+                            EMP_NO = "EMP-00001",
+                            FATHER_NAME = "Father",
+                            FULL_NAME = "Md. Ibne Kayesh",
+                            GENDER_ID = "Male",
+                            MARITAIL_STATUS = "Married",
+                            MOTHER_NAME = "Mother",
+                            NATIONALITY = "Bangladeshi",
+                            NATIONAL_ID = "1234567890",
+                            PARENTS_CONACT = "Dhaka",
+                            PARMANENT_ADDRESS = "Dhaka, Bangladesh",
+                            PASSPORT_ID = "1234567890",
+                            PRESENT_ADDRESS = "Dhaka, Bangladesh",
+                            SPOUSE_NAME = "N/A"
+                        });
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_EDU", b =>
@@ -564,6 +591,9 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("APPROVED_BY")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("APPROVED_DATE")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime?>("CONF_DATE")
                         .IsRequired()
                         .HasColumnType("datetime2");
@@ -574,7 +604,7 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("EMP_ID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("END_DATE")
+                    b.Property<DateTime?>("END_DATE")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("GROSS_SALARY")
@@ -586,6 +616,9 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("INITIATED_BY")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("INITIATED_DATE")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("SECTION_ID")
                         .HasColumnType("int");
 
@@ -595,11 +628,29 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("VERIFIED_BY")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("VERIFIED_DATE")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("ID");
 
                     b.HasIndex("HR_DESIGNATIONSID");
 
                     b.ToTable("HR_EMP_JOB");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            APPROVED_BY = 1,
+                            CONF_DATE = new DateTime(2023, 2, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6702),
+                            DESIG_ID = 1,
+                            EMP_ID = 1,
+                            GROSS_SALARY = 1900000,
+                            INITIATED_BY = 1,
+                            SECTION_ID = 1,
+                            START_DATE = new DateTime(2023, 4, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6695),
+                            VERIFIED_BY = 1
+                        });
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_LEAVE_APPS", b =>
@@ -763,6 +814,12 @@ namespace Sieve.HR.Migrations
 
                     b.Property<int>("ROSTER_ID")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.Property<int>("SUPERVISOR_ID")
                         .HasColumnType("int");

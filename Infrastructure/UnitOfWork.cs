@@ -4,6 +4,8 @@ using Sieve.HR.Services.Department;
 using Sieve.HR.Services.Designation;
 using Sieve.HR.Services.DutyRoster;
 using Sieve.HR.Services.EmpDetail;
+using Sieve.HR.Services.EmpJob;
+using Sieve.HR.Services.EmpRoster;
 using Sieve.HR.Services.SalaryType;
 using Sieve.HR.Services.Section;
 
@@ -19,17 +21,22 @@ namespace Sieve.HR.Infrastructure
             Department = new DepartmentRep(context);
             Designation = new DesignationRep(context);
             DutyRoster = new DutyRosterRep(context);
+            EmpDetail = new EmpDetailRep(context);
+            EmpJob = new EmpJobRep(context);
+            EmpRoster = new EmpRosterRep(context);
             SalaryType = new SalaryTypeRep(context);
             Section = new SectionRep(context);
-            EmpDetail = new EmpDetailRep(context);
         }
         public ICompanyRep Company { get; private set; }
         public IDepartmentRep Department { get; private set; }
         public IDesignationRep Designation { get; private set; }
         public IDutyRosterRep DutyRoster { get; private set; }
+        public IEmpDetailRep EmpDetail { get; private set; }
+        public IEmpJobRep EmpJob { get; private set; }
+        public IEmpRosterRep EmpRoster { get; private set; }
         public ISalaryTypeRep SalaryType { get; private set; }
         public ISectionRep Section { get; private set; }
-        public IEmpDetailRep EmpDetail { get; private set; }
+
 
 
 

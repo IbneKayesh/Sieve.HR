@@ -16,6 +16,11 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "ID")]
         public int ID { get; set; }
 
+        [Display(Name = "Employee No")]
+        [Required(ErrorMessage = "{0} is required")]
+        [StringLength(100, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 1)]
+        public string EMP_NO { get; set; }
+
         [Display(Name = "Full Name")]
         [Required(ErrorMessage = "{0} is required")]
         [StringLength(100, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 3)]

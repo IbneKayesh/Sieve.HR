@@ -3,6 +3,8 @@ using Sieve.HR.Services.Department;
 using Sieve.HR.Services.Designation;
 using Sieve.HR.Services.DutyRoster;
 using Sieve.HR.Services.EmpDetail;
+using Sieve.HR.Services.EmpJob;
+using Sieve.HR.Services.EmpRoster;
 using Sieve.HR.Services.SalaryType;
 using Sieve.HR.Services.Section;
 
@@ -14,9 +16,11 @@ namespace Sieve.HR.Infrastructure
         IDepartmentRep Department { get; }
         IDesignationRep Designation { get; }
         IDutyRosterRep DutyRoster { get; }
+        IEmpDetailRep EmpDetail { get; }
+        IEmpJobRep EmpJob { get; }
+        IEmpRosterRep EmpRoster { get; }
         ISalaryTypeRep SalaryType { get; }
         ISectionRep Section { get; }
-        IEmpDetailRep EmpDetail { get; }
 
         EQResult Commit();
     }
