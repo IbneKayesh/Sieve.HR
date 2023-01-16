@@ -12,8 +12,8 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    [Migration("20230115171106_init")]
-    partial class init
+    [Migration("20230116174929_asad1")]
+    partial class asad1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,6 +53,12 @@ namespace Sieve.HR.Migrations
 
                     b.Property<int>("ROSTER_ID")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.Property<int>("YEAR_ID")
                         .HasColumnType("int");
@@ -140,6 +146,12 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("MAX_SALARY")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.HasKey("ID");
 
                     b.HasIndex("COMP_ID");
@@ -155,7 +167,8 @@ namespace Sieve.HR.Migrations
                             DEPT_NAME = "Admin",
                             HEAD_EMP_ID = 1,
                             MAX_EMP_NO = 10,
-                            MAX_SALARY = 1000000
+                            MAX_SALARY = 1000000,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
                         },
                         new
                         {
@@ -165,7 +178,8 @@ namespace Sieve.HR.Migrations
                             DEPT_NAME = "Sales",
                             HEAD_EMP_ID = 2,
                             MAX_EMP_NO = 10,
-                            MAX_SALARY = 1000000
+                            MAX_SALARY = 1000000,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
                         });
                 });
 
@@ -411,6 +425,12 @@ namespace Sieve.HR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<string>("TYPE_NAME")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -424,11 +444,13 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Institution"
                         },
                         new
                         {
                             ID = 2,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Training"
                         });
                 });
@@ -514,6 +536,12 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<string>("SPOUSE_NAME")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -526,7 +554,7 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
-                            BIRTH_DATE = new DateTime(1998, 1, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6606),
+                            BIRTH_DATE = new DateTime(1998, 1, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(401),
                             CONTACT_NO = "008801722688266",
                             EMAIL_ID = "ibnekayesh91@gmail.com",
                             EMP_NO = "EMP-00001",
@@ -541,6 +569,7 @@ namespace Sieve.HR.Migrations
                             PARMANENT_ADDRESS = "Dhaka, Bangladesh",
                             PASSPORT_ID = "1234567890",
                             PRESENT_ADDRESS = "Dhaka, Bangladesh",
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SPOUSE_NAME = "N/A"
                         });
                 });
@@ -576,6 +605,12 @@ namespace Sieve.HR.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.HasKey("ID");
 
@@ -621,6 +656,12 @@ namespace Sieve.HR.Migrations
                     b.Property<DateTime?>("INITIATED_DATE")
                         .HasColumnType("datetime2");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<int>("SECTION_ID")
                         .HasColumnType("int");
 
@@ -644,13 +685,14 @@ namespace Sieve.HR.Migrations
                         {
                             ID = 1,
                             APPROVED_BY = 1,
-                            CONF_DATE = new DateTime(2023, 2, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6702),
+                            CONF_DATE = new DateTime(2023, 2, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(436),
                             DESIG_ID = 1,
                             EMP_ID = 1,
                             GROSS_SALARY = 1900000,
                             INITIATED_BY = 1,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECTION_ID = 1,
-                            START_DATE = new DateTime(2023, 4, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6695),
+                            START_DATE = new DateTime(2023, 4, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(433),
                             VERIFIED_BY = 1
                         });
                 });
@@ -678,6 +720,12 @@ namespace Sieve.HR.Migrations
 
                     b.Property<int>("LEAVE_TYPE_ID")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.Property<int>("TOTAL_DAYS")
                         .HasColumnType("int");
@@ -707,6 +755,12 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("LEAVE_QTY")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<int>("YEAR_ID")
                         .HasColumnType("int");
 
@@ -732,6 +786,12 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("NET_PAY")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<int>("SECTION_ID")
                         .HasColumnType("int");
 
@@ -756,6 +816,12 @@ namespace Sieve.HR.Migrations
 
                     b.Property<int>("PAYSLIP_ID")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.Property<int>("SALARY_TYPE_ID")
                         .HasColumnType("int");
@@ -798,6 +864,12 @@ namespace Sieve.HR.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.HasKey("ID");
 
@@ -851,6 +923,12 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("EMP_ID")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.Property<int>("SALARY_AMNT")
                         .HasColumnType("int");
 
@@ -894,6 +972,12 @@ namespace Sieve.HR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
                     b.HasKey("YEAR_ID", "MONTH_ID", "DAY_ID");
 
                     b.ToTable("HR_HOLIDAY_CALENDER");
@@ -906,6 +990,12 @@ namespace Sieve.HR.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.Property<string>("TYPE_NAME")
                         .IsRequired()
@@ -923,18 +1013,21 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Casual",
                             TYPE_QTY = 10
                         },
                         new
                         {
                             ID = 2,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Sick",
                             TYPE_QTY = 14
                         },
                         new
                         {
                             ID = 3,
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Earned",
                             TYPE_QTY = 0
                         });

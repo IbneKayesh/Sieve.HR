@@ -43,8 +43,4 @@
     <None Include="F:\Sheikh Asad Quadir\ASP.NET CORE\Kayes Vai\HR2\.editorconfig" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\EmpPayslip\" />
-  </ItemGroup>
-
 </Project>

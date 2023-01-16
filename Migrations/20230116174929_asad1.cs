@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sieve.HR.Migrations
 {
-    public partial class init : Migration
+    public partial class asad1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,7 +21,8 @@ namespace Sieve.HR.Migrations
                     OUT_TIME = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     OT_HOURS = table.Column<int>(type: "int", nullable: false),
                     ATTEND_STATUS = table.Column<int>(type: "int", nullable: false),
-                    ROSTER_ID = table.Column<int>(type: "int", nullable: false)
+                    ROSTER_ID = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -85,7 +86,8 @@ namespace Sieve.HR.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TYPE_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    TYPE_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -113,7 +115,8 @@ namespace Sieve.HR.Migrations
                     MOTHER_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     PARENTS_CONACT = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     PRESENT_ADDRESS = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    PARMANENT_ADDRESS = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    PARMANENT_ADDRESS = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -131,7 +134,8 @@ namespace Sieve.HR.Migrations
                     EDU_TITLE = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     EDU_YEAR = table.Column<int>(type: "int", nullable: false),
                     EDU_GRADE = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    INSTITUE_NAME = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    INSTITUE_NAME = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -151,7 +155,8 @@ namespace Sieve.HR.Migrations
                     LEAVE_TYPE_ID = table.Column<int>(type: "int", nullable: false),
                     LEAVE_DETAIL = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     VERIFY_BY = table.Column<int>(type: "int", nullable: false),
-                    APPROVED_BY = table.Column<int>(type: "int", nullable: false)
+                    APPROVED_BY = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -166,7 +171,8 @@ namespace Sieve.HR.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EMP_ID = table.Column<int>(type: "int", nullable: false),
                     YEAR_ID = table.Column<int>(type: "int", nullable: false),
-                    LEAVE_QTY = table.Column<int>(type: "int", nullable: false)
+                    LEAVE_QTY = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -183,7 +189,8 @@ namespace Sieve.HR.Migrations
                     SECTION_ID = table.Column<int>(type: "int", nullable: false),
                     YEAR_ID = table.Column<int>(type: "int", nullable: false),
                     MONTH_ID = table.Column<int>(type: "int", nullable: false),
-                    NET_PAY = table.Column<int>(type: "int", nullable: false)
+                    NET_PAY = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -198,7 +205,8 @@ namespace Sieve.HR.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PAYSLIP_ID = table.Column<int>(type: "int", nullable: false),
                     SALARY_TYPE_ID = table.Column<int>(type: "int", nullable: false),
-                    PAYSLIP_AMT = table.Column<int>(type: "int", nullable: false)
+                    PAYSLIP_AMT = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -214,7 +222,8 @@ namespace Sieve.HR.Migrations
                     DAY_ID = table.Column<int>(type: "int", nullable: false),
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HOLIDAY_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    HOLIDAY_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -228,7 +237,8 @@ namespace Sieve.HR.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TYPE_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    TYPE_QTY = table.Column<int>(type: "int", nullable: false)
+                    TYPE_QTY = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -261,7 +271,8 @@ namespace Sieve.HR.Migrations
                     DEPT_ADDR = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     HEAD_EMP_ID = table.Column<int>(type: "int", nullable: false),
                     MAX_EMP_NO = table.Column<int>(type: "int", nullable: false),
-                    MAX_SALARY = table.Column<int>(type: "int", nullable: false)
+                    MAX_SALARY = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -292,7 +303,8 @@ namespace Sieve.HR.Migrations
                     VERIFIED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     APPROVED_BY = table.Column<int>(type: "int", nullable: false),
                     APPROVED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    HR_DESIGNATIONSID = table.Column<int>(type: "int", nullable: true)
+                    HR_DESIGNATIONSID = table.Column<int>(type: "int", nullable: true),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -315,7 +327,8 @@ namespace Sieve.HR.Migrations
                     DESIGNATION = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     REF_CONTACT = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     REF_EMAIL = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    REF_ADDR = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true)
+                    REF_ADDR = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -373,7 +386,8 @@ namespace Sieve.HR.Migrations
                     YYYYMM = table.Column<int>(type: "int", nullable: false),
                     EMP_ID = table.Column<int>(type: "int", nullable: false),
                     SALARY_TYPE_ID = table.Column<int>(type: "int", nullable: false),
-                    SALARY_AMNT = table.Column<int>(type: "int", nullable: false)
+                    SALARY_AMNT = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -462,12 +476,12 @@ namespace Sieve.HR.Migrations
             migrationBuilder.InsertData(
                 table: "HR_EMP_DETAIL",
                 columns: new[] { "ID", "BIRTH_DATE", "CONTACT_NO", "EMAIL_ID", "EMP_NO", "FATHER_NAME", "FULL_NAME", "GENDER_ID", "MARITAIL_STATUS", "MOTHER_NAME", "NATIONALITY", "NATIONAL_ID", "PARENTS_CONACT", "PARMANENT_ADDRESS", "PASSPORT_ID", "PRESENT_ADDRESS", "SPOUSE_NAME" },
-                values: new object[] { 1, new DateTime(1998, 1, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6606), "008801722688266", "ibnekayesh91@gmail.com", "EMP-00001", "Father", "Md. Ibne Kayesh", "Male", "Married", "Mother", "Bangladeshi", "1234567890", "Dhaka", "Dhaka, Bangladesh", "1234567890", "Dhaka, Bangladesh", "N/A" });
+                values: new object[] { 1, new DateTime(1998, 1, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(401), "008801722688266", "ibnekayesh91@gmail.com", "EMP-00001", "Father", "Md. Ibne Kayesh", "Male", "Married", "Mother", "Bangladeshi", "1234567890", "Dhaka", "Dhaka, Bangladesh", "1234567890", "Dhaka, Bangladesh", "N/A" });
 
             migrationBuilder.InsertData(
                 table: "HR_EMP_JOB",
                 columns: new[] { "ID", "APPROVED_BY", "APPROVED_DATE", "CONF_DATE", "DESIG_ID", "EMP_ID", "END_DATE", "GROSS_SALARY", "HR_DESIGNATIONSID", "INITIATED_BY", "INITIATED_DATE", "SECTION_ID", "START_DATE", "VERIFIED_BY", "VERIFIED_DATE" },
-                values: new object[] { 1, 1, null, new DateTime(2023, 2, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6702), 1, 1, null, 1900000, null, 1, null, 1, new DateTime(2023, 4, 15, 23, 11, 5, 657, DateTimeKind.Local).AddTicks(6695), 1, null });
+                values: new object[] { 1, 1, null, new DateTime(2023, 2, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(436), 1, 1, null, 1900000, null, 1, null, 1, new DateTime(2023, 4, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(433), 1, null });
 
             migrationBuilder.InsertData(
                 table: "HR_LEAVE_TYPE",
