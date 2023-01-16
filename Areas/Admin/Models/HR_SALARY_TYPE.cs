@@ -3,12 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_SALARY_TYPE
+    public class HR_SALARY_TYPE : HR_COMMON
     {
         public HR_SALARY_TYPE()
         {
             HR_EMP_SALARY_NAV = new HashSet<HR_EMP_SALARY>();
-            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 };
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,13 +22,6 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "Type Effect")]
         [Required(ErrorMessage = "{0} is required")]
         public int TYPE_EFFECT { get; set; } = 0;
-
-
-        [Display(Name = "Concurrency Timestamp")]
-        [Required(ErrorMessage = "{0} is required")]
-        [ConcurrencyCheck]
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
 
 
         //For Navigation

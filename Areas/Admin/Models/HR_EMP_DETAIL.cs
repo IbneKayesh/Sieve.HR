@@ -2,7 +2,7 @@
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_EMP_DETAIL
+    public class HR_EMP_DETAIL : HR_COMMON
     {
         public HR_EMP_DETAIL()
         {

@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_EMP_LEAVE_BALANCE
+    public class HR_EMP_LEAVE_BALANCE : HR_COMMON
     {
         [Key]
         [Display(Name = "ID")]

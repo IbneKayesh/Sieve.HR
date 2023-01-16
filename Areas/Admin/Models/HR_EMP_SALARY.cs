@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_EMP_SALARY
+    public class HR_EMP_SALARY : HR_COMMON
     {
 
         [Key]

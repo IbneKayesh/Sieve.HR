@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_COMMON
+    public class HR_COMMON 
     {
         public HR_COMMON()
         {

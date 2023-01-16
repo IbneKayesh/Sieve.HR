@@ -5,7 +5,7 @@ using System.Drawing;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_DEPARTMENT
+    public class HR_DEPARTMENT : HR_COMMON
     {
         public HR_DEPARTMENT()
         {

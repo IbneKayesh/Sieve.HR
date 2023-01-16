@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_LEAVE_TYPE
+    public class HR_LEAVE_TYPE : HR_COMMON
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

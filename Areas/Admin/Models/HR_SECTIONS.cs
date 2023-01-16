@@ -3,11 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_SECTIONS
+    public class HR_SECTIONS: HR_COMMON
     {
         public HR_SECTIONS()
         {
-            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 };
         }
 
         [Key] // Primary Key
@@ -40,13 +39,6 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "Max Total Salary")]
         [Required(ErrorMessage = "{0} is required")]
         public int MAX_SALARY { get; set; } = 100000;
-
-
-        [Display(Name = "Concurrency Timestamp")]
-        [Required(ErrorMessage = "{0} is required")]
-        [ConcurrencyCheck]
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
 
         //Foreign Key
 

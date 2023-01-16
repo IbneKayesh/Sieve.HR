@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_EMP_EDU
+    public class HR_EMP_EDU : HR_COMMON
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

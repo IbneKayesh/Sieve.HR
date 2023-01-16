@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_ATTENDANCE_SHEET
+    public class HR_ATTENDANCE_SHEET : HR_COMMON
     {
         [Display(Name = "Emp Id")]
         public int EMP_ID { get; set; }

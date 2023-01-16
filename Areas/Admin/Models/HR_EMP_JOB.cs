@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_EMP_JOB
+    public class HR_EMP_JOB : HR_COMMON
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

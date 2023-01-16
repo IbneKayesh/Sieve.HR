@@ -3,12 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_COMPANY
+    public class HR_COMPANY : HR_COMMON
     {
         public HR_COMPANY()
         {
             HR_DEPARTMENT_NAV = new HashSet<HR_DEPARTMENT>();
-            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 };
         }
 
         [Key]
@@ -43,14 +42,7 @@ namespace Sieve.HR.Areas.Admin.Models
         [Display(Name = "Total Salary")]
         [NotMapped]
         public int MAX_SALARY_1 { get; set; } = 0;
-
-
-        [Display(Name = "Concurrency Timestamp")]
-        [Required(ErrorMessage = "{0} is required")]
-        [ConcurrencyCheck]
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
-
+        
         //For Navigation
         public virtual ICollection<HR_DEPARTMENT> HR_DEPARTMENT_NAV { get; set; }
     }

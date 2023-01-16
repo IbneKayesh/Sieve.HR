@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_HOLIDAY_CALENDER
+    public class HR_HOLIDAY_CALENDER : HR_COMMON
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

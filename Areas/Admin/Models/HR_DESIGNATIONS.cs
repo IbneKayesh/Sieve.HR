@@ -3,12 +3,11 @@
 
 namespace Sieve.HR.Areas.Admin.Models
 {
-    public class HR_DESIGNATIONS
+    public class HR_DESIGNATIONS : HR_COMMON
     {
         public HR_DESIGNATIONS()
         {
             HR_EMP_JOB_NAV = new HashSet<HR_EMP_JOB>();
-            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 };
         }
         [Key]
         [Display(Name = "ID")]
@@ -42,13 +41,6 @@ namespace Sieve.HR.Areas.Admin.Models
         [Required(ErrorMessage = "{0} is required")]
         [Range(minimum: 1000, maximum: int.MaxValue)]
         public int MAX_SALARY { get; set; } = 9999999;
-
-
-        [Display(Name = "Concurrency Timestamp")]
-        [Required(ErrorMessage = "{0} is required")]
-        [ConcurrencyCheck]
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
 
         //For Navigation
         public virtual ICollection<HR_EMP_JOB> HR_EMP_JOB_NAV { get; set; }
