@@ -552,7 +552,7 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
-                            BIRTH_DATE = new DateTime(1998, 1, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(401),
+                            BIRTH_DATE = new DateTime(1998, 1, 18, 11, 49, 43, 986, DateTimeKind.Local).AddTicks(8202),
                             CONTACT_NO = "008801722688266",
                             EMAIL_ID = "ibnekayesh91@gmail.com",
                             EMP_NO = "EMP-00001",
@@ -683,14 +683,14 @@ namespace Sieve.HR.Migrations
                         {
                             ID = 1,
                             APPROVED_BY = 1,
-                            CONF_DATE = new DateTime(2023, 2, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(436),
+                            CONF_DATE = new DateTime(2023, 2, 18, 11, 49, 43, 986, DateTimeKind.Local).AddTicks(8234),
                             DESIG_ID = 1,
                             EMP_ID = 1,
                             GROSS_SALARY = 1900000,
                             INITIATED_BY = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECTION_ID = 1,
-                            START_DATE = new DateTime(2023, 4, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(433),
+                            START_DATE = new DateTime(2023, 4, 18, 11, 49, 43, 986, DateTimeKind.Local).AddTicks(8231),
                             VERIFIED_BY = 1
                         });
                 });

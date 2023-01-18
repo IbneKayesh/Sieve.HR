@@ -10,8 +10,6 @@ namespace Sieve.HR.Areas.Admin.Models
             HR_EMP_ROSTER_HEAD = new HashSet<HR_EMP_ROSTER>();
         }
 
-
-
         [Key]
         [Display(Name = "ID")]
         public int ID { get; set; }

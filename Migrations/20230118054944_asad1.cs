@@ -476,12 +476,12 @@ namespace Sieve.HR.Migrations
             migrationBuilder.InsertData(
                 table: "HR_EMP_DETAIL",
                 columns: new[] { "ID", "BIRTH_DATE", "CONTACT_NO", "EMAIL_ID", "EMP_NO", "FATHER_NAME", "FULL_NAME", "GENDER_ID", "MARITAIL_STATUS", "MOTHER_NAME", "NATIONALITY", "NATIONAL_ID", "PARENTS_CONACT", "PARMANENT_ADDRESS", "PASSPORT_ID", "PRESENT_ADDRESS", "SPOUSE_NAME" },
-                values: new object[] { 1, new DateTime(1998, 1, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(401), "008801722688266", "ibnekayesh91@gmail.com", "EMP-00001", "Father", "Md. Ibne Kayesh", "Male", "Married", "Mother", "Bangladeshi", "1234567890", "Dhaka", "Dhaka, Bangladesh", "1234567890", "Dhaka, Bangladesh", "N/A" });
+                values: new object[] { 1, new DateTime(1998, 1, 18, 11, 49, 43, 986, DateTimeKind.Local).AddTicks(8202), "008801722688266", "ibnekayesh91@gmail.com", "EMP-00001", "Father", "Md. Ibne Kayesh", "Male", "Married", "Mother", "Bangladeshi", "1234567890", "Dhaka", "Dhaka, Bangladesh", "1234567890", "Dhaka, Bangladesh", "N/A" });
 
             migrationBuilder.InsertData(
                 table: "HR_EMP_JOB",
                 columns: new[] { "ID", "APPROVED_BY", "APPROVED_DATE", "CONF_DATE", "DESIG_ID", "EMP_ID", "END_DATE", "GROSS_SALARY", "HR_DESIGNATIONSID", "INITIATED_BY", "INITIATED_DATE", "SECTION_ID", "START_DATE", "VERIFIED_BY", "VERIFIED_DATE" },
-                values: new object[] { 1, 1, null, new DateTime(2023, 2, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(436), 1, 1, null, 1900000, null, 1, null, 1, new DateTime(2023, 4, 16, 23, 49, 29, 23, DateTimeKind.Local).AddTicks(433), 1, null });
+                values: new object[] { 1, 1, null, new DateTime(2023, 2, 18, 11, 49, 43, 986, DateTimeKind.Local).AddTicks(8234), 1, 1, null, 1900000, null, 1, null, 1, new DateTime(2023, 4, 18, 11, 49, 43, 986, DateTimeKind.Local).AddTicks(8231), 1, null });
 
             migrationBuilder.InsertData(
                 table: "HR_LEAVE_TYPE",

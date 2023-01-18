@@ -9,7 +9,7 @@ namespace Sieve.HR.Services.Db
         {
             services.AddDbContext<HRDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("HrDbCon4"));
+                options.UseSqlServer(configuration.GetConnectionString("HrDbCon3"));
             });
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
