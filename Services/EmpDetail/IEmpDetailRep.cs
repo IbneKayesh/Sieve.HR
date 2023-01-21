@@ -5,5 +5,6 @@ namespace Sieve.HR.Services.EmpDetail
 {
     public interface IEmpDetailRep : IGenericRepository<HR_EMP_DETAIL>
     {
+        string GetNewEmpNo();
     }
 }

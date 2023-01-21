@@ -56,11 +56,27 @@ namespace Sieve.HR.Areas.Admin.Controllers
                 DropDownListFor_Create();
                 if (obj.ID <= 0)
                 {
-                    if (string.IsNullOrWhiteSpace(obj.EMP_NO))
-                    {
-                        obj.EMP_NO = "EMP-" + obj.ID.ToString().PadLeft(5, '0'); 
+                    //if (string.IsNullOrWhiteSpace(obj.EMP_NO))
+                    //{
+                    //    obj.EMP_NO = "EMP-" + obj.ID.ToString().PadLeft(5, '0'); 
+                    //}
+
+                    IEnumerable<HR_EMP_DETAIL> duplicatedFinder = unitOfWork.EmpDetail.SelectAll(filter: x => x.NATIONAL_ID == obj.NATIONAL_ID);
+                    if (duplicatedFinder.Any()) {
+                        TempData["msg"] = SweetMessages.ShowError("Employee Already Exist");
                     }
-                    unitOfWork.EmpDetail.Insert(obj);
+                    else
+                    {
+                        if (string.IsNullOrEmpty(obj.EMP_NO))
+                        {
+                            obj.EMP_NO = unitOfWork.EmpDetail.GetNewEmpNo();
+                            unitOfWork.EmpDetail.Insert(obj);
+                        }
+                        else
+                        {
+                            unitOfWork.EmpDetail.Insert(obj);
+                        }
+                    }                                    
                 }
                 else
                 {                    
@@ -102,6 +118,8 @@ namespace Sieve.HR.Areas.Admin.Controllers
 
         private void DropDownListFor_Create()
         {
+
+
             ViewBag.GENDER_ID = new List<SelectListItem>() { new SelectListItem { Text = "Male", Value = "Male" },
                                                              new SelectListItem { Text = "Female", Value = "Female"},
                                                              new SelectListItem { Text = "Third Gender", Value = "Third Gender"}
