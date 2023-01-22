@@ -11,12 +11,6 @@ namespace Sieve.HR.Areas.Admin.Controllers
     [Area("Admin")]
     public class EmpDetailController : Controller
     {
-        //private readonly HRDbContext _context;
-        //public EmpDetailController(HRDbContext context)
-        //{
-        //    _context = context;
-        //}
-
         private readonly IUnitOfWork unitOfWork;
         public EmpDetailController(IUnitOfWork unitOfWork)
         {
@@ -25,8 +19,6 @@ namespace Sieve.HR.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            //IEnumerable<HR_EMP_DETAIL> objList = _context.HR_EMP_DETAIL;
-
             IEnumerable<HR_EMP_DETAIL> objList = unitOfWork.EmpDetail.SelectAll(orderBy: x => x.OrderBy(o => o.ID));
             return View(objList);
         }
@@ -55,12 +47,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
             {
                 DropDownListFor_Create();
                 if (obj.ID <= 0)
-                {
-                    //if (string.IsNullOrWhiteSpace(obj.EMP_NO))
-                    //{
-                    //    obj.EMP_NO = "EMP-" + obj.ID.ToString().PadLeft(5, '0'); 
-                    //}
-
+                {                  
                     IEnumerable<HR_EMP_DETAIL> duplicatedFinder = unitOfWork.EmpDetail.SelectAll(filter: x => x.NATIONAL_ID == obj.NATIONAL_ID);
                     if (duplicatedFinder.Any()) {
                         TempData["msg"] = SweetMessages.ShowError("Employee Already Exist");
@@ -96,35 +83,14 @@ namespace Sieve.HR.Areas.Admin.Controllers
             TempData["msg"] = SweetMessages.ShowError(string.Join(", ", ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)));
             return View(obj);
         }
-
-
-        //public IActionResult Delete(int? id)
-        //{
-        //    var Deleterecord = _context.HR_EMP_DETAIL.Find(id);
-
-        //    if (id == null || id == 0)
-        //    {
-        //        return NotFound();
-        //    }
-        //    else
-        //    {
-        //        _context.HR_EMP_DETAIL.Remove(Deleterecord);
-        //        _context.SaveChanges();
-        //        TempData["ResultOk"] = "Data Deleted Successfully !";
-        //        return RedirectToAction("Index");
-        //    }
-
-        //}
-
+        
         private void DropDownListFor_Create()
         {
-
 
             ViewBag.GENDER_ID = new List<SelectListItem>() { new SelectListItem { Text = "Male", Value = "Male" },
                                                              new SelectListItem { Text = "Female", Value = "Female"},
                                                              new SelectListItem { Text = "Third Gender", Value = "Third Gender"}
                                                             };
-
             ViewBag.MARITAIL_STATUS = new List<SelectListItem>() { new SelectListItem { Text = "Married", Value = "Married" },
                                                              new SelectListItem { Text = "Unmarried", Value = "Unmarried"},
                                                              new SelectListItem { Text = "Divorce", Value = "Divorce"}
