@@ -36,7 +36,7 @@ namespace Sieve.HR.Areas.Admin.Models
 
         [Display(Name = "Gender")]
         [Required(ErrorMessage = "{0} is required")]
-        [StringLength(15, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 3)]
+        [StringLength(15, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 1)]
         public string? GENDER_ID { get; set; }
 
         [Display(Name = "Nationality")]
@@ -50,7 +50,7 @@ namespace Sieve.HR.Areas.Admin.Models
 
         [Display(Name = "Marital Status")]
         [Required(ErrorMessage = "{0} is required")]
-        [StringLength(10, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 3)]
+        [StringLength(10, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 1)]
         public string? MARITAIL_STATUS { get; set; }
 
         [Display(Name = "Spouse Name")]
@@ -96,5 +96,6 @@ namespace Sieve.HR.Areas.Admin.Models
         public virtual HR_EMP_ROSTER? HR_EMP_ROSTER_EMP { get; set; }
         public virtual ICollection<HR_EMP_ROSTER> HR_EMP_ROSTER_SUPERVISOR { get; set; }
         public virtual ICollection<HR_EMP_ROSTER> HR_EMP_ROSTER_HEAD { get; set; }
+        public virtual ICollection<HR_EMP_EDU> HR_EMP_EDU_NAV { get; set; }
     }
 }

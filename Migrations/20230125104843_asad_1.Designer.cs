@@ -12,8 +12,8 @@ using Sieve.HR.Services.Db;
 namespace Sieve.HR.Migrations
 {
     [DbContext(typeof(HRDbContext))]
-    [Migration("20230121050632_asad1")]
-    partial class asad1
+    [Migration("20230125104843_asad_1")]
+    partial class asad_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,6 +29,12 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("ATTEND_STATUS")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<int>("DAY_ID")
                         .HasColumnType("int");
 
@@ -39,6 +45,9 @@ namespace Sieve.HR.Migrations
                         .IsRequired()
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
+
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
 
                     b.Property<int>("MONTH_ID")
                         .HasColumnType("int");
@@ -59,6 +68,12 @@ namespace Sieve.HR.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
 
                     b.Property<int>("YEAR_ID")
                         .HasColumnType("int");
@@ -84,6 +99,15 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
+
                     b.Property<int>("MAX_EMP_NO")
                         .HasColumnType("int");
 
@@ -95,6 +119,12 @@ namespace Sieve.HR.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
@@ -110,9 +140,14 @@ namespace Sieve.HR.Migrations
                             ID = 1,
                             COMP_ADDR = "Dhaka, Bangladesh",
                             COMP_NAME = "Sieve Org",
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8859),
+                            CreateUser = 1,
+                            IsActive = 1,
                             MAX_EMP_NO = 1000,
                             MAX_SALARY = 100000000,
-                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8868),
+                            UpdateUser = 1
                         });
                 });
 
@@ -125,6 +160,12 @@ namespace Sieve.HR.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
                     b.Property<int>("COMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
                         .HasColumnType("int");
 
                     b.Property<string>("DEPT_ADDR")
@@ -140,6 +181,9 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("HEAD_EMP_ID")
                         .HasColumnType("int");
 
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
+
                     b.Property<int>("MAX_EMP_NO")
                         .HasColumnType("int");
 
@@ -152,6 +196,12 @@ namespace Sieve.HR.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.HasIndex("COMP_ID");
@@ -163,23 +213,33 @@ namespace Sieve.HR.Migrations
                         {
                             ID = 1,
                             COMP_ID = 1,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8978),
+                            CreateUser = 1,
                             DEPT_ADDR = "First Floor, Mail Branch",
                             DEPT_NAME = "Admin",
                             HEAD_EMP_ID = 1,
+                            IsActive = 1,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
-                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8978),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
                             COMP_ID = 1,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8982),
+                            CreateUser = 1,
                             DEPT_ADDR = "Second Floor, Mail Branch",
                             DEPT_NAME = "Sales",
                             HEAD_EMP_ID = 2,
+                            IsActive = 1,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
-                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8982),
+                            UpdateUser = 1
                         });
                 });
 
@@ -191,10 +251,19 @@ namespace Sieve.HR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<string>("FULL_FORM")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
 
                     b.Property<int>("MAX_SALARY")
                         .HasColumnType("int");
@@ -216,6 +285,12 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.HasIndex("SHORT_FORM")
@@ -228,122 +303,182 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8997),
+                            CreateUser = 1,
                             FULL_FORM = "Cheif Executive Officer",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 0,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "CEO"
+                            SHORT_FORM = "CEO",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8998),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9000),
+                            CreateUser = 1,
                             FULL_FORM = "Executive Director",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "ED"
+                            SHORT_FORM = "ED",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9000),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 3,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9002),
+                            CreateUser = 1,
                             FULL_FORM = "Cheif Operating Director",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 2,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "COO"
+                            SHORT_FORM = "COO",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9003),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 4,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9004),
+                            CreateUser = 1,
                             FULL_FORM = "General Manager",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 3,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "GM"
+                            SHORT_FORM = "GM",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9004),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 5,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9005),
+                            CreateUser = 1,
                             FULL_FORM = "Deputy General Manager",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 4,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "DGM"
+                            SHORT_FORM = "DGM",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9006),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 6,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9007),
+                            CreateUser = 1,
                             FULL_FORM = "Assistant General Manager",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 5,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "AGM"
+                            SHORT_FORM = "AGM",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9007),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 7,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9009),
+                            CreateUser = 1,
                             FULL_FORM = "Senior Manager",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 6,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "SM"
+                            SHORT_FORM = "SM",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9009),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 8,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9010),
+                            CreateUser = 1,
                             FULL_FORM = "Manager",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 7,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "M"
+                            SHORT_FORM = "M",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9011),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 9,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9012),
+                            CreateUser = 1,
                             FULL_FORM = "Deputy Manager",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 8,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "Dym"
+                            SHORT_FORM = "Dym",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9012),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 10,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9013),
+                            CreateUser = 1,
                             FULL_FORM = "Assistant Manager",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 9,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "AM"
+                            SHORT_FORM = "AM",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9013),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 11,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9018),
+                            CreateUser = 1,
                             FULL_FORM = "Sub Assistant Manager",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 10,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "SAM"
+                            SHORT_FORM = "SAM",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9019),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 12,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9020),
+                            CreateUser = 1,
                             FULL_FORM = "Trainee Executive",
+                            IsActive = 1,
                             MAX_SALARY = 9999999,
                             MIN_SALARY = 100000,
                             PARENT_ID = 11,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SHORT_FORM = "TE"
+                            SHORT_FORM = "TE",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9020),
+                            UpdateUser = 1
                         });
                 });
 
@@ -355,6 +490,12 @@ namespace Sieve.HR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<string>("DUTY_ROSTER_NAME")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -364,6 +505,9 @@ namespace Sieve.HR.Migrations
                         .IsRequired()
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
+
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
 
                     b.Property<int>("MAX_OT_HOUR")
                         .HasColumnType("int");
@@ -379,6 +523,12 @@ namespace Sieve.HR.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.HasIndex("DUTY_ROSTER_NAME")
@@ -391,29 +541,44 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9037),
+                            CreateUser = 1,
                             DUTY_ROSTER_NAME = "General Shift",
                             IN_TIME = "09:00",
+                            IsActive = 1,
                             MAX_OT_HOUR = 0,
                             OUT_TIME = "17:00",
-                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9038),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9125),
+                            CreateUser = 1,
                             DUTY_ROSTER_NAME = "Morning Shift",
                             IN_TIME = "06:00",
+                            IsActive = 1,
                             MAX_OT_HOUR = 2,
                             OUT_TIME = "18:00",
-                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9125),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 3,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9127),
+                            CreateUser = 1,
                             DUTY_ROSTER_NAME = "Evening Shift",
                             IN_TIME = "18:00",
+                            IsActive = 1,
                             MAX_OT_HOUR = 2,
                             OUT_TIME = "06:00",
-                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 }
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9127),
+                            UpdateUser = 1
                         });
                 });
 
@@ -424,6 +589,15 @@ namespace Sieve.HR.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -436,6 +610,12 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.ToTable("HR_EDU_TYPE");
@@ -444,14 +624,24 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9144),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            TYPE_NAME = "Institution"
+                            TYPE_NAME = "Institution",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9145),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9146),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            TYPE_NAME = "Training"
+                            TYPE_NAME = "Training",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9146),
+                            UpdateUser = 1
                         });
                 });
 
@@ -470,6 +660,12 @@ namespace Sieve.HR.Migrations
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
 
                     b.Property<string>("EMAIL_ID")
                         .IsRequired()
@@ -494,6 +690,9 @@ namespace Sieve.HR.Migrations
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
+
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
 
                     b.Property<string>("MARITAIL_STATUS")
                         .IsRequired()
@@ -545,6 +744,12 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.ToTable("HR_EMP_DETAIL");
@@ -553,13 +758,16 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
-                            BIRTH_DATE = new DateTime(1998, 1, 21, 11, 6, 32, 68, DateTimeKind.Local).AddTicks(1749),
+                            BIRTH_DATE = new DateTime(1998, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9160),
                             CONTACT_NO = "008801722688266",
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9157),
+                            CreateUser = 1,
                             EMAIL_ID = "ibnekayesh91@gmail.com",
                             EMP_NO = "EMP-00001",
                             FATHER_NAME = "Father",
                             FULL_NAME = "Md. Ibne Kayesh",
                             GENDER_ID = "Male",
+                            IsActive = 1,
                             MARITAIL_STATUS = "Married",
                             MOTHER_NAME = "Mother",
                             NATIONALITY = "Bangladeshi",
@@ -569,7 +777,35 @@ namespace Sieve.HR.Migrations
                             PASSPORT_ID = "1234567890",
                             PRESENT_ADDRESS = "Dhaka, Bangladesh",
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            SPOUSE_NAME = "N/A"
+                            SPOUSE_NAME = "N/A",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9157),
+                            UpdateUser = 1
+                        },
+                        new
+                        {
+                            ID = 2,
+                            BIRTH_DATE = new DateTime(1998, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9167),
+                            CONTACT_NO = "008801678688266",
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9165),
+                            CreateUser = 1,
+                            EMAIL_ID = "skasadquadir@gmail.com",
+                            EMP_NO = "EMP-00002",
+                            FATHER_NAME = "Father",
+                            FULL_NAME = "Sheikh Asad Quadir",
+                            GENDER_ID = "Male",
+                            IsActive = 1,
+                            MARITAIL_STATUS = "Married",
+                            MOTHER_NAME = "Mother",
+                            NATIONALITY = "Bangladeshi",
+                            NATIONAL_ID = "1234567890",
+                            PARENTS_CONACT = "Dhaka",
+                            PARMANENT_ADDRESS = "Dhaka, Bangladesh",
+                            PASSPORT_ID = "1234567890",
+                            PRESENT_ADDRESS = "Dhaka, Bangladesh",
+                            RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
+                            SPOUSE_NAME = "N/A",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9165),
+                            UpdateUser = 1
                         });
                 });
 
@@ -580,6 +816,12 @@ namespace Sieve.HR.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
 
                     b.Property<string>("EDU_GRADE")
                         .IsRequired()
@@ -605,13 +847,24 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
+
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("EMP_ID");
 
                     b.ToTable("HR_EMP_EDU");
                 });
@@ -634,6 +887,12 @@ namespace Sieve.HR.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<int>("DESIG_ID")
                         .HasColumnType("int");
 
@@ -655,6 +914,9 @@ namespace Sieve.HR.Migrations
                     b.Property<DateTime?>("INITIATED_DATE")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
+
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
@@ -666,6 +928,12 @@ namespace Sieve.HR.Migrations
 
                     b.Property<DateTime>("START_DATE")
                         .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
 
                     b.Property<int>("VERIFIED_BY")
                         .HasColumnType("int");
@@ -684,14 +952,19 @@ namespace Sieve.HR.Migrations
                         {
                             ID = 1,
                             APPROVED_BY = 1,
-                            CONF_DATE = new DateTime(2023, 2, 21, 11, 6, 32, 68, DateTimeKind.Local).AddTicks(1780),
+                            CONF_DATE = new DateTime(2023, 2, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9188),
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9184),
+                            CreateUser = 1,
                             DESIG_ID = 1,
                             EMP_ID = 1,
                             GROSS_SALARY = 1900000,
                             INITIATED_BY = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECTION_ID = 1,
-                            START_DATE = new DateTime(2023, 4, 21, 11, 6, 32, 68, DateTimeKind.Local).AddTicks(1778),
+                            START_DATE = new DateTime(2023, 4, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9186),
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9184),
+                            UpdateUser = 1,
                             VERIFIED_BY = 1
                         });
                 });
@@ -707,11 +980,20 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("APPROVED_BY")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<int>("EMP_ID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FROM_DATE")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
 
                     b.Property<string>("LEAVE_DETAIL")
                         .IsRequired()
@@ -732,6 +1014,12 @@ namespace Sieve.HR.Migrations
                     b.Property<DateTime>("TO_DATE")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.Property<int>("VERIFY_BY")
                         .HasColumnType("int");
 
@@ -748,7 +1036,16 @@ namespace Sieve.HR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsActive")
                         .HasColumnType("int");
 
                     b.Property<int>("LEAVE_QTY")
@@ -759,6 +1056,12 @@ namespace Sieve.HR.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
 
                     b.Property<int>("YEAR_ID")
                         .HasColumnType("int");
@@ -776,7 +1079,16 @@ namespace Sieve.HR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsActive")
                         .HasColumnType("int");
 
                     b.Property<int>("MONTH_ID")
@@ -792,6 +1104,12 @@ namespace Sieve.HR.Migrations
                         .HasColumnType("rowversion");
 
                     b.Property<int>("SECTION_ID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
                         .HasColumnType("int");
 
                     b.Property<int>("YEAR_ID")
@@ -810,6 +1128,15 @@ namespace Sieve.HR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
+
                     b.Property<int>("PAYSLIP_AMT")
                         .HasColumnType("int");
 
@@ -825,6 +1152,12 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("SALARY_TYPE_ID")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.ToTable("HR_EMP_PAYSLIP_DETAIL");
@@ -838,12 +1171,21 @@ namespace Sieve.HR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<string>("DESIGNATION")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsActive")
                         .HasColumnType("int");
 
                     b.Property<string>("REF_ADDR")
@@ -870,6 +1212,12 @@ namespace Sieve.HR.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.HasIndex("EMP_ID");
@@ -882,7 +1230,16 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("EMP_ID")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<int>("HEAD_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsActive")
                         .HasColumnType("int");
 
                     b.Property<int>("ROSTER_ID")
@@ -895,6 +1252,12 @@ namespace Sieve.HR.Migrations
                         .HasColumnType("rowversion");
 
                     b.Property<int>("SUPERVISOR_ID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
                         .HasColumnType("int");
 
                     b.Property<int>("WEEKEND_DAYNO")
@@ -919,7 +1282,16 @@ namespace Sieve.HR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<int>("EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsActive")
                         .HasColumnType("int");
 
                     b.Property<byte[]>("RowVersion")
@@ -932,6 +1304,12 @@ namespace Sieve.HR.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("SALARY_TYPE_ID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
                         .HasColumnType("int");
 
                     b.Property<int>("YYYYMM")
@@ -960,6 +1338,12 @@ namespace Sieve.HR.Migrations
                         .HasColumnType("int")
                         .HasColumnOrder(2);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<string>("HOLIDAY_NAME")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -971,11 +1355,20 @@ namespace Sieve.HR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
+
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
 
                     b.HasKey("YEAR_ID", "MONTH_ID", "DAY_ID");
 
@@ -989,6 +1382,15 @@ namespace Sieve.HR.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -1004,6 +1406,12 @@ namespace Sieve.HR.Migrations
                     b.Property<int>("TYPE_QTY")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.ToTable("HR_LEAVE_TYPE");
@@ -1012,23 +1420,38 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9207),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Casual",
-                            TYPE_QTY = 10
+                            TYPE_QTY = 10,
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9207),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9209),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Sick",
-                            TYPE_QTY = 14
+                            TYPE_QTY = 14,
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9210),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 3,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9211),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Earned",
-                            TYPE_QTY = 0
+                            TYPE_QTY = 0,
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9211),
+                            UpdateUser = 1
                         });
                 });
 
@@ -1039,6 +1462,15 @@ namespace Sieve.HR.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -1054,6 +1486,12 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.ToTable("HR_SALARY_TYPE");
@@ -1062,51 +1500,86 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9224),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 0,
-                            TYPE_NAME = "Salary"
+                            TYPE_NAME = "Salary",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9225),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9227),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 0,
-                            TYPE_NAME = "House Rent"
+                            TYPE_NAME = "House Rent",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9228),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 3,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9229),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 0,
-                            TYPE_NAME = "Medical"
+                            TYPE_NAME = "Medical",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9229),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 4,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9230),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 0,
-                            TYPE_NAME = "Transport"
+                            TYPE_NAME = "Transport",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9231),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 5,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9231),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 0,
-                            TYPE_NAME = "Mobile"
+                            TYPE_NAME = "Mobile",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9232),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 6,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9233),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 1,
-                            TYPE_NAME = "Deposit"
+                            TYPE_NAME = "Deposit",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9233),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 7,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9234),
+                            CreateUser = 1,
+                            IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 1,
-                            TYPE_NAME = "Loan"
+                            TYPE_NAME = "Loan",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9235),
+                            UpdateUser = 1
                         });
                 });
 
@@ -1118,10 +1591,19 @@ namespace Sieve.HR.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreateUser")
+                        .HasColumnType("int");
+
                     b.Property<int>("DEPT_ID")
                         .HasColumnType("int");
 
                     b.Property<int>("HEAD_EMP_ID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IsActive")
                         .HasColumnType("int");
 
                     b.Property<int>("MAX_EMP_NO")
@@ -1146,6 +1628,12 @@ namespace Sieve.HR.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UpdateUser")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.HasIndex("DEPT_ID");
@@ -1156,24 +1644,34 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9250),
+                            CreateUser = 1,
                             DEPT_ID = 1,
                             HEAD_EMP_ID = 1,
+                            IsActive = 1,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "First Floor, Mail Branch",
-                            SECT_NAME = "Admin"
+                            SECT_NAME = "Admin",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9250),
+                            UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
+                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9252),
+                            CreateUser = 1,
                             DEPT_ID = 2,
                             HEAD_EMP_ID = 2,
+                            IsActive = 1,
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "Second Floor, Mail Branch",
-                            SECT_NAME = "IT Product"
+                            SECT_NAME = "IT Product",
+                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9253),
+                            UpdateUser = 1
                         });
                 });
 
@@ -1200,6 +1698,17 @@ namespace Sieve.HR.Migrations
                         .IsRequired();
 
                     b.Navigation("HR_COMPANY");
+                });
+
+            modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_EDU", b =>
+                {
+                    b.HasOne("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", "HR_EMP_DETAIL")
+                        .WithMany("HR_EMP_EDU_NAV")
+                        .HasForeignKey("EMP_ID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("HR_EMP_DETAIL");
                 });
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_JOB", b =>
@@ -1311,6 +1820,8 @@ namespace Sieve.HR.Migrations
 
             modelBuilder.Entity("Sieve.HR.Areas.Admin.Models.HR_EMP_DETAIL", b =>
                 {
+                    b.Navigation("HR_EMP_EDU_NAV");
+
                     b.Navigation("HR_EMP_ROSTER_EMP");
 
                     b.Navigation("HR_EMP_ROSTER_HEAD");

@@ -17,45 +17,45 @@ namespace Sieve.HR.Areas.Admin.Controllers
         {
             this.unitOfWork = unitOfWork;
         }
-
-
-        //private readonly HRDbContext _context;
-        //public EmpEducationController(HRDbContext context)
-        //{
-        //    _context = context;
-        //}
         public IActionResult Index()
         {
-            //IEnumerable<HR_EMP_EDU> objList = _context.HR_EMP_EDU;
-
             IEnumerable<HR_EMP_EDU> objList = unitOfWork.EmpEducation.SelectAll(orderBy: x => x.OrderBy(o => o.ID));
-
             return View(objList);
         }
-        public IActionResult Create(int? id)
+        public IActionResult Create(int? id, int? EMP_ID)
         {
             DropDownListFor_Create();
             HR_EMP_EDU objDb = new HR_EMP_EDU();
-            if (id == null || id == 0)
+            if (EMP_ID == null || EMP_ID == 0)
             {
+                ViewBag.EMP_ID = EMP_ID;
                 return View(objDb);
-            }            
-            objDb = unitOfWork.EmpEducation.SelectById(id.Value);
-            return View(objDb);
+            }
+            else
+            {
+                objDb = unitOfWork.EmpEducation.SelectById(id.Value);
+                ViewBag.EMP_ID = EMP_ID;
+                return View(objDb);
+            }
+           
         }
+
         public IActionResult CreateByEmpID(int? EMP_ID)
         {
             DropDownListFor_Create();
             IEnumerable<HR_EMP_EDU> objDbList = unitOfWork.EmpEducation.SelectAll(filter: x => x.EMP_ID == EMP_ID);
             if (objDbList != null && objDbList.Count() > 0)
             {
+                ViewBag.EMP_ID = EMP_ID;
                 return View("Index", objDbList);
             }
             else
             {
+                ViewBag.EMP_ID = EMP_ID;
                 return View("Index", objDbList);
             }
         }
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -81,6 +81,7 @@ namespace Sieve.HR.Areas.Admin.Controllers
                 {
                     TempData["msg"] = SweetMessages.ShowError(eQ.MESSAGES);
                 }
+                ViewBag.EMP_ID = obj.EMP_ID;
                 return RedirectToAction(nameof(Create));
             }
             return View(obj);

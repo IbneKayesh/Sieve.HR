@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sieve.HR.Migrations
 {
-    public partial class asad1 : Migration
+    public partial class asad_1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,6 +22,11 @@ namespace Sieve.HR.Migrations
                     OT_HOURS = table.Column<int>(type: "int", nullable: false),
                     ATTEND_STATUS = table.Column<int>(type: "int", nullable: false),
                     ROSTER_ID = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -38,6 +43,11 @@ namespace Sieve.HR.Migrations
                     COMP_ADDR = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     MAX_EMP_NO = table.Column<int>(type: "int", nullable: false),
                     MAX_SALARY = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -56,6 +66,11 @@ namespace Sieve.HR.Migrations
                     PARENT_ID = table.Column<int>(type: "int", nullable: false),
                     MIN_SALARY = table.Column<int>(type: "int", nullable: false),
                     MAX_SALARY = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -73,6 +88,11 @@ namespace Sieve.HR.Migrations
                     IN_TIME = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     OUT_TIME = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     MAX_OT_HOUR = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -87,6 +107,11 @@ namespace Sieve.HR.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TYPE_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -116,30 +141,16 @@ namespace Sieve.HR.Migrations
                     PARENTS_CONACT = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     PRESENT_ADDRESS = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     PARMANENT_ADDRESS = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_HR_EMP_DETAIL", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HR_EMP_EDU",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EMP_ID = table.Column<int>(type: "int", nullable: false),
-                    EDU_TYPE_ID = table.Column<int>(type: "int", nullable: false),
-                    EDU_TITLE = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    EDU_YEAR = table.Column<int>(type: "int", nullable: false),
-                    EDU_GRADE = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    INSTITUE_NAME = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HR_EMP_EDU", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -156,6 +167,11 @@ namespace Sieve.HR.Migrations
                     LEAVE_DETAIL = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     VERIFY_BY = table.Column<int>(type: "int", nullable: false),
                     APPROVED_BY = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -172,6 +188,11 @@ namespace Sieve.HR.Migrations
                     EMP_ID = table.Column<int>(type: "int", nullable: false),
                     YEAR_ID = table.Column<int>(type: "int", nullable: false),
                     LEAVE_QTY = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -190,6 +211,11 @@ namespace Sieve.HR.Migrations
                     YEAR_ID = table.Column<int>(type: "int", nullable: false),
                     MONTH_ID = table.Column<int>(type: "int", nullable: false),
                     NET_PAY = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -206,6 +232,11 @@ namespace Sieve.HR.Migrations
                     PAYSLIP_ID = table.Column<int>(type: "int", nullable: false),
                     SALARY_TYPE_ID = table.Column<int>(type: "int", nullable: false),
                     PAYSLIP_AMT = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -223,6 +254,11 @@ namespace Sieve.HR.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HOLIDAY_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -238,6 +274,11 @@ namespace Sieve.HR.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TYPE_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     TYPE_QTY = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -253,6 +294,11 @@ namespace Sieve.HR.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TYPE_NAME = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     TYPE_EFFECT = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -272,6 +318,11 @@ namespace Sieve.HR.Migrations
                     HEAD_EMP_ID = table.Column<int>(type: "int", nullable: false),
                     MAX_EMP_NO = table.Column<int>(type: "int", nullable: false),
                     MAX_SALARY = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -304,6 +355,11 @@ namespace Sieve.HR.Migrations
                     APPROVED_BY = table.Column<int>(type: "int", nullable: false),
                     APPROVED_DATE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     HR_DESIGNATIONSID = table.Column<int>(type: "int", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -313,6 +369,35 @@ namespace Sieve.HR.Migrations
                         name: "FK_HR_EMP_JOB_HR_DESIGNATIONS_HR_DESIGNATIONSID",
                         column: x => x.HR_DESIGNATIONSID,
                         principalTable: "HR_DESIGNATIONS",
+                        principalColumn: "ID");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HR_EMP_EDU",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EMP_ID = table.Column<int>(type: "int", nullable: false),
+                    EDU_TYPE_ID = table.Column<int>(type: "int", nullable: false),
+                    EDU_TITLE = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    EDU_YEAR = table.Column<int>(type: "int", nullable: false),
+                    EDU_GRADE = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    INSTITUE_NAME = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HR_EMP_EDU", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_HR_EMP_EDU_HR_EMP_DETAIL_EMP_ID",
+                        column: x => x.EMP_ID,
+                        principalTable: "HR_EMP_DETAIL",
                         principalColumn: "ID");
                 });
 
@@ -328,6 +413,11 @@ namespace Sieve.HR.Migrations
                     REF_CONTACT = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     REF_EMAIL = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     REF_ADDR = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -350,6 +440,11 @@ namespace Sieve.HR.Migrations
                     WEEKEND_DAYNO = table.Column<int>(type: "int", nullable: false),
                     SUPERVISOR_ID = table.Column<int>(type: "int", nullable: false),
                     HEAD_ID = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -387,6 +482,11 @@ namespace Sieve.HR.Migrations
                     EMP_ID = table.Column<int>(type: "int", nullable: false),
                     SALARY_TYPE_ID = table.Column<int>(type: "int", nullable: false),
                     SALARY_AMNT = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -418,6 +518,11 @@ namespace Sieve.HR.Migrations
                     HEAD_EMP_ID = table.Column<int>(type: "int", nullable: false),
                     MAX_EMP_NO = table.Column<int>(type: "int", nullable: false),
                     MAX_SALARY = table.Column<int>(type: "int", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreateUser = table.Column<int>(type: "int", nullable: false),
+                    UpdateUser = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<int>(type: "int", nullable: false),
                     RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
@@ -432,100 +537,104 @@ namespace Sieve.HR.Migrations
 
             migrationBuilder.InsertData(
                 table: "HR_COMPANY",
-                columns: new[] { "ID", "COMP_ADDR", "COMP_NAME", "MAX_EMP_NO", "MAX_SALARY" },
-                values: new object[] { 1, "Dhaka, Bangladesh", "Sieve Org", 1000, 100000000 });
+                columns: new[] { "ID", "COMP_ADDR", "COMP_NAME", "CreateDate", "CreateUser", "IsActive", "MAX_EMP_NO", "MAX_SALARY", "UpdateDate", "UpdateUser" },
+                values: new object[] { 1, "Dhaka, Bangladesh", "Sieve Org", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8859), 1, 1, 1000, 100000000, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8868), 1 });
 
             migrationBuilder.InsertData(
                 table: "HR_DESIGNATIONS",
-                columns: new[] { "ID", "FULL_FORM", "MAX_SALARY", "MIN_SALARY", "PARENT_ID", "SHORT_FORM" },
+                columns: new[] { "ID", "CreateDate", "CreateUser", "FULL_FORM", "IsActive", "MAX_SALARY", "MIN_SALARY", "PARENT_ID", "SHORT_FORM", "UpdateDate", "UpdateUser" },
                 values: new object[,]
                 {
-                    { 1, "Cheif Executive Officer", 9999999, 100000, 0, "CEO" },
-                    { 2, "Executive Director", 9999999, 100000, 1, "ED" },
-                    { 3, "Cheif Operating Director", 9999999, 100000, 2, "COO" },
-                    { 4, "General Manager", 9999999, 100000, 3, "GM" },
-                    { 5, "Deputy General Manager", 9999999, 100000, 4, "DGM" },
-                    { 6, "Assistant General Manager", 9999999, 100000, 5, "AGM" },
-                    { 7, "Senior Manager", 9999999, 100000, 6, "SM" },
-                    { 8, "Manager", 9999999, 100000, 7, "M" },
-                    { 9, "Deputy Manager", 9999999, 100000, 8, "Dym" },
-                    { 10, "Assistant Manager", 9999999, 100000, 9, "AM" },
-                    { 11, "Sub Assistant Manager", 9999999, 100000, 10, "SAM" },
-                    { 12, "Trainee Executive", 9999999, 100000, 11, "TE" }
+                    { 1, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8997), 1, "Cheif Executive Officer", 1, 9999999, 100000, 0, "CEO", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8998), 1 },
+                    { 2, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9000), 1, "Executive Director", 1, 9999999, 100000, 1, "ED", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9000), 1 },
+                    { 3, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9002), 1, "Cheif Operating Director", 1, 9999999, 100000, 2, "COO", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9003), 1 },
+                    { 4, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9004), 1, "General Manager", 1, 9999999, 100000, 3, "GM", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9004), 1 },
+                    { 5, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9005), 1, "Deputy General Manager", 1, 9999999, 100000, 4, "DGM", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9006), 1 },
+                    { 6, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9007), 1, "Assistant General Manager", 1, 9999999, 100000, 5, "AGM", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9007), 1 },
+                    { 7, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9009), 1, "Senior Manager", 1, 9999999, 100000, 6, "SM", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9009), 1 },
+                    { 8, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9010), 1, "Manager", 1, 9999999, 100000, 7, "M", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9011), 1 },
+                    { 9, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9012), 1, "Deputy Manager", 1, 9999999, 100000, 8, "Dym", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9012), 1 },
+                    { 10, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9013), 1, "Assistant Manager", 1, 9999999, 100000, 9, "AM", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9013), 1 },
+                    { 11, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9018), 1, "Sub Assistant Manager", 1, 9999999, 100000, 10, "SAM", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9019), 1 },
+                    { 12, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9020), 1, "Trainee Executive", 1, 9999999, 100000, 11, "TE", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9020), 1 }
                 });
 
             migrationBuilder.InsertData(
                 table: "HR_DUTY_ROSTER",
-                columns: new[] { "ID", "DUTY_ROSTER_NAME", "IN_TIME", "MAX_OT_HOUR", "OUT_TIME" },
+                columns: new[] { "ID", "CreateDate", "CreateUser", "DUTY_ROSTER_NAME", "IN_TIME", "IsActive", "MAX_OT_HOUR", "OUT_TIME", "UpdateDate", "UpdateUser" },
                 values: new object[,]
                 {
-                    { 1, "General Shift", "09:00", 0, "17:00" },
-                    { 2, "Morning Shift", "06:00", 2, "18:00" },
-                    { 3, "Evening Shift", "18:00", 2, "06:00" }
+                    { 1, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9037), 1, "General Shift", "09:00", 1, 0, "17:00", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9038), 1 },
+                    { 2, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9125), 1, "Morning Shift", "06:00", 1, 2, "18:00", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9125), 1 },
+                    { 3, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9127), 1, "Evening Shift", "18:00", 1, 2, "06:00", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9127), 1 }
                 });
 
             migrationBuilder.InsertData(
                 table: "HR_EDU_TYPE",
-                columns: new[] { "ID", "TYPE_NAME" },
+                columns: new[] { "ID", "CreateDate", "CreateUser", "IsActive", "TYPE_NAME", "UpdateDate", "UpdateUser" },
                 values: new object[,]
                 {
-                    { 1, "Institution" },
-                    { 2, "Training" }
+                    { 1, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9144), 1, 1, "Institution", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9145), 1 },
+                    { 2, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9146), 1, 1, "Training", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9146), 1 }
                 });
 
             migrationBuilder.InsertData(
                 table: "HR_EMP_DETAIL",
-                columns: new[] { "ID", "BIRTH_DATE", "CONTACT_NO", "EMAIL_ID", "EMP_NO", "FATHER_NAME", "FULL_NAME", "GENDER_ID", "MARITAIL_STATUS", "MOTHER_NAME", "NATIONALITY", "NATIONAL_ID", "PARENTS_CONACT", "PARMANENT_ADDRESS", "PASSPORT_ID", "PRESENT_ADDRESS", "SPOUSE_NAME" },
-                values: new object[] { 1, new DateTime(1998, 1, 21, 11, 6, 32, 68, DateTimeKind.Local).AddTicks(1749), "008801722688266", "ibnekayesh91@gmail.com", "EMP-00001", "Father", "Md. Ibne Kayesh", "Male", "Married", "Mother", "Bangladeshi", "1234567890", "Dhaka", "Dhaka, Bangladesh", "1234567890", "Dhaka, Bangladesh", "N/A" });
+                columns: new[] { "ID", "BIRTH_DATE", "CONTACT_NO", "CreateDate", "CreateUser", "EMAIL_ID", "EMP_NO", "FATHER_NAME", "FULL_NAME", "GENDER_ID", "IsActive", "MARITAIL_STATUS", "MOTHER_NAME", "NATIONALITY", "NATIONAL_ID", "PARENTS_CONACT", "PARMANENT_ADDRESS", "PASSPORT_ID", "PRESENT_ADDRESS", "SPOUSE_NAME", "UpdateDate", "UpdateUser" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(1998, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9160), "008801722688266", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9157), 1, "ibnekayesh91@gmail.com", "EMP-00001", "Father", "Md. Ibne Kayesh", "Male", 1, "Married", "Mother", "Bangladeshi", "1234567890", "Dhaka", "Dhaka, Bangladesh", "1234567890", "Dhaka, Bangladesh", "N/A", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9157), 1 },
+                    { 2, new DateTime(1998, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9167), "008801678688266", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9165), 1, "skasadquadir@gmail.com", "EMP-00002", "Father", "Sheikh Asad Quadir", "Male", 1, "Married", "Mother", "Bangladeshi", "1234567890", "Dhaka", "Dhaka, Bangladesh", "1234567890", "Dhaka, Bangladesh", "N/A", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9165), 1 }
+                });
 
             migrationBuilder.InsertData(
                 table: "HR_EMP_JOB",
-                columns: new[] { "ID", "APPROVED_BY", "APPROVED_DATE", "CONF_DATE", "DESIG_ID", "EMP_ID", "END_DATE", "GROSS_SALARY", "HR_DESIGNATIONSID", "INITIATED_BY", "INITIATED_DATE", "SECTION_ID", "START_DATE", "VERIFIED_BY", "VERIFIED_DATE" },
-                values: new object[] { 1, 1, null, new DateTime(2023, 2, 21, 11, 6, 32, 68, DateTimeKind.Local).AddTicks(1780), 1, 1, null, 1900000, null, 1, null, 1, new DateTime(2023, 4, 21, 11, 6, 32, 68, DateTimeKind.Local).AddTicks(1778), 1, null });
+                columns: new[] { "ID", "APPROVED_BY", "APPROVED_DATE", "CONF_DATE", "CreateDate", "CreateUser", "DESIG_ID", "EMP_ID", "END_DATE", "GROSS_SALARY", "HR_DESIGNATIONSID", "INITIATED_BY", "INITIATED_DATE", "IsActive", "SECTION_ID", "START_DATE", "UpdateDate", "UpdateUser", "VERIFIED_BY", "VERIFIED_DATE" },
+                values: new object[] { 1, 1, null, new DateTime(2023, 2, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9188), new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9184), 1, 1, 1, null, 1900000, null, 1, null, 1, 1, new DateTime(2023, 4, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9186), new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9184), 1, 1, null });
 
             migrationBuilder.InsertData(
                 table: "HR_LEAVE_TYPE",
-                columns: new[] { "ID", "TYPE_NAME", "TYPE_QTY" },
+                columns: new[] { "ID", "CreateDate", "CreateUser", "IsActive", "TYPE_NAME", "TYPE_QTY", "UpdateDate", "UpdateUser" },
                 values: new object[,]
                 {
-                    { 1, "Casual", 10 },
-                    { 2, "Sick", 14 },
-                    { 3, "Earned", 0 }
+                    { 1, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9207), 1, 1, "Casual", 10, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9207), 1 },
+                    { 2, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9209), 1, 1, "Sick", 14, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9210), 1 },
+                    { 3, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9211), 1, 1, "Earned", 0, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9211), 1 }
                 });
 
             migrationBuilder.InsertData(
                 table: "HR_SALARY_TYPE",
-                columns: new[] { "ID", "TYPE_EFFECT", "TYPE_NAME" },
+                columns: new[] { "ID", "CreateDate", "CreateUser", "IsActive", "TYPE_EFFECT", "TYPE_NAME", "UpdateDate", "UpdateUser" },
                 values: new object[,]
                 {
-                    { 1, 0, "Salary" },
-                    { 2, 0, "House Rent" },
-                    { 3, 0, "Medical" },
-                    { 4, 0, "Transport" },
-                    { 5, 0, "Mobile" },
-                    { 6, 1, "Deposit" },
-                    { 7, 1, "Loan" }
+                    { 1, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9224), 1, 1, 0, "Salary", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9225), 1 },
+                    { 2, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9227), 1, 1, 0, "House Rent", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9228), 1 },
+                    { 3, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9229), 1, 1, 0, "Medical", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9229), 1 },
+                    { 4, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9230), 1, 1, 0, "Transport", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9231), 1 },
+                    { 5, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9231), 1, 1, 0, "Mobile", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9232), 1 },
+                    { 6, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9233), 1, 1, 1, "Deposit", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9233), 1 },
+                    { 7, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9234), 1, 1, 1, "Loan", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9235), 1 }
                 });
 
             migrationBuilder.InsertData(
                 table: "HR_DEPARTMENT",
-                columns: new[] { "ID", "COMP_ID", "DEPT_ADDR", "DEPT_NAME", "HEAD_EMP_ID", "MAX_EMP_NO", "MAX_SALARY" },
-                values: new object[] { 1, 1, "First Floor, Mail Branch", "Admin", 1, 10, 1000000 });
+                columns: new[] { "ID", "COMP_ID", "CreateDate", "CreateUser", "DEPT_ADDR", "DEPT_NAME", "HEAD_EMP_ID", "IsActive", "MAX_EMP_NO", "MAX_SALARY", "UpdateDate", "UpdateUser" },
+                values: new object[] { 1, 1, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8978), 1, "First Floor, Mail Branch", "Admin", 1, 1, 10, 1000000, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8978), 1 });
 
             migrationBuilder.InsertData(
                 table: "HR_DEPARTMENT",
-                columns: new[] { "ID", "COMP_ID", "DEPT_ADDR", "DEPT_NAME", "HEAD_EMP_ID", "MAX_EMP_NO", "MAX_SALARY" },
-                values: new object[] { 2, 1, "Second Floor, Mail Branch", "Sales", 2, 10, 1000000 });
+                columns: new[] { "ID", "COMP_ID", "CreateDate", "CreateUser", "DEPT_ADDR", "DEPT_NAME", "HEAD_EMP_ID", "IsActive", "MAX_EMP_NO", "MAX_SALARY", "UpdateDate", "UpdateUser" },
+                values: new object[] { 2, 1, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8982), 1, "Second Floor, Mail Branch", "Sales", 2, 1, 10, 1000000, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8982), 1 });
 
             migrationBuilder.InsertData(
                 table: "HR_SECTIONS",
-                columns: new[] { "ID", "DEPT_ID", "HEAD_EMP_ID", "MAX_EMP_NO", "MAX_SALARY", "SECT_ADDR", "SECT_NAME" },
-                values: new object[] { 1, 1, 1, 10, 1000000, "First Floor, Mail Branch", "Admin" });
+                columns: new[] { "ID", "CreateDate", "CreateUser", "DEPT_ID", "HEAD_EMP_ID", "IsActive", "MAX_EMP_NO", "MAX_SALARY", "SECT_ADDR", "SECT_NAME", "UpdateDate", "UpdateUser" },
+                values: new object[] { 1, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9250), 1, 1, 1, 1, 10, 1000000, "First Floor, Mail Branch", "Admin", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9250), 1 });
 
             migrationBuilder.InsertData(
                 table: "HR_SECTIONS",
-                columns: new[] { "ID", "DEPT_ID", "HEAD_EMP_ID", "MAX_EMP_NO", "MAX_SALARY", "SECT_ADDR", "SECT_NAME" },
-                values: new object[] { 2, 2, 2, 10, 1000000, "Second Floor, Mail Branch", "IT Product" });
+                columns: new[] { "ID", "CreateDate", "CreateUser", "DEPT_ID", "HEAD_EMP_ID", "IsActive", "MAX_EMP_NO", "MAX_SALARY", "SECT_ADDR", "SECT_NAME", "UpdateDate", "UpdateUser" },
+                values: new object[] { 2, new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9252), 1, 2, 2, 1, 10, 1000000, "Second Floor, Mail Branch", "IT Product", new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9253), 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_HR_COMPANY_COMP_NAME",
@@ -549,6 +658,11 @@ namespace Sieve.HR.Migrations
                 table: "HR_DUTY_ROSTER",
                 column: "DUTY_ROSTER_NAME",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HR_EMP_EDU_EMP_ID",
+                table: "HR_EMP_EDU",
+                column: "EMP_ID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HR_EMP_JOB_HR_DESIGNATIONSID",

@@ -48,9 +48,10 @@ namespace Sieve.HR.Areas.Admin.Controllers
                 DropDownListFor_Create();
                 if (obj.ID <= 0)
                 {                  
-                    IEnumerable<HR_EMP_DETAIL> duplicatedFinder = unitOfWork.EmpDetail.SelectAll(filter: x => x.NATIONAL_ID == obj.NATIONAL_ID);
+                    IEnumerable<HR_EMP_DETAIL> duplicatedFinder = unitOfWork.EmpDetail.SelectAll(filter: x => (x.NATIONAL_ID == obj.NATIONAL_ID) && (x.PASSPORT_ID == obj.PASSPORT_ID) && (x.EMAIL_ID == obj.EMAIL_ID) && (x.CONTACT_NO == obj.CONTACT_NO));
                     if (duplicatedFinder.Any()) {
                         TempData["msg"] = SweetMessages.ShowError("Employee Already Exist");
+                        return RedirectToAction(nameof(Create));
                     }
                     else
                     {
@@ -66,8 +67,17 @@ namespace Sieve.HR.Areas.Admin.Controllers
                     }                                    
                 }
                 else
-                {                    
-                    unitOfWork.EmpDetail.Update(obj);
+                {
+                    IEnumerable<HR_EMP_DETAIL> duplicatedFinder = unitOfWork.EmpDetail.SelectAll(filter: x => (x.NATIONAL_ID == obj.NATIONAL_ID) && (x.PASSPORT_ID == obj.PASSPORT_ID) && (x.EMAIL_ID == obj.EMAIL_ID) && (x.CONTACT_NO == obj.CONTACT_NO));
+                    if (duplicatedFinder.Any())
+                    {
+                        TempData["msg"] = SweetMessages.ShowError("Employee Already Exist");
+                        return RedirectToAction(nameof(Create));
+                    }
+                    else
+                    {
+                        unitOfWork.EmpDetail.Update(obj);
+                    }                        
                 }
                 EQResult eQ = unitOfWork.Commit();
                 if (eQ.SUCCESS && eQ.ROWS > 0)
@@ -85,16 +95,9 @@ namespace Sieve.HR.Areas.Admin.Controllers
         }
         
         private void DropDownListFor_Create()
-        {
-
-            ViewBag.GENDER_ID = new List<SelectListItem>() { new SelectListItem { Text = "Male", Value = "Male" },
-                                                             new SelectListItem { Text = "Female", Value = "Female"},
-                                                             new SelectListItem { Text = "Third Gender", Value = "Third Gender"}
-                                                            };
-            ViewBag.MARITAIL_STATUS = new List<SelectListItem>() { new SelectListItem { Text = "Married", Value = "Married" },
-                                                             new SelectListItem { Text = "Unmarried", Value = "Unmarried"},
-                                                             new SelectListItem { Text = "Divorce", Value = "Divorce"}
-                                                            };
+        {            
+            ViewBag.GENDER_ID = unitOfWork.EmpDetail.GenderDropdown();
+            ViewBag.MARITAIL_STATUS = unitOfWork.EmpDetail.MaritailStatusDropdown();
         }
 
     }

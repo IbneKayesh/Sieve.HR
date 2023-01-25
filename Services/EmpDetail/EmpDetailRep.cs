@@ -1,4 +1,5 @@
-﻿using Sieve.HR.Areas.Admin.Models;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Sieve.HR.Areas.Admin.Models;
 using Sieve.HR.Infrastructure;
 using Sieve.HR.Services.Db;
 
@@ -22,6 +23,26 @@ namespace Sieve.HR.Services.EmpDetail
                 NextEmp_No = "EMP-" + nextID.ToString().PadLeft(5, '0');
             }
             return NextEmp_No;
+        }
+
+        public List<SelectListItem> GenderDropdown()
+        {
+            return new List<SelectListItem>() 
+            {
+                new SelectListItem { Text = "Male", Value = "Male" },
+                new SelectListItem { Text = "Female", Value = "Female"},
+                new SelectListItem { Text = "Third Gender", Value = "Third Gender"}
+            };
+        }
+
+        public List<SelectListItem> MaritailStatusDropdown()
+        {
+            return new List<SelectListItem>()
+            {
+                new SelectListItem { Text = "Married", Value = "Married" },
+                new SelectListItem { Text = "Unmarried", Value = "Unmarried" },
+                new SelectListItem { Text = "Divorce", Value = "Divorce" }
+            };
         }
     }
 }

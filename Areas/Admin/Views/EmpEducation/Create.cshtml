@@ -12,8 +12,11 @@
         <div class="card-header border-0">
             <h5 class="card-title m-0">Add/Edit @ViewBag.Title</h5>
             <div class="d-flex justify-content-end">
-                <a href="@Url.Action("Index")" class="btn btn-outline-info btn-flat btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
-                <a href="@Url.Action("Create",new {id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> New</a>
+                @*<a href="@Url.Action("Index")" class="btn btn-outline-info btn-flat btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>*@
+                <a class="btn btn-outline-info btn-flat btn-sm" asp-area="Admin" asp-controller="EmpEducation" asp-action="CreateByEmpID" asp-route-EMP_ID="@ViewBag.EMP_ID"><i class="fas fa-chevron-circle-left"></i> Back</a>
+                <a class="btn btn-outline-primary btn-flat btn-sm" asp-area="Admin" asp-controller="EmpEducation" asp-action="Create" asp-route-EMP_ID="@ViewBag.EMP_ID"><i class="fas fa-plus-circle"></i> New</a>
+                @*<a href="@Url.Action("Create",new {EMP_ID=@ViewBag.EMP_ID})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> New</a>*@
+
                 <button type="submit" class="btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-save"></i> Save</button>
             </div>
         </div>
@@ -23,7 +26,7 @@
             <div class="row">
                 <div class="col">
                     @Html.LabelFor(model => model.EMP_ID, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.EMP_ID, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.EMP_ID) } })
+                    @Html.EditorFor(model => model.EMP_ID, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.EMP_ID) , @disabled= "disabled"  } })
                     @Html.ValidationMessageFor(model => model.EMP_ID, "", new { @class = "text-danger" })
                 </div>
 

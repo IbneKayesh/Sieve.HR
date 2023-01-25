@@ -37,5 +37,10 @@ namespace Sieve.HR.Areas.Admin.Models
         [Required(ErrorMessage = "{0} is required")]
         [StringLength(100, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 3)]
         public string? INSTITUE_NAME { get; set; }
+
+
+        //Foreign Key
+        [ForeignKey("EMP_ID")]
+        public virtual HR_EMP_DETAIL? HR_EMP_DETAIL { get; set; }
     }
 }

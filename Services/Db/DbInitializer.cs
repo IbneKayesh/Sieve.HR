@@ -51,7 +51,8 @@ namespace Sieve.HR.Services.Db
 
 
             modelBuilder.Entity<HR_EMP_DETAIL>().HasData(
-                   new HR_EMP_DETAIL() { ID = 1, EMP_NO = "EMP-00001", FULL_NAME = "Md. Ibne Kayesh", CONTACT_NO = "008801722688266", EMAIL_ID = "ibnekayesh91@gmail.com", GENDER_ID = "Male", NATIONALITY = "Bangladeshi", BIRTH_DATE = DateTime.Now.AddYears(-25), MARITAIL_STATUS = "Married", SPOUSE_NAME = "N/A", NATIONAL_ID = "1234567890", PASSPORT_ID = "1234567890", FATHER_NAME = "Father", MOTHER_NAME = "Mother", PARENTS_CONACT = "Dhaka", PRESENT_ADDRESS = "Dhaka, Bangladesh", PARMANENT_ADDRESS = "Dhaka, Bangladesh" }
+                   new HR_EMP_DETAIL() { ID = 1, EMP_NO = "EMP-00001", FULL_NAME = "Md. Ibne Kayesh", CONTACT_NO = "008801722688266", EMAIL_ID = "ibnekayesh91@gmail.com", GENDER_ID = "Male", NATIONALITY = "Bangladeshi", BIRTH_DATE = DateTime.Now.AddYears(-25), MARITAIL_STATUS = "Married", SPOUSE_NAME = "N/A", NATIONAL_ID = "1234567890", PASSPORT_ID = "1234567890", FATHER_NAME = "Father", MOTHER_NAME = "Mother", PARENTS_CONACT = "Dhaka", PRESENT_ADDRESS = "Dhaka, Bangladesh", PARMANENT_ADDRESS = "Dhaka, Bangladesh" },
+                   new HR_EMP_DETAIL() { ID = 2, EMP_NO = "EMP-00002", FULL_NAME = "Sheikh Asad Quadir", CONTACT_NO = "008801678688266", EMAIL_ID = "skasadquadir@gmail.com", GENDER_ID = "Male", NATIONALITY = "Bangladeshi", BIRTH_DATE = DateTime.Now.AddYears(-25), MARITAIL_STATUS = "Married", SPOUSE_NAME = "N/A", NATIONAL_ID = "1234567890", PASSPORT_ID = "1234567890", FATHER_NAME = "Father", MOTHER_NAME = "Mother", PARENTS_CONACT = "Dhaka", PRESENT_ADDRESS = "Dhaka, Bangladesh", PARMANENT_ADDRESS = "Dhaka, Bangladesh" }
             );
 
 

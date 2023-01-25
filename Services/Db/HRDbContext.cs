@@ -29,6 +29,14 @@ namespace Sieve.HR.Services.Db
                       .IsConcurrencyToken();
             });
 
+            modelBuilder.Entity<HR_EMP_EDU>(entity =>
+            {
+                entity.HasOne(d => d.HR_EMP_DETAIL)
+                    .WithMany(p => p.HR_EMP_EDU_NAV)
+                    .HasForeignKey(d => d.EMP_ID)
+                    .OnDelete(DeleteBehavior.NoAction);
+            });
+
             modelBuilder.Entity<HR_DEPARTMENT>(entity =>
             {
                 entity.HasOne(d => d.HR_COMPANY)
