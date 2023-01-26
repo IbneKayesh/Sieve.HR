@@ -26,18 +26,17 @@ namespace Sieve.HR.Areas.Admin.Controllers
         {
             DropDownListFor_Create();
             HR_EMP_EDU objDb = new HR_EMP_EDU();
-            if (EMP_ID == null || EMP_ID == 0)
+            if (id == null || id == 0)
             {
                 ViewBag.EMP_ID = EMP_ID;
                 return View(objDb);
             }
             else
             {
-                objDb = unitOfWork.EmpEducation.SelectById(id.Value);
                 ViewBag.EMP_ID = EMP_ID;
+                objDb = unitOfWork.EmpEducation.SelectById(id.Value);
                 return View(objDb);
             }
-           
         }
 
         public IActionResult CreateByEmpID(int? EMP_ID)
@@ -82,7 +81,8 @@ namespace Sieve.HR.Areas.Admin.Controllers
                     TempData["msg"] = SweetMessages.ShowError(eQ.MESSAGES);
                 }
                 ViewBag.EMP_ID = obj.EMP_ID;
-                return RedirectToAction(nameof(Create));
+                //return RedirectToAction(nameof(Create), obj.EMP_ID);
+                return RedirectToAction("Create", new { id = obj.ID, EMP_ID = obj.EMP_ID });
             }
             return View(obj);
         }

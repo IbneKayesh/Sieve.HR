@@ -10,7 +10,7 @@
         <div class="d-flex justify-content-between">
             <h5 class="card-title m-0">@ViewBag.Title</h5>
             @*<a href="@Url.Action("CreateByEmpID",new {id="1"})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> Add @ViewBag.Title</a>*@
-            <a class="btn btn-outline-primary btn-flat btn-sm" asp-area="Admin" asp-controller="EmpEducation" asp-action="Create" asp-route-EMP_ID="@ViewBag.EMP_ID"><i class="fas fa-plus-circle"></i> Add @ViewBag.Title</a>
+            <a class="btn btn-outline-primary btn-flat btn-sm" asp-area="Admin" asp-controller="EmpEducation" asp-action="Create" asp-route-id="0" asp-route-EMP_ID="@ViewBag.EMP_ID"><i class="fas fa-plus-circle"></i> Add @ViewBag.Title</a>
         </div>
     </div>
     <div class="card-body">
