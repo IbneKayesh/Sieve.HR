@@ -1,20 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
-namespace Sieve.HR.Areas.Admin.Models
+namespace Sieve.HR.Areas.Admin.Models 
 {
     public class HR_ATTENDANCE_SHEET : HR_COMMON
     {
-        [Display(Name = "Emp Id")]
+        [Display(Name = "Employee Id")]
         public int EMP_ID { get; set; }
 
-        [Display(Name = "Year Id")]
+        [Display(Name = "Year")]
         public int YEAR_ID { get; set; }
 
-        [Display(Name = "Month Id")]
+        [Display(Name = "Month")]
         public int MONTH_ID { get; set; }
 
-        [Display(Name = "Day Id")]
+        [Display(Name = "Day")]
         public int DAY_ID { get; set; }
 
         [Display(Name = "In Time")]
@@ -28,11 +28,11 @@ namespace Sieve.HR.Areas.Admin.Models
         [StringLength(5, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 5)]
         public string? OUT_TIME { get; set; }
 
-        [Display(Name = "OT Hours")]
+        [Display(Name = "Overtime  Hours")]
         [Required(ErrorMessage = "{0} is required")]
         public int OT_HOURS { get; set; }
 
-        [Display(Name = "Statu")]
+        [Display(Name = "Attendance Status")]
         [Required(ErrorMessage = "{0} is required")]
         public int ATTEND_STATUS { get; set; } = 0;
 

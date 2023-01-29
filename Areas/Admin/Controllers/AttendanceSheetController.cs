@@ -1,21 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Sieve.HR.Areas.Admin.Models;
+using Sieve.HR.Infrastructure;
 using Sieve.HR.Services.Db;
 
 namespace Sieve.HR.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class AttendanceSheetController : Controller
-    {
-        private readonly HRDbContext _context;
-        public AttendanceSheetController(HRDbContext context)
+    {      
+        private readonly IUnitOfWork unitOfWork;
+        public AttendanceSheetController(IUnitOfWork unitOfWork)
         {
-            _context = context;
+            this.unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            IEnumerable<HR_ATTENDANCE_SHEET> objList = _context.HR_ATTENDANCE_SHEET;
+            IEnumerable<HR_ATTENDANCE_SHEET> objList = unitOfWork.AttendanceSheet.SelectAll(orderBy: x => x.OrderBy(o => o.EMP_ID));
             return View(objList);
         }        
     }
