@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Sieve.HR.Areas.Admin.Models.HR_ATTENDANCE_SHEET>
 
 @{
-    ViewBag.Title = "Emp's Attendance";
+    ViewBag.Title = "Employee's Attendance";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="card card-primary card-outline">
@@ -11,16 +11,15 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Emp Id</th>
-                    <th>Year</th>
-                    <th>Month</th>
-                    <th>Day</th>
-                    <th>In Time</th>
-                    <th>In Time</th>
-                    <th>Out Time</th>
-                    <th>OT Hours</th>
-                    <th>Attendance Status</th>
-                    <th>Duty Roster</th>
+                    <th>@Html.DisplayNameFor(model => model.EMP_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.YEAR_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.MONTH_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.DAY_ID)</th>
+                    <th>@Html.DisplayNameFor(model => model.IN_TIME)</th>
+                    <th>@Html.DisplayNameFor(model => model.OUT_TIME)</th>
+                    <th>@Html.DisplayNameFor(model => model.OT_HOURS)</th>
+                    <th>@Html.DisplayNameFor(model => model.ATTEND_STATUS)</th>
+                    <th>@Html.DisplayNameFor(model => model.ROSTER_ID)</th>
                 </tr>
             </thead>
             <tbody>

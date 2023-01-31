@@ -5,7 +5,7 @@ namespace Sieve.HR.Areas.Admin.Models
 {
     public class HR_ATTENDANCE_SHEET : HR_COMMON
     {
-        [Display(Name = "Employee Id")]
+        [Display(Name = "Employee ID")]
         public int EMP_ID { get; set; }
 
         [Display(Name = "Year")]
@@ -19,13 +19,13 @@ namespace Sieve.HR.Areas.Admin.Models
 
         [Display(Name = "In Time")]
         [Required(ErrorMessage = "{0} is required")]
-        [StringLength(5, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 5)]
+        [StringLength(10, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 5)]
         public string? IN_TIME { get; set; }
 
 
         [Display(Name = "Out Time")]
         [Required(ErrorMessage = "{0} is required")]
-        [StringLength(5, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 5)]
+        [StringLength(10, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 5)]
         public string? OUT_TIME { get; set; }
 
         [Display(Name = "Overtime  Hours")]

@@ -14,6 +14,10 @@ namespace Sieve.HR.Services.Db
 
         public void Seed()
         {
+            //modelBuilder.Entity<HR_ATTENDANCE_SHEET>().HasData(
+            //      new HR_ATTENDANCE_SHEET() { EMP_ID = 1, YEAR_ID = 2023, MONTH_ID = 1, DAY_ID = 1, IN_TIME = "8:23 AM", OUT_TIME= "8:23 PM", OT_HOURS=3, ATTEND_STATUS=1, ROSTER_ID=1 }
+            //);
+
             modelBuilder.Entity<HR_COMPANY>().HasData(
                   new HR_COMPANY() { ID = 1, COMP_NAME = "Sieve Org", COMP_ADDR = "Dhaka, Bangladesh", MAX_EMP_NO = 1000, MAX_SALARY = 100000000 }
             );

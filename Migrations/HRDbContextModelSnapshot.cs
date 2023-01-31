@@ -41,8 +41,8 @@ namespace Sieve.HR.Migrations
 
                     b.Property<string>("IN_TIME")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<int>("IsActive")
                         .HasColumnType("int");
@@ -55,8 +55,8 @@ namespace Sieve.HR.Migrations
 
                     b.Property<string>("OUT_TIME")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<int>("ROSTER_ID")
                         .HasColumnType("int");
@@ -138,13 +138,13 @@ namespace Sieve.HR.Migrations
                             ID = 1,
                             COMP_ADDR = "Dhaka, Bangladesh",
                             COMP_NAME = "Sieve Org",
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8859),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3466),
                             CreateUser = 1,
                             IsActive = 1,
                             MAX_EMP_NO = 1000,
                             MAX_SALARY = 100000000,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8868),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3475),
                             UpdateUser = 1
                         });
                 });
@@ -211,7 +211,7 @@ namespace Sieve.HR.Migrations
                         {
                             ID = 1,
                             COMP_ID = 1,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8978),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3572),
                             CreateUser = 1,
                             DEPT_ADDR = "First Floor, Mail Branch",
                             DEPT_NAME = "Admin",
@@ -220,14 +220,14 @@ namespace Sieve.HR.Migrations
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8978),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3573),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
                             COMP_ID = 1,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8982),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3576),
                             CreateUser = 1,
                             DEPT_ADDR = "Second Floor, Mail Branch",
                             DEPT_NAME = "Sales",
@@ -236,7 +236,7 @@ namespace Sieve.HR.Migrations
                             MAX_EMP_NO = 10,
                             MAX_SALARY = 1000000,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8982),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3576),
                             UpdateUser = 1
                         });
                 });
@@ -301,7 +301,7 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8997),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3591),
                             CreateUser = 1,
                             FULL_FORM = "Cheif Executive Officer",
                             IsActive = 1,
@@ -310,13 +310,13 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 0,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "CEO",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(8998),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3592),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9000),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3598),
                             CreateUser = 1,
                             FULL_FORM = "Executive Director",
                             IsActive = 1,
@@ -325,13 +325,13 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "ED",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9000),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3598),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 3,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9002),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3599),
                             CreateUser = 1,
                             FULL_FORM = "Cheif Operating Director",
                             IsActive = 1,
@@ -340,13 +340,13 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 2,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "COO",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9003),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3600),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 4,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9004),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3601),
                             CreateUser = 1,
                             FULL_FORM = "General Manager",
                             IsActive = 1,
@@ -355,13 +355,13 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 3,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "GM",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9004),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3601),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 5,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9005),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3602),
                             CreateUser = 1,
                             FULL_FORM = "Deputy General Manager",
                             IsActive = 1,
@@ -370,13 +370,13 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 4,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "DGM",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9006),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3603),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 6,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9007),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3604),
                             CreateUser = 1,
                             FULL_FORM = "Assistant General Manager",
                             IsActive = 1,
@@ -385,13 +385,13 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 5,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "AGM",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9007),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3604),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 7,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9009),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3605),
                             CreateUser = 1,
                             FULL_FORM = "Senior Manager",
                             IsActive = 1,
@@ -400,13 +400,13 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 6,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "SM",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9009),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3606),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 8,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9010),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3649),
                             CreateUser = 1,
                             FULL_FORM = "Manager",
                             IsActive = 1,
@@ -415,13 +415,13 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 7,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "M",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9011),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3649),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 9,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9012),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3651),
                             CreateUser = 1,
                             FULL_FORM = "Deputy Manager",
                             IsActive = 1,
@@ -430,13 +430,13 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 8,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "Dym",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9012),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3651),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 10,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9013),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3653),
                             CreateUser = 1,
                             FULL_FORM = "Assistant Manager",
                             IsActive = 1,
@@ -445,13 +445,13 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 9,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "AM",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9013),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3654),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 11,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9018),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3655),
                             CreateUser = 1,
                             FULL_FORM = "Sub Assistant Manager",
                             IsActive = 1,
@@ -460,13 +460,13 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 10,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "SAM",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9019),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3655),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 12,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9020),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3656),
                             CreateUser = 1,
                             FULL_FORM = "Trainee Executive",
                             IsActive = 1,
@@ -475,7 +475,7 @@ namespace Sieve.HR.Migrations
                             PARENT_ID = 11,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SHORT_FORM = "TE",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9020),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3657),
                             UpdateUser = 1
                         });
                 });
@@ -539,7 +539,7 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9037),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3678),
                             CreateUser = 1,
                             DUTY_ROSTER_NAME = "General Shift",
                             IN_TIME = "09:00",
@@ -547,13 +547,13 @@ namespace Sieve.HR.Migrations
                             MAX_OT_HOUR = 0,
                             OUT_TIME = "17:00",
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9038),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3678),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9125),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3683),
                             CreateUser = 1,
                             DUTY_ROSTER_NAME = "Morning Shift",
                             IN_TIME = "06:00",
@@ -561,13 +561,13 @@ namespace Sieve.HR.Migrations
                             MAX_OT_HOUR = 2,
                             OUT_TIME = "18:00",
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9125),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3684),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 3,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9127),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3685),
                             CreateUser = 1,
                             DUTY_ROSTER_NAME = "Evening Shift",
                             IN_TIME = "18:00",
@@ -575,7 +575,7 @@ namespace Sieve.HR.Migrations
                             MAX_OT_HOUR = 2,
                             OUT_TIME = "06:00",
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9127),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3685),
                             UpdateUser = 1
                         });
                 });
@@ -622,23 +622,23 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9144),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3699),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Institution",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9145),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3699),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9146),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3700),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Training",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9146),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3701),
                             UpdateUser = 1
                         });
                 });
@@ -756,9 +756,9 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
-                            BIRTH_DATE = new DateTime(1998, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9160),
+                            BIRTH_DATE = new DateTime(1998, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3714),
                             CONTACT_NO = "008801722688266",
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9157),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3712),
                             CreateUser = 1,
                             EMAIL_ID = "ibnekayesh91@gmail.com",
                             EMP_NO = "EMP-00001",
@@ -776,15 +776,15 @@ namespace Sieve.HR.Migrations
                             PRESENT_ADDRESS = "Dhaka, Bangladesh",
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SPOUSE_NAME = "N/A",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9157),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3712),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
-                            BIRTH_DATE = new DateTime(1998, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9167),
+                            BIRTH_DATE = new DateTime(1998, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3722),
                             CONTACT_NO = "008801678688266",
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9165),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3720),
                             CreateUser = 1,
                             EMAIL_ID = "skasadquadir@gmail.com",
                             EMP_NO = "EMP-00002",
@@ -802,7 +802,7 @@ namespace Sieve.HR.Migrations
                             PRESENT_ADDRESS = "Dhaka, Bangladesh",
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SPOUSE_NAME = "N/A",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9165),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3720),
                             UpdateUser = 1
                         });
                 });
@@ -950,8 +950,8 @@ namespace Sieve.HR.Migrations
                         {
                             ID = 1,
                             APPROVED_BY = 1,
-                            CONF_DATE = new DateTime(2023, 2, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9188),
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9184),
+                            CONF_DATE = new DateTime(2023, 2, 28, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3742),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3737),
                             CreateUser = 1,
                             DESIG_ID = 1,
                             EMP_ID = 1,
@@ -960,8 +960,8 @@ namespace Sieve.HR.Migrations
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECTION_ID = 1,
-                            START_DATE = new DateTime(2023, 4, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9186),
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9184),
+                            START_DATE = new DateTime(2023, 4, 30, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3740),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3738),
                             UpdateUser = 1,
                             VERIFIED_BY = 1
                         });
@@ -1418,37 +1418,37 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9207),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3756),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Casual",
                             TYPE_QTY = 10,
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9207),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3757),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9209),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3758),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Sick",
                             TYPE_QTY = 14,
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9210),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3758),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 3,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9211),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3759),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_NAME = "Earned",
                             TYPE_QTY = 0,
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9211),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3760),
                             UpdateUser = 1
                         });
                 });
@@ -1498,85 +1498,85 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9224),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3774),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 0,
                             TYPE_NAME = "Salary",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9225),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3774),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9227),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3776),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 0,
                             TYPE_NAME = "House Rent",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9228),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3776),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 3,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9229),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3777),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 0,
                             TYPE_NAME = "Medical",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9229),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3778),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 4,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9230),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3779),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 0,
                             TYPE_NAME = "Transport",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9231),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3779),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 5,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9231),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3780),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 0,
                             TYPE_NAME = "Mobile",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9232),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3780),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 6,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9233),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3781),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 1,
                             TYPE_NAME = "Deposit",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9233),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3781),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 7,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9234),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3782),
                             CreateUser = 1,
                             IsActive = 1,
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             TYPE_EFFECT = 1,
                             TYPE_NAME = "Loan",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9235),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3783),
                             UpdateUser = 1
                         });
                 });
@@ -1642,7 +1642,7 @@ namespace Sieve.HR.Migrations
                         new
                         {
                             ID = 1,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9250),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3798),
                             CreateUser = 1,
                             DEPT_ID = 1,
                             HEAD_EMP_ID = 1,
@@ -1652,13 +1652,13 @@ namespace Sieve.HR.Migrations
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "First Floor, Mail Branch",
                             SECT_NAME = "Admin",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9250),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3799),
                             UpdateUser = 1
                         },
                         new
                         {
                             ID = 2,
-                            CreateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9252),
+                            CreateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3802),
                             CreateUser = 1,
                             DEPT_ID = 2,
                             HEAD_EMP_ID = 2,
@@ -1668,7 +1668,7 @@ namespace Sieve.HR.Migrations
                             RowVersion = new byte[] { 0, 0, 0, 0, 0, 0, 0, 120 },
                             SECT_ADDR = "Second Floor, Mail Branch",
                             SECT_NAME = "IT Product",
-                            UpdateDate = new DateTime(2023, 1, 25, 16, 48, 43, 454, DateTimeKind.Local).AddTicks(9253),
+                            UpdateDate = new DateTime(2023, 1, 31, 10, 31, 51, 333, DateTimeKind.Local).AddTicks(3802),
                             UpdateUser = 1
                         });
                 });
