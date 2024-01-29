@@ -1,40 +1,85 @@
-﻿HR Management
-Development Start Date: 09-01-2023
-Development End Date: 29-01-2023
+﻿# HRMS (Human Resources Management System)
 
+Payroll and Salary Management Web Application
 
-1. Company Profile
-------------------------------
-1.1 Company<br/>
-Can create one more comapny.
-Each company hold a maximum number of Emps and a maximum total salary.
+Note: the repository was started for learning purposes only. Now I've decided not to develop further. Currently I'm working for AP Clients. So after completed that It's may resume further.
 
-1.2 Department<br/>
-Department create under a Company.
-Departments maximum number of Emps should not more then parent company and not less then assigned sections.
-Each department hold a department head
+## What is the next?
 
-1.3 Section<br/>
-Section create under a Department.
-Sections maximum number of Emp should not more then parent department.
-Each section hold a section head
+1) MSSQL 2016 Developer to 2022 Express
+2) NET 6 to NET 8
 
-2. Emp Profile
-------------------------------
-2.1 Emp Information<br/>
-An Emps have many properties with personal informations. It divided into multiple tables.
+* Setup
+  * Business
+  * Department
+  * Sections
+* Employee
+  * Employee
+  * Employee Educations
+  * Document List
+    * Employee Document
+  * Salary Head
+  * Payment Cycle
+* Payroll
+  * Salary Head List
+  * Payroll 
+  * Daily Attendance
+    * Attendace Application
+    * Attendance No
+  * Pay Slip
+  * Pay Slip Detail
+  * Payment Cycle
+  * Leave Application
+  * Duty Roster
 
-2.1.1 Emp Detail
-Emp detail hold Name, Contact, National ID, DOB, Parents name, Address
+Business -
+Multiple business can be added, each business hold a maximum number of employees and maximum total salary
 
-2.1.2 Emp Educations
-Education can be multiple types, like Instittutions, Trainnings etc
-Emp Eduction hold Instituion name, Grade and Area of learning information
+Departments -
+Department is the child entity of a business. Multiple departments can be added, total salary and no of employees of all the departments not more then parent entity (business) and not less then own child sections
 
+Sections-
+Sections are the child entities of a department. Multiple sections can be added, total salary and no of employees of the sections not more then parent entity (department).
 
-2.2 Duty Roster and Weekend Setup<br/>
+Employee -
+An employee may have many properties. ID, Employee No, Name, Contact No, Email Address, National ID, DOB, Father Name, Mother Name, Present Address, Permanent Address, Join Date, Total Salary
 
+Emp Educations -
+Title Name, Institute Name, Passing Year, Grade, Learning Areas
 
-3. Duty Profile
-------------------------------
-3.1 Duty Roster
+Employee Document List-
+NID, Picture, Passport, Driving License
+
+Emp Salary Head -
+Employee, Salary Head
+
+Emp Payment Cycle-
+Employee, Payment Cycle No
+
+Salary Head List-
+Addition [Basic, House Rent, Health Allownce]
+Deduction [Penalty, Lunch Bill]
+
+Daily Attendance -
+Id, Attendance No, Emp No, Date, In Time, Out Time, Total Duration, Over Time, Net Duration, Notes, Attendance Application
+
+Attendance Application -
+Present, Late present, Weekend, Half leave with pay, Leave with pay, Leave without pay, Sick leave, Earned leave, Absense
+
+Attendance No-
+Attendance No, Emp No , Present, Absense, Total Days, Over Time
+
+Pay Slip -
+Slip No, Payment Cycle No , Employee, Attendance No, Total Amount, Slip Date
+
+Pay Slip Detail -
+Slip No, Salary Head, Amount
+
+Payment Cycle -
+Cycle Name, Start Date, End Date
+
+Leave Application -
+Id, Emp No, Attendance No, From Date, To Date, Total Days, Approver Id
+
+Duty Roster -
+...
